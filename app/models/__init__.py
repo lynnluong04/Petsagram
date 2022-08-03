@@ -1,4 +1,4 @@
 from .db import db
 from .user import User
 from .post import Post
-from .comment import Comment, likes
+from .comment import Comment

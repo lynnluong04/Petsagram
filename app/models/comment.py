@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 
 
 class Comment(db.Model):
-    __table__ = 'comments'
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id') ,nullable=False)

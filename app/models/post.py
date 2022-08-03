@@ -10,7 +10,7 @@ likes = db.Table(
 
 
 class Post(db.Model):
-    __table__ = 'posts'
+    __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id') ,nullable=False)
