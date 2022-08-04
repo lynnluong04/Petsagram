@@ -21,16 +21,16 @@ def user_posts(userId):
     # print("-----------------------------------------------------------")
     return {'posts': [post.to_dict() for post in posts]}
 
-@post_routes.route('/', methods=['POST'])
-def create_post():
-    form = PostForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        post = Post(owner_id=form.data['owner_id'],
-                    media_url=form.data['media_url'],
-                    caption=form.data['caption'],
-                    created_at=form.data['created_at']
-        )
-        db.session.add(post)
-        db.session.commit()
-        return post.to_dict()
+# @post_routes.route('/', methods=['POST'])
+# def create_post():
+#     form = PostForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         post = Post(owner_id=form.data['owner_id'],
+#                     media_url=form.data['media_url'],
+#                     caption=form.data['caption'],
+#                     created_at=form.data['created_at']
+#         )
+#         db.session.add(post)
+#         db.session.commit()
+#         return post.to_dict()
