@@ -3,15 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { thunkLoadPosts } from '../store/post';
 
 const Feed = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const posts = useSelector(state => state.post)
-    console.log("FROM THE FEED COMPONENT", posts)
-    const postsArray = posts ? Object.values(posts) : null
+    const posts = useSelector(state => state.post);
+    const postsArray = posts ? Object.values(posts) : null;
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
-    }, [dispatch])
+    }, [dispatch]);
 
 
     return (
@@ -28,6 +27,6 @@ const Feed = () => {
             })}
         </div>
     )
-}
+};
 
 export default Feed;

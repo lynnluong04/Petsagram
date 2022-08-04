@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import Profile from './components/Profile';
+import SinglePostModal from './components/SinglePostModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,11 +43,16 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
+
         <Route path='/' exact={true}>
           <Feed />
         </Route>
-        <Route path='/:userId'>
+        <Route path='/:userId' exact={true}>
           <Profile />
+        </Route>
+        <Route path='/:userId/:postId' exact={true}>
+          <SinglePostModal />
         </Route>
         {/* <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>

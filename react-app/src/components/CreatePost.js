@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkCreatePost} from '../store/post';
 
-const CreatePostForm = () => {
+const CreatePostForm = ({hideForm}) => {
     const dispatch = useDispatch();
     const { userId }= useParams
     const ownerId = Number(userId)
@@ -45,7 +45,7 @@ const CreatePostForm = () => {
 
         if (createdPost) reset();
         setHasSubmitted(false);
-        // hideForm();
+        hideForm();
     }
 
     const reset = () => {
