@@ -23,9 +23,7 @@ def user_posts(userId):
 
 @post_routes.route('/', methods=['POST'])
 def create_post():
-    print("FROM THE BACKEND POST ROUTE----------------------------------------")
     form = PostForm()
-    print("FORM DATA", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         post = Post(owner_id=form.data['owner_id'],
@@ -37,3 +35,21 @@ def create_post():
         db.session.commit()
         print("from backend after validate ", post)
         return post.to_dict()
+
+@post_routes.route('/<int:postId>"', methods=['PUT'])
+def edit_post(postId):
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        post = Post.query.get(postId)
+        data = request.json
+        post.caption = data['caption']
+        db.session.commit()
+        return post.to_dict()
+
+@post_routes.route("/<int:postId>", methods=['DELETE'])
+def delete_post(postId):
+    post = Post.query.get(postId)
+    db.session.delete(post)
+    db.session.commit()
+    return post.to_dict()

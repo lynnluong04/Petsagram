@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { thunkLoadPosts } from '../store/post';
+import { thunkDeletePost, thunkLoadPosts } from '../store/post';
 import CreatePostForm from './CreatePost';
 import CreatePostModal from './CreatePostModal';
 
@@ -16,6 +16,10 @@ const Profile = () => {
         dispatch(thunkLoadPosts(Number(userId)));
     }, [dispatch]);
 
+    const deletePost = async(id) => {
+        await dispatch(thunkDeletePost(id));
+    }
+
 
     return (
         <div>
@@ -26,6 +30,7 @@ const Profile = () => {
                         <div> {post.owner_id} </div>
                         <img src={post.media_url} alt="photo post of"/>
                         <div>{post.caption}</div>
+                        <button onClick={()=> deletePost(post.id)} >Delete Post</button>
                     </div>
                 )
             })}
