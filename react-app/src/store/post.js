@@ -41,6 +41,7 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
 
 
 export const thunkCreatePost = payload => async dispatch => {
+    console.log("Hitting Create Post Thunk", payload)
     const res = await fetch('/api/posts/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -49,6 +50,7 @@ export const thunkCreatePost = payload => async dispatch => {
 
     if (res.ok) {
         const post = await res.json();
+        console.log("POST FROM THUNK?", post)
         dispatch(add(post));
         return post;
     }
@@ -88,12 +90,16 @@ export default function postReducer(state = {}, action) {
     switch (action.type) {
     case LOAD:
         newState = {};
-        console.log("FROM THE REDUCER", action.list['posts'])
         const allPosts = action.list['posts']
         allPosts.forEach(post => {
             newState[post.id] = post
-        })
-        return newState
+        });
+        return newState;
+
+    case ADD:
+        newState = {...state};
+        newState[action.post.id] = action.post;
+        return newState;
 
     default:
         return state;

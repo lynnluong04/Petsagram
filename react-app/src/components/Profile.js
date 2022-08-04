@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
+import CreatePostForm from './CreatePost';
+import CreatePostModal from './CreatePostModal';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -27,6 +29,8 @@ const Profile = () => {
                     </div>
                 )
             })}
+
+            <CreatePostForm />
         </div>
     )
 };
