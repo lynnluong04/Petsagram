@@ -26,7 +26,7 @@ const SinglePostModal = () => {
                     setShowModal(false)
                     history.push(`/${userId}`)
                     }}>
-                   <SinglePost postId={Number(postId)}/>
+                   <SinglePost postId={Number(postId)} hideForm={()=> setShowModal(false)}/>
                 </Modal>
             )}
         </div>

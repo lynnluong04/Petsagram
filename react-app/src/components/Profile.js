@@ -22,9 +22,9 @@ const Profile = () => {
 
     }, [dispatch]);
 
-    const deletePost = async (id) => {
-        await dispatch(thunkDeletePost(id));
-    }
+    // const deletePost = async (id) => {
+    //     await dispatch(thunkDeletePost(id));
+    // }
 
     console.log("userId FROM PROFILE??", userId)
 
@@ -40,7 +40,7 @@ const Profile = () => {
                             <img src={post.media_url} alt="post of" />
                         </NavLink>
                         <div>{post.caption}</div>
-                        <button onClick={() => deletePost(post.id)} >Delete Post</button>
+                        {/* <button onClick={() => deletePost(post.id)} >Delete Post</button> */}
                     </div>
                 )
             })}

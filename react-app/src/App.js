@@ -52,6 +52,7 @@ function App() {
           <Profile />
         </Route>
         <Route path='/:userId/:postId' exact={true}>
+          <Profile />
           <SinglePostModal />
         </Route>
         {/* <ProtectedRoute path='/' exact={true} >
