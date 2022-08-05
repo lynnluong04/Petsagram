@@ -1,10 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
+
 import { thunkEditPost } from "../store/post";
 
-const EditPostForm = () => {
+const EditPostForm = ({postId, hideForm}) => {
     const dispatch = useDispatch();
+    const post = useSelector(state => state.post[postId])
+    const [editCaption, setEditCaption] = useState(post?.caption);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
-    const [editCaption, setEditCaption] = useState()
+    const numberId = Number(postId)
+
+    console.log("POSTID FROM EDIT COMPONENT",numberId)
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        setHasSubmitted(true);
+
+        const payload = {
+            id: numberId,
+            caption: editCaption
+        };
+
+        const editedPost = await dispatch(thunkEditPost(payload));
+        console.log("PAYLOAD FROM COMPONENT", payload)
+
+        if (editedPost) {
+            setEditCaption('')
+            setHasSubmitted(false)
+        }
+        
+        hideForm();
+    }
+
+    return (
+        <div>
+            <form onSubmit={onSubmit}>
+                <input type="text"
+                    value={editCaption}
+                    placeholder="Write a caption"
+                    onChange={e => setEditCaption(e.target.value)}
+                ></input>
+                <button type="submit" >Done</button>
+            </form>
+        </div>
+    )
 
 }
+
+export default EditPostForm;

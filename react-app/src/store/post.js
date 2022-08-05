@@ -57,7 +57,8 @@ export const thunkCreatePost = payload => async dispatch => {
 }
 
 export const thunkEditPost = payload => async dispatch => {
-    const res = await fetch(`/api/posts/${payload.id}`, {
+    console.log("PAYLOAD FROM EDIT THUNK", payload.id)
+    const res = await fetch(`/api/posts/${payload.id}/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -65,6 +66,7 @@ export const thunkEditPost = payload => async dispatch => {
 
     if (res.ok) {
         const post = await res.json();
+        console.log("POST FROM EDIT THUNK", post)
         dispatch(edit(post));
     }
 }
@@ -101,6 +103,11 @@ export default function postReducer(state = {}, action) {
         newState = {...state};
         newState[action.post.id] = action.post;
         return newState;
+
+    case EDIT:
+        newState = {...state};
+        newState[action.post.id] = action.post;
+        return newState
 
     case REMOVE:
         newState = {...state};
