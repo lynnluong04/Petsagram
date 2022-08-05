@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
 import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
@@ -22,7 +23,9 @@ const Feed = () => {
                 return (
                     <div>
                         <div key={post.id}>
-                            <div> {post.owner_id} </div>
+                            <NavLink to={`/${post.owner_id}`}>
+                                <div> {post.owner_id} </div>
+                            </NavLink>
                             <img src={post.media_url} alt="photo post of" />
                             <div>{post.caption}</div>
                         </div>
