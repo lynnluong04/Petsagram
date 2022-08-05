@@ -31,6 +31,22 @@ export const thunkLoadComments = () => async (dispatch) => {
     }
 }
 
+export const thunkCreateComment = payload => async dispatch => {
+    console.log("Hitting Create Comment Thunk", payload)
+    const res = await fetch('/api/comments/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+        const comment = await res.json();
+        console.log("POST FROM THUNK?", comment)
+        dispatch(add(comment));
+        return comment;
+    }
+}
+
 let newState;
 
 export default function commentReducer(state = {}, action) {

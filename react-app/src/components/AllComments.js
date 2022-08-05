@@ -27,7 +27,7 @@ const AllComments = ({ postId }) => {
 
     return (
         <div>
-            <h2>Comments</h2>
+            <h3>Comments</h3>
             {filteredComments.length > 0 && filteredComments.map(comment => {
                 return (
                     <div key={comment.id}>

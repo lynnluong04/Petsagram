@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { thunkLoadPosts } from '../store/post';
 import AllComments from './AllComments';
+import CreateCommentForm from './CreateComment';
 
 const Feed = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const Feed = () => {
                             <div>{post.caption}</div>
                         </div>
                         < AllComments postId={post.id} />
+                        < CreateCommentForm postId={post.id} />
                     </div>
 
                 )
