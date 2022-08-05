@@ -23,8 +23,8 @@ const remove = commentId => ({
     commentId
 })
 
-export const thunkLoadComments = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/comments/${postId}`);
+export const thunkLoadComments = () => async (dispatch) => {
+    const res = await fetch('/api/comments/');
     if (res.ok) {
         const list = await res.json();
         dispatch(load(list));
