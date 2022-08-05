@@ -47,6 +47,21 @@ export const thunkCreateComment = payload => async dispatch => {
     }
 }
 
+export const thunkEditComment = payload => async dispatch => {
+    const res = await fetch(`/api/comments/${payload.id}/`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+        const comment = await res.json();
+        console.log("POST FROM EDIT THUNK", comment)
+        dispatch(edit(comment));
+    }
+}
+
+
 let newState;
 
 export default function commentReducer(state = {}, action) {
@@ -61,6 +76,11 @@ export default function commentReducer(state = {}, action) {
 
         case ADD:
             newState = {...state};
+            newState[action.comment.id] = action.comment;
+            return newState;
+
+        case EDIT:
+            newState = { ...state};
             newState[action.comment.id] = action.comment;
             return newState;
 

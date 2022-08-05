@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Comment, db
-from app.forms.comment_form import CommentForm
+from app.forms.edit_comment import EditComment
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -26,4 +26,17 @@ def create_comment():
         db.session.add(comment)
         db.session.commit()
         print("from backend after validate ", comment)
+        return comment.to_dict()
+
+@comment_routes.route('/<int:commentId>/', methods=['PUT'])
+def edit_comment(commentId):
+    print("FROM THE BACKEND ROUTE----------------------------------------", request.json)
+    form = EditComment()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        print("FORMDATA", form.data)
+        comment = Comment.query.get(commentId)
+        data = request.json
+        comment.content = data['content']
+        db.session.commit()
         return comment.to_dict()

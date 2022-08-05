@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { thunkLoadComments } from '../store/comment';
+import EditCommentForm from './EditComment';
 
 const AllComments = ({ postId }) => {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const AllComments = ({ postId }) => {
                 return (
                     <div key={comment.id}>
                         <div>{comment.content}</div>
+                        <EditCommentForm commentId={comment.id}/>
                     </div>
                 )
             })}
