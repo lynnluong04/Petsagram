@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { thunkCreateComment } from '../store/comment';
 
 const CreateCommentForm = ({ postId }) => {
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     const [ content, setContent ] = useState('')
     const [ hasSubmitted, setHasSubmitted ] = useState(false);

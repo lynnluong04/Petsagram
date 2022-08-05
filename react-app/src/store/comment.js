@@ -58,6 +58,12 @@ export default function commentReducer(state = {}, action) {
                 newState[comment.id] = comment
             });
             return newState;
+
+        case ADD:
+            newState = {...state};
+            newState[action.comment.id] = action.comment;
+            return newState;
+
         default:
             return state;
     }

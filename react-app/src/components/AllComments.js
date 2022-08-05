@@ -31,7 +31,7 @@ const AllComments = ({ postId }) => {
             {filteredComments.length > 0 && filteredComments.map(comment => {
                 return (
                     <div key={comment.id}>
-                        <div>{comment.content} hi</div>
+                        <div>{comment.content}</div>
                     </div>
                 )
             })}

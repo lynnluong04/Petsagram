@@ -29,8 +29,8 @@ const Feed = () => {
                             <img src={post.media_url} alt="photo post of" />
                             <div>{post.caption}</div>
                         </div>
-                        < AllComments postId={post.id} />
-                        < CreateCommentForm postId={post.id} />
+                        <AllComments postId={post.id} />
+                        <CreateCommentForm postId={post.id} />
                     </div>
 
                 )
