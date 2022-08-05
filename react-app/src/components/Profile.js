@@ -7,6 +7,7 @@ import CreatePostModal from './CreatePostModal';
 import SinglePostModal from './SinglePostModal';
 import { Modal } from '../context/Modal';
 import SinglePost from './SinglePost';
+import EditPostForm from './EditPost';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,6 @@ const Profile = () => {
     //     await dispatch(thunkDeletePost(id));
     // }
 
-    console.log("userId FROM PROFILE??", userId)
 
 
     return (

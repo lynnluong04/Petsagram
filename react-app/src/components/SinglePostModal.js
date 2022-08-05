@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Modal } from "../context/Modal";
 import SinglePost from "./SinglePost";
 import { useHistory } from "react-router-dom";
+import EditPostModal from "./EditPostModal";
 
 const SinglePostModal = () => {
     const [ showModal, setShowModal ] = useState(false);
@@ -27,6 +28,7 @@ const SinglePostModal = () => {
                     history.push(`/${userId}`)
                     }}>
                    <SinglePost postId={Number(postId)} hideForm={()=> setShowModal(false)}/>
+                   <EditPostModal postId={Number(postId)} />
                 </Modal>
             )}
         </div>

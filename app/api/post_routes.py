@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
+from app.forms.edit_post import EditPost
 from app.forms.post_form import PostForm
 from app.models import Comment, Post, db
 
@@ -36,11 +37,13 @@ def create_post():
         print("from backend after validate ", post)
         return post.to_dict()
 
-@post_routes.route('/<int:postId>"', methods=['PUT'])
+@post_routes.route('/<int:postId>/', methods=['PUT'])
 def edit_post(postId):
-    form = PostForm()
+    print("FROM THE BACKEND ROUTE----------------------------------------", request.json)
+    form = EditPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print("FORMDATA", form.data)
         post = Post.query.get(postId)
         data = request.json
         post.caption = data['caption']
