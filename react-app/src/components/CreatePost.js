@@ -21,11 +21,11 @@ const CreatePostForm = ({hideForm}) => {
 
     const dateTime = new Date();
     const isoTime = dateTime.toISOString();
-    console.log("ISOTIME",isoTime)
+    // console.log("ISOTIME",isoTime)
     const date = isoTime.slice(0, 10);
-    console.log("Date",date)
+    // console.log("Date",date)
     const time = isoTime.slice(12, 19);
-    console.log("time",time)
+    // console.log("time",time)
     const combined = date + ' ' + time
 
     const onSubmit = async (e) => {
