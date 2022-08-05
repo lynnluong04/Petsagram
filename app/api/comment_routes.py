@@ -40,3 +40,10 @@ def edit_comment(commentId):
         comment.content = data['content']
         db.session.commit()
         return comment.to_dict()
+
+@comment_routes.route("/<int:commentId>", methods=['DELETE'])
+def delete_comment(commentId):
+    comment = Comment.query.get(commentId)
+    db.session.delete(comment)
+    db.session.commit()
+    return comment.to_dict()

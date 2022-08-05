@@ -61,6 +61,18 @@ export const thunkEditComment = payload => async dispatch => {
     }
 }
 
+export const thunkDeleteComment = commentId => async dispatch => {
+    console.log("DELETE POST THUNK", commentId)
+    const res = await fetch(`/api/comments/${commentId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        dispatch(remove(commentId))
+    }
+}
+
+
 
 let newState;
 
@@ -82,6 +94,11 @@ export default function commentReducer(state = {}, action) {
         case EDIT:
             newState = { ...state};
             newState[action.comment.id] = action.comment;
+            return newState;
+
+        case REMOVE:
+            newState = {...state};
+            delete newState[action.commentId]
             return newState;
 
         default:
