@@ -9,11 +9,18 @@ const Feed = () => {
     const dispatch = useDispatch();
 
     const posts = useSelector(state => state.post);
+
+    console.log("FROM FEED COMPONENT", posts)
+
     const postsArray = posts ? Object.values(posts) : null;
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
     }, [dispatch]);
+
+    // const findUser = (id) => {
+
+    // }
 
 
     return (
@@ -24,7 +31,8 @@ const Feed = () => {
                     <div>
                         <div key={post.id}>
                             <NavLink to={`/${post.owner_id}`}>
-                                <div> {post.owner_id} </div>
+                                
+                                <div> {post.owner} </div>
                             </NavLink>
                             <img src={post.media_url} alt="photo post of" />
                             <div>{post.caption}</div>

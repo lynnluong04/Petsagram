@@ -35,11 +35,11 @@ const Profile = () => {
             {postsArray && postsArray.map(post => {
                 return (
                     <div key={post.id}>
-                        <div> {post.owner_id} </div>
+                        {/* <div> {post.owner} </div> */}
                         <NavLink to={`/${numberId}/${post.id}`}>
                             <img src={post.media_url} alt="post of" />
                         </NavLink>
-                        <div>{post.caption}</div>
+                        {/* <div>{post.caption}</div> */}
                         {/* <button onClick={() => deletePost(post.id)} >Delete Post</button> */}
                     </div>
                 )
