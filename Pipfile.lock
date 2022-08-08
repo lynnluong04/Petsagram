@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "be27a64b6918283ba786cab6c1ca5e7e5c1e3ed607a7c012539b24170fa00fc4"
+            "sha256": "a8a39d38ca09d16304b688d46b1240fefecf987df839a108e17828a5c9bdcaf3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,22 @@
             ],
             "index": "pypi",
             "version": "==1.6.5"
+        },
+        "boto3": {
+            "hashes": [
+                "sha256:44026e44549148dbc5b261ead5f6b339e785680c350ef621bf85f7e2fca05b49",
+                "sha256:b2d9d55f123a9a91eea2fd8e379d90abf37634420fbb45c22d67e10b324ec71b"
+            ],
+            "index": "pypi",
+            "version": "==1.24.46"
+        },
+        "botocore": {
+            "hashes": [
+                "sha256:747b7e94aef41498f063fc0be79c5af102d940beea713965179e1ead89c7e9ec",
+                "sha256:f66d8305d1f59d83334df9b11b6512bb1e14698ec4d5d6d42f833f39f3304ca7"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==1.27.46"
         },
         "click": {
             "hashes": [
@@ -158,6 +174,14 @@
             ],
             "index": "pypi",
             "version": "==3.0.1"
+        },
+        "jmespath": {
+            "hashes": [
+                "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980",
+                "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==1.0.1"
         },
         "mako": {
             "hashes": [
@@ -331,13 +355,21 @@
             "index": "pypi",
             "version": "==1.0.4"
         },
-        "setuptools": {
+        "s3transfer": {
             "hashes": [
-                "sha256:273b6847ae61f7829c1affcdd9a32f67aa65233be508f4fbaab866c5faa4e408",
-                "sha256:d5340d16943a0f67057329db59b564e938bb3736c6e50ae16ea84d5e5d9ba6d0"
+                "sha256:06176b74f3a15f61f1b4f25a1fc29a4429040b7647133a463da8fa5bd28d5ecd",
+                "sha256:2ed07d3866f523cc561bf4a00fc5535827981b117dd7876f036b0c1aca42c947"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==63.3.0"
+            "version": "==0.6.0"
+        },
+        "setuptools": {
+            "hashes": [
+                "sha256:73bfae4791da7c1c56882ab17577d00f7a37a0347162aeb9360058de0dc25083",
+                "sha256:abcb76aa4decd7a17cbe0e4b31bdf549d106ba7f668e87e0860f5f7b84b9b3fe"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==63.4.2"
         },
         "six": {
             "hashes": [
@@ -382,6 +414,14 @@
             ],
             "index": "pypi",
             "version": "==1.4.19"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:c33ccba33c819596124764c23a97d25f32b28433ba0dedeb77d873a38722c9bc",
+                "sha256:ea6e8fb210b19d950fab93b60c9009226c63a28808bc8386e05301e25883ac0a"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5' and python_version < '4'",
+            "version": "==1.26.11"
         },
         "werkzeug": {
             "hashes": [

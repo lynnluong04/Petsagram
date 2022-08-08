@@ -41,12 +41,11 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
 }
 
 
-export const thunkCreatePost = payload => async dispatch => {
-    console.log("Hitting Create Post Thunk", payload)
+export const thunkCreatePost = formData => async dispatch => {
+    console.log("Hitting Create Post Thunk", formData)
     const res = await fetch('/api/posts/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: formData
     });
 
     if (res.ok) {
@@ -54,6 +53,9 @@ export const thunkCreatePost = payload => async dispatch => {
         console.log("POST FROM THUNK?", post)
         dispatch(add(post));
         return post;
+    } else {
+        const error = await res.json()
+        console.log(error)
     }
 }
 

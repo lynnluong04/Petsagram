@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import current_user, login_required
 from app.forms.edit_post import EditPost
 from app.forms.post_form import PostForm
 from app.models import Comment, Post, db
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 post_routes = Blueprint('posts', __name__)
 
@@ -15,6 +17,7 @@ def all_posts():
     return {'posts': [post.to_dict() for post in posts]}
 
 @post_routes.route('/<int:userId>')
+@login_required
 def user_posts(userId):
     posts = Post.query.filter_by(owner_id=userId).all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
@@ -24,18 +27,41 @@ def user_posts(userId):
 
 @post_routes.route('/', methods=['POST'])
 def create_post():
-    form = PostForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        post = Post(owner_id=form.data['owner_id'],
-                    media_url=form.data['media_url'],
-                    caption=form.data['caption'],
-                    created_at=form.data['created_at']
-        )
-        db.session.add(post)
-        db.session.commit()
-        print("from backend after validate ", post)
-        return post.to_dict()
+    print("HITTING BACKEND POST ROUTE")
+    # form = PostForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    #     post = Post(owner_id=form.data['owner_id'],
+    #                 media_url=form.data['media_url'],
+    #                 caption=form.data['caption'],
+    #                 created_at=form.data['created_at']
+    #     )
+
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+
+    post = Post(owner_id=current_user.id, media_url=url, caption=request.form.get('caption'))
+    db.session.add(post)
+    db.session.commit()
+    print("from backend after validate ", post)
+    return post.to_dict()
 
 @post_routes.route('/<int:postId>/', methods=['PUT'])
 def edit_post(postId):
