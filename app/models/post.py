@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from .user import User
 
 likes = db.Table(
     "likes",
@@ -24,7 +25,9 @@ class Post(db.Model):
             'owner_id': self.owner_id,
             'media_url': self.media_url,
             'caption': self.caption,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'owner': User.query.get(self.owner_id).username,
+            'profile': User.query.get(self.owner_id).photo_url
         }
 
 owner = db.relationship("User", back_populates="owner_posts")

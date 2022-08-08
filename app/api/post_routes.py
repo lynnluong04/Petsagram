@@ -39,7 +39,6 @@ def create_post():
 
 @post_routes.route('/<int:postId>/', methods=['PUT'])
 def edit_post(postId):
-    print("FROM THE BACKEND ROUTE----------------------------------------", request.json)
     form = EditPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

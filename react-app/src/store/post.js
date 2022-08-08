@@ -27,6 +27,7 @@ export const thunkLoadPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
+        console.log("FROM GET POST THUNK", list)
         dispatch(load(list));
     }
 }
