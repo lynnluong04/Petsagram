@@ -41,7 +41,7 @@ export const thunkCreateComment = payload => async dispatch => {
 
     if (res.ok) {
         const comment = await res.json();
-        console.log("POST FROM THUNK?", comment)
+        console.log("RES FROM CREATE COMMENT THUNK?", comment)
         dispatch(add(comment));
         return comment;
     }

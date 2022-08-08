@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import Comment, db
 from app.forms.edit_comment import EditComment
+from app.forms.comment_form import CommentForm
 
 comment_routes = Blueprint('comments', __name__)
 
