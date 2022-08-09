@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm';
 import Feed from './Feed';
+import "./css/home.css"
 
 const Home = () => {
     const sessionUser = useSelector(state => state.session.user);
-    const [ loggingIn, setLoggingIn ] = useState('true')
+    const [loggingIn, setLoggingIn] = useState('true')
 
     let content;
     if (sessionUser) {
@@ -14,16 +16,24 @@ const Home = () => {
         )
     } else if (loggingIn) {
         content = (
-            <LoginForm setLoggingIn={setLoggingIn} />
+            <div className='home inner container'>
+                <img className='home' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-7.09.29-PM.png" alt="gif" />
+                <LoginForm setLoggingIn={setLoggingIn} />
+            </div>
         )
     } else {
-        content =(
-            <SignUpForm setLoggingIn={setLoggingIn}  />
+        content = (
+            <div className='home inner container'>
+                <img className='home' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-7.09.29-PM.png" alt="gif" />
+                <SignUpForm setLoggingIn={setLoggingIn} />
+            </div>
         )
     }
 
     return (
-        <div></div>
+        <div className='home outer container'>
+            {content}
+        </div>
     )
 }
 

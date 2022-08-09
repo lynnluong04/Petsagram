@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
 import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
+import "./css/home.css"
 
 const Feed = () => {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Feed = () => {
                     <div>
                         <div key={post.id}>
                             <NavLink to={`/${post.owner_id}`}>
-                                
+
                                 <div> {post.owner} </div>
                             </NavLink>
                             <img src={post.media_url} alt="photo post of" />

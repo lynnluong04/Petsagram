@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import Profile from './components/Profile';
 import SinglePostModal from './components/SinglePostModal';
+import Home from './components/Splash';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,7 @@ function App() {
       <Switch>
         <Route path='/' exact={true}>
           {/* <Feed /> */}
+          <Home />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
