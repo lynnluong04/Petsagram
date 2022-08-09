@@ -1,4 +1,4 @@
-.scrollable.feed {
+.scrollable.feedn{
     overflow-y: scroll;
 }
 
@@ -7,7 +7,9 @@
     width: 470px;
 } */
 
-img {
-    height: 100px;
+
+
+img.post {
+    height: 300px;
     width: auto;
 }
