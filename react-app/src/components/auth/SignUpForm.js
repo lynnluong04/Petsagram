@@ -24,6 +24,9 @@ const SignUpForm = ({ setLoggingIn }) => {
         setErrors(data)
       }
     }
+
+    if (username.length > 40)
+      errors.push()
   };
 
   const updateUsername = (e) => {
@@ -63,7 +66,7 @@ const SignUpForm = ({ setLoggingIn }) => {
         <img className='logo signup' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-8.39.47-PM_1.png" />
         <div className='signup text'>Sign up to see photos and videos from your pet friends.</div>
         <button className='signup demo' onClick={handleDemoUser}>Log in with Demo User</button>
-        <img className='or signup' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-09-at-12.07.58-AM_1.png"/>
+        <img className='or signup' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-09-at-12.07.58-AM_1.png" />
 
         <form onSubmit={onSignUp}>
           <input
@@ -94,15 +97,33 @@ const SignUpForm = ({ setLoggingIn }) => {
           </input>
           <button className='submit signup' type='submit'>Sign Up</button>
         </form>
-      </div>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
       </div>
 
       <div className='signup lower container'>Have an account?
         <div className='login link' onClick={() => setLoggingIn(true)}>Log in</div>
+      </div>
+
+      <div className='about-container'>
+        Connect with Developer
+        <div className='link container'>
+          <a href="https://github.com/lynnluong04/Petsagram" target='_blank' rel="noreferrer">
+            <div className='about'>
+              <i className="fa-brands fa-github"></i>
+              Github
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/lynn-luong-905740139/" target='_blank' rel="noreferrer">
+            <div className='about'>
+              <i className="fa-brands fa-linkedin"></i>
+              LinkedIn
+            </div>
+          </a>
+        </div>
       </div>
 
     </div>

@@ -70,7 +70,7 @@ img.home {
     font-weight: bold;
 }
 
-.signup.link:hover {
+.link:hover {
     cursor: pointer;
 }
 
@@ -165,4 +165,34 @@ form {
     color: #8e8e8e;
     font-weight: bold;
     text-align: center;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+div.about {
+    height:40px;
+    width: 106px;
+    background-color: black;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 20px 5px;
+}
+
+div.about {
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.fa-brands {
+    color: white;
+    font-size: 30px;
 }

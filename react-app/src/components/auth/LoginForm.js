@@ -83,6 +83,24 @@ const LoginForm = ({ setLoggingIn }) => {
       <div className='login lower container'>Don't have an account?
         <div className='signup link' onClick={() => setLoggingIn(false)}>Sign up</div>
       </div>
+
+      <div className='about-container'>
+        Connect with Developer
+        <div className='link container'>
+          <a href="https://github.com/lynnluong04/Petsagram" target='_blank' rel="noreferrer">
+            <div className='about'>
+              <i className="fa-brands fa-github"></i>
+              Github
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/lynn-luong-905740139/" target='_blank' rel="noreferrer">
+            <div className='about'>
+              <i className="fa-brands fa-linkedin"></i>
+              LinkedIn
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
