@@ -1,0 +1,13 @@
+.scrollable.feed {
+    overflow-y: scroll;
+}
+
+/* img {
+    height: 587px;
+    width: 470px;
+} */
+
+img {
+    height: 100px;
+    width: auto;
+}
