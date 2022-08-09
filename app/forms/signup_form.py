@@ -20,9 +20,20 @@ def username_exists(form, field):
         raise ValidationError('This username isn\'t available. Please try another.')
 
 
+def username_length(form, field):
+    username = field.data
+    if len(username) > 40:
+        raise ValidationError('Username must be 40 characters or less')
+
+def name_length(form, field):
+    name =field.data
+    if len(name) > 40:
+        raise ValidationError('Name must be 100 characters or less')
+
+
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    name = StringField('name', validators=[DataRequired()])
+        'username', validators=[DataRequired(), username_exists, username_length])
+    name = StringField('name', validators=[DataRequired(), name_length])
     email = StringField('email', validators=[DataRequired(), user_exists, Email()])
     password = StringField('password', validators=[DataRequired()])
