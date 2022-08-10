@@ -1,51 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { thunkDeletePost, thunkLoadPosts } from '../store/post';
-import CreatePostForm from './CreatePost';
-import CreatePostModal from './CreatePostModal';
-import SinglePostModal from './SinglePostModal';
-import { Modal } from '../context/Modal';
-import SinglePost from './SinglePost';
-import EditPostForm from './EditPost';
+import { thunkLoadPosts } from '../store/post';
+import "./css/profile.css"
 
 const Profile = () => {
+    const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const {userId} = useParams();
     const numberId = Number(userId)
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
-    const [showModal, setShowModal] = useState(false);
 
+    useEffect(() => {
+        if (!userId) {
+          return;
+        }
+        (async () => {
+          const response = await fetch(`/api/users/${userId}`);
+          const user = await response.json();
+          setUser(user);
+        })();
+      }, [userId]);
 
     useEffect(() => {
         dispatch(thunkLoadPosts(Number(userId)));
-
     }, [dispatch]);
-
-    // const deletePost = async (id) => {
-    //     await dispatch(thunkDeletePost(id));
-    // }
 
 
 
     return (
-        <div>
-            <h2>Most recent posts</h2>
+        <div className='profile container'>
+            <div className='profile top'>
+                <img className="profile-image" src={user?.photo_url} />
+                <div>{user?.username}</div>
+            </div>
+            <div className='profile-bottom' >
             {postsArray && postsArray.map(post => {
                 return (
-                    <div key={post.id}>
-                        {/* <div> {post.owner} </div> */}
-                        <NavLink to={`/${numberId}/${post.id}`}>
-                            <img src={post.media_url} alt="post of" />
+                        <NavLink to={`/${numberId}/${post.id}` } key={post.id}>
+                            <img className='profile-post' src={post.media_url} alt="post of" />
                         </NavLink>
-                        {/* <div>{post.caption}</div> */}
-                        {/* <button onClick={() => deletePost(post.id)} >Delete Post</button> */}
-                    </div>
                 )
             })}
+            </div>
 
-            <CreatePostModal />
         </div>
     )
 };

@@ -1,0 +1,29 @@
+.profile.container {
+    width: 935px;
+    padding: 30px 20px 0px 20px;
+    margin-top: 60px;
+}
+
+.profile.top {
+    width: 100%;
+    display: inline-flex;
+    border-bottom: 1px solid #DADDE1;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+img.profile-post {
+    width: 293px;
+    height: 293px;
+}
+
+.profile-bottom {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
