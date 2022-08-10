@@ -1,0 +1,9 @@
+form.post {
+    position: relative;
+}
+
+img.preview {
+    width: 564px;
+    height: 564px;
+    object-fit: cover;
+}
