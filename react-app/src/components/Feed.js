@@ -19,22 +19,37 @@ const Feed = () => {
         dispatch(thunkLoadPosts())
     }, [dispatch]);
 
- 
+
 
 
     return (
         <div className='scrollable feed container'>
-            <h2>Most recent posts</h2>
             {postsArray && postsArray.map(post => {
                 return (
-                    <div key={post.id}>
-                        <NavLink to={`/${post.owner_id}`}>
-                            <div> {post.owner} </div>
-                        </NavLink>
+                    <div className='single-post container' key={post.id}>
+                        <div className='post-top'>
+                            <div className='user-links'>
+                                <NavLink to={`/${post.owner_id}`} activeClassName="active">
+                                    <img className='feed-profile icon' src={post.profile} />
+                                </NavLink>
+                                <NavLink to={`/${post.owner_id}`} activeClassName="active">
+                                    <div className='post username'> {post.owner} </div>
+                                </NavLink>
+                            </div>
+                            <div className='post-menu'>
+                                <svg aria-label="More options" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+                            </div>
+                        </div>
                         <img className='post' src={post.media_url} alt="photo post" />
-                        <div>{post.caption}</div>
-                        <AllComments postId={post.id} />
-                        <CreateCommentForm postId={post.id} />
+
+                        <div className='post-bottom'>
+                            <NavLink to={`/${post.owner_id}`} activeClassName="active">
+                                <div className='post username'> {post.owner} </div>
+                            </NavLink>
+                            <div>{post.caption}</div>
+                            <AllComments postId={post.id} />
+                            <CreateCommentForm postId={post.id} />
+                        </div>
                     </div>
 
                 )

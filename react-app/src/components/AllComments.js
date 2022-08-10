@@ -32,8 +32,7 @@ const AllComments = ({ postId }) => {
     }
 
     return (
-        <div>
-            <h3>Comments</h3>
+        <div className='comments container'>
             {filteredComments.length > 0 && filteredComments.map(comment => {
                 return (
                     <div key={comment.id}>

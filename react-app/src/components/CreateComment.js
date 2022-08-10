@@ -44,8 +44,8 @@ const CreateCommentForm = ({ postId }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
+        <div className='comments create'>
+            <form  onSubmit={onSubmit}>
             {hasSubmitted && validationErrors.length > 0 && (
                 <ul>
                     {validationErrors.map(error => (
