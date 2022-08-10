@@ -1,7 +1,8 @@
 nav {
     display: flex;
+    justify-content: center;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     top: 0;
     height: 60px;
     background-color: white;
@@ -10,15 +11,82 @@ nav {
 
 }
 
-nav > ul {
-    width: 100%;
+nav>ul {
+    width: 935px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     list-style: none;
+    margin: 0;
 }
 
 img.logo.nav {
     height: 50px;
     width: auto;
+    margin-top: 5px;
+}
+
+.nav.icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav.button {
+    border-radius: 50%;
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+    border: none;
+}
+
+img.profile.icon {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+.profile-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    background-color: white;
+    height: 130px;
+    width: 198px;
+    position: absolute;
+    top: 40px;
+    left: -150px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.logout-dropdown, #profile-button {
+    padding: 8px 16px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+
+}
+
+.logout-dropdown {
+    border-top: 1px solid lightgray;
+}
+
+button.logout {
+    border: none;
+    background-color: none;
+    padding: 0;
+}
+
+svg {
+    margin-right: 20px;
 }

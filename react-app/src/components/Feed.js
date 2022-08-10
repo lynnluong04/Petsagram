@@ -19,9 +19,7 @@ const Feed = () => {
         dispatch(thunkLoadPosts())
     }, [dispatch]);
 
-    // const findUser = (id) => {
-
-    // }
+ 
 
 
     return (
