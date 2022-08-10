@@ -5,9 +5,9 @@ import { thunkCreateComment } from '../store/comment';
 const CreateCommentForm = ({ postId }) => {
     const dispatch = useDispatch();
 
-    const [ content, setContent ] = useState('')
-    const [ hasSubmitted, setHasSubmitted ] = useState(false);
-    const [ validationErrors, setValidationErrors ] = useState([]);
+    const [content, setContent] = useState('')
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
 
 
@@ -45,17 +45,17 @@ const CreateCommentForm = ({ postId }) => {
 
     return (
         <div className='comments create'>
-            <form  onSubmit={onSubmit}>
-            {hasSubmitted && validationErrors.length > 0 && (
-                <ul>
-                    {validationErrors.map(error => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-            )}
-            <input type='text' value={content} placeholder="Write comment here"
-            onChange={e => setContent(e.target.value)}/>
-            <button type="submit">Submit</button>
+            <form className='comments' onSubmit={onSubmit}>
+                {hasSubmitted && validationErrors.length > 0 && (
+                    <ul>
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <input type='text' value={content} placeholder="Write comment here"
+                    onChange={e => setContent(e.target.value)} />
+                <button type="submit">Post</button>
             </form>
         </div>
     )

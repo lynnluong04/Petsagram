@@ -76,8 +76,21 @@ img.post {
 }
 
 
-
-comments.create {
+div.comments.create {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    min-height: 48px;
+}
+
+form.comments {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+form.comments > input {
+    width: 380px;
+    height: 100%;
 }
