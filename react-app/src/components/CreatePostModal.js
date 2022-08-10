@@ -10,14 +10,14 @@ const CreatePostModal = () => {
     const [showModal, setShowModal] = useState(false);
     const [errors, setErrors] = useState([]);
 
-    const buttonClick = async (e) => {
-        e.preventDefault();
-        setShowModal(true)
-        const data = await dispatch(thunkCreatePost());
-        if (data) {
-          setErrors(data);
-        }
-      };
+    // const buttonClick = async (e) => {
+    //     e.preventDefault();
+    //     setShowModal(true)
+    //     const data = await dispatch(thunkCreatePost());
+    //     if (data) {
+    //       setErrors(data);
+    //     }
+    //   };
 
     return (
         <div>
