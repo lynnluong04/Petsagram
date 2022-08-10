@@ -53,8 +53,8 @@ const CreateCommentForm = ({ postId }) => {
                         ))}
                     </ul>
                 )}
-                <input type='text' value={content} placeholder="Write comment here"
-                    onChange={e => setContent(e.target.value)} />
+                <textarea value={content} placeholder="Write comment here"
+                    onChange={e => setContent(e.target.value)}></textarea>
                 <button type="submit">Post</button>
             </form>
         </div>

@@ -109,7 +109,7 @@ form.comments {
     flex-direction: row;
 }
 
-form.comments>input {
+form.comments > textarea {
     width: 380px;
     height: 100%;
 }
