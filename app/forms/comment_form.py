@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, DateTimeField
 from wtforms.validators import DataRequired
 
+
 class CommentForm(FlaskForm):
     post_id = IntegerField("Post Id", [DataRequired()])
     owner_id = IntegerField("Owner Id", [DataRequired()])

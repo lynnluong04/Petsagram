@@ -51,7 +51,8 @@ img.feed-profile {
     justify-content: flex-end;
     align-items: center;
 }
-.post-menu > svg {
+
+.post-menu>svg {
     margin-right: 12px;
 }
 
@@ -65,16 +66,34 @@ img.post {
 .post-bottom {
     font-size: 14px;
     background-color: white;
-    min-height: 129px;
-    max-height: 269px;
+    /* height: fit-content; */
+    /* min-height: 129px; */
+    height: 269px;
     padding: 0 12px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .comments.container {
-    overflow-y: scroll;
+    height: fit-content;
+    margin-top: 20px;
 }
 
+.single-comment-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.single-comment {
+    display: flex;
+    flex-direction: row;
+}
+
+div.comment-owner {
+    font-weight: bold;
+    margin-right: 5px;
+}
 
 div.comments.create {
     position: absolute;
@@ -90,7 +109,7 @@ form.comments {
     flex-direction: row;
 }
 
-form.comments > input {
+form.comments>input {
     width: 380px;
     height: 100%;
 }

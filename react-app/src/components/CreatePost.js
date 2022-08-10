@@ -17,10 +17,10 @@ const CreatePostForm = ({hideForm}) => {
 
     const sessionUser = useSelector(state => state.session.user);
 
-    useEffect(() => {
-        const errors = [];
-        if (!image) errors.push("You must upload a photo");
-    }, [image]);
+    // useEffect(() => {
+    //     const errors = [];
+    //     if (!image) errors.push("You must upload a photo");
+    // }, [image]);
 
     // const dateTime = new Date();
     // const isoTime = dateTime.toISOString();
@@ -52,7 +52,7 @@ const CreatePostForm = ({hideForm}) => {
         //     created_at: combined
         // };
 
-        console.log("FORMDATA FROM THE COMPONENT ON SUBMIT")
+
         const createdPost = await dispatch(thunkCreatePost(formData))
 
         if (createdPost) reset();

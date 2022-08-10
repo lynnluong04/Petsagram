@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from .user import User
 
 
 class Comment(db.Model):
@@ -17,7 +18,8 @@ class Comment(db.Model):
             'post_id': self.post_id,
             'owner_id': self.owner_id,
             'content': self.content,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'owner': User.query.get(self.owner_id).username
         }
 
 owner = db.relationship("User", back_populates="comments")

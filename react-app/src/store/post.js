@@ -50,12 +50,15 @@ export const thunkCreatePost = formData => async dispatch => {
 
     if (res.ok) {
         const post = await res.json();
-        console.log("POST FROM THUNK?", post)
         dispatch(add(post));
-        return post;
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
     } else {
-        const error = await res.json()
-        console.log(error)
+        return ['An error occurred. Please try again.']
     }
 }
 
@@ -94,30 +97,30 @@ let newState;
 
 export default function postReducer(state = {}, action) {
     switch (action.type) {
-    case LOAD:
-        newState = {};
-        const allPosts = action.list['posts']
-        allPosts.forEach(post => {
-            newState[post.id] = post
-        });
-        return newState;
+        case LOAD:
+            newState = {};
+            const allPosts = action.list['posts']
+            allPosts.forEach(post => {
+                newState[post.id] = post
+            });
+            return newState;
 
-    case ADD:
-        newState = {...state};
-        newState[action.post.id] = action.post;
-        return newState;
+        case ADD:
+            newState = { ...state };
+            newState[action.post.id] = action.post;
+            return newState;
 
-    case EDIT:
-        newState = {...state};
-        newState[action.post.id] = action.post;
-        return newState
+        case EDIT:
+            newState = { ...state };
+            newState[action.post.id] = action.post;
+            return newState
 
-    case REMOVE:
-        newState = {...state};
-        delete newState[action.postId];
-        return newState;
+        case REMOVE:
+            newState = { ...state };
+            delete newState[action.postId];
+            return newState;
 
-    default:
-        return state;
+        default:
+            return state;
     }
 }
