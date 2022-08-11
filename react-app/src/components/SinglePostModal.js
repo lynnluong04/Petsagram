@@ -6,14 +6,17 @@ import SinglePost from "./SinglePost";
 import { useHistory } from "react-router-dom";
 import EditPostModal from "./EditPostModal";
 import CreateCommentForm from "./CreateComment";
+import AllComments from "./AllComments";
 
 const SinglePostModal = () => {
-    const [ showModal, setShowModal ] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [caption, setCaption] = useState('')
+
     const { postId } = useParams();
     const history = useHistory();
     const { userId } = useParams();
 
-    useEffect(()=> {
+    useEffect(() => {
         setShowModal(true)
     }, [])
 
@@ -27,10 +30,14 @@ const SinglePostModal = () => {
                 <Modal onClose={() => {
                     setShowModal(false)
                     history.push(`/${userId}`)
-                    }}>
-                   <SinglePost postId={Number(postId)} hideForm={()=> setShowModal(false)}/>
-                   <EditPostModal postId={Number(postId)} />
-                   <CreateCommentForm postId={Number(postId)} />
+                }}>
+                    <SinglePost postId={Number(postId)} hideForm={() => setShowModal(false)} setCaption={setCaption} />
+                    <div>
+                        {caption}
+                        <AllComments />
+                        <CreateCommentForm postId={Number(postId)} />
+                        <EditPostModal postId={Number(postId)} />
+                    </div>
                 </Modal>
             )}
         </div>

@@ -24,6 +24,15 @@ img.profile-post {
 
 .profile-bottom {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+/* #modal-content {
+    width: 80%;
+    height: 90%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+} */

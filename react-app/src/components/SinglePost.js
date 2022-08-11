@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { thunkDeletePost, thunkLoadPosts } from '../store/post';
+import "./css/profile.css"
 
-const SinglePost = ({postId, hideForm}) => {
+const SinglePost = ({postId, hideForm, setCaption}) => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const history = useHistory();
@@ -14,6 +15,10 @@ const SinglePost = ({postId, hideForm}) => {
         dispatch(thunkLoadPosts())
     }, [dispatch]);
 
+    useEffect(()=> {
+        if (post) setCaption(post.caption)
+    }, [post])
+
     const deletePost = async(id) => {
         await dispatch(thunkDeletePost(id));
         hideForm();
@@ -22,10 +27,10 @@ const SinglePost = ({postId, hideForm}) => {
 
     if (post) {
         return (
-            <div>
+            <div className='single post container'>
                 <img src={post.media_url} alt="post"/>
-                <div>{post.caption}</div>
-                <button onClick={() => deletePost(postId)} >Delete Post</button>
+                {/* <div>{post.caption}</div> */}
+                {/* <button onClick={() => deletePost(postId)} >Delete Post</button> */}
             </div>
         )
     } else {

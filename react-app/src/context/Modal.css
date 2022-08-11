@@ -23,7 +23,7 @@
 #modal-content {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: absolute;
-    background-color: white;
-    box-shadow: 5px 5px 5px black;
+    background-color: transparent;
+    /* box-shadow: 5px 5px 5px black; */
     border-radius: 20px;
 }
