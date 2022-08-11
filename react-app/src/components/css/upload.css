@@ -11,6 +11,8 @@ img.preview {
 .create-post.container {
     min-width: 564px;
     min-height: 607px;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .conditional.container {
