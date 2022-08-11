@@ -6,6 +6,8 @@ import "./css/upload.css"
 
 const CreatePostForm = ({ hideForm }) => {
     const history = useHistory();
+    const [errors, setErrors] = useState([]);
+
     const dispatch = useDispatch();
     const { userId } = useParams();
     const ownerId = Number(userId);
@@ -17,7 +19,7 @@ const CreatePostForm = ({ hideForm }) => {
 
     const [preview, setPreview] = useState('')
     const [exitPreview, setExitPreview] = useState(true);
-  
+
 
     const sessionUser = useSelector(state => state.session.user);
 

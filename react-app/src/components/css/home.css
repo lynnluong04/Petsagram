@@ -28,6 +28,7 @@ img.home {
 
 .login.upper {
     min-height: 396px;
+    height: fit-content;
     width: 350px;
     padding: 10px 0;
     background-color: white;
@@ -40,7 +41,8 @@ img.home {
 
 .signup.upper {
     width: 350px;
-    height: 598px;
+    min-height: 598px;
+    height: fit-content;
     padding: 10px 0;
     background-color: white;
     border: 1px solid #dbdbdb;
@@ -194,4 +196,16 @@ div.about {
 .fa-brands {
     color: white;
     font-size: 30px;
+}
+
+.error-container {
+    font-size: 14px;
+    margin: 10px 0;
+    color: red;
+}
+
+.req-text {
+    font-size: 10px;
+    color: #8e8e8e;
+    margin: 10px 0;
 }

@@ -80,7 +80,7 @@ export const signUp = (username, name, email, password) => async (dispatch) => {
       username,
       name,
       email,
-      password,
+      password
     }),
   });
 

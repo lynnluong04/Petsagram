@@ -48,6 +48,8 @@ const LoginForm = ({ setLoggingIn }) => {
     <div className='login form container'>
       <div className='login upper container'>
         <img className='logo login' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-8.39.47-PM_1.png" />
+        <div className='req-text'>All fields required*</div>
+
         <form onSubmit={onLogin}>
           <input
             name='email'
@@ -73,7 +75,8 @@ const LoginForm = ({ setLoggingIn }) => {
         <div className='demo container'>Log in as a
           <button onClick={handleDemoUser}>Demo User</button>
         </div>
-        <div>
+
+        <div className='login error-container'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}

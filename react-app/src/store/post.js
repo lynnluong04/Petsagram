@@ -74,6 +74,14 @@ export const thunkEditPost = payload => async dispatch => {
         const post = await res.json();
         console.log("POST FROM EDIT THUNK", post)
         dispatch(edit(post));
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again']
     }
 }
 

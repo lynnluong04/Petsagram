@@ -11,22 +11,24 @@ const SignUpForm = ({ setLoggingIn }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, name, email, password));
+    // if (password === confirm) {
+      const data = await dispatch(signUp(username, name, email, password, confirm));
       if (data) {
         setErrors(data)
-      }
+      // }
     }
 
-    if (username.length > 40)
-      errors.push()
+    // if (password !== confirm) {
+    //   errors.push("Passwords do no match")
+    // }
+
   };
 
   const updateUsername = (e) => {
@@ -45,7 +47,7 @@ const SignUpForm = ({ setLoggingIn }) => {
   };
 
   const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
+    setConfirm(e.target.value);
   };
 
   if (user) {
@@ -92,12 +94,13 @@ const SignUpForm = ({ setLoggingIn }) => {
           <input
             type='password' className='home signup'
             name='repeat_password' placeholder='Confirm Password'
-            onChange={updateRepeatPassword} value={repeatPassword}
-            required={true}>
+            onChange={updateRepeatPassword} value={confirm}
+          >
           </input>
+          <div className='req-text'>All fields required*</div>
           <button className='submit signup' type='submit'>Sign Up</button>
         </form>
-        <div>
+        <div className='signup error-container'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}

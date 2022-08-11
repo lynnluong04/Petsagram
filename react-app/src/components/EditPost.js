@@ -7,6 +7,8 @@ import { thunkEditPost } from "../store/post";
 const EditPostForm = ({ postId, hideForm }) => {
     const dispatch = useDispatch();
     const post = useSelector(state => state.post[postId])
+    const [errors, setErrors] = useState([]);
+
     const [editCaption, setEditCaption] = useState(post?.caption);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -29,6 +31,7 @@ const EditPostForm = ({ postId, hideForm }) => {
         if (editedPost) {
             setEditCaption('')
             setHasSubmitted(false)
+            setErrors(editedPost)
         }
 
         hideForm();
@@ -41,6 +44,11 @@ const EditPostForm = ({ postId, hideForm }) => {
                 placeholder="Write a caption"
                 onChange={e => setEditCaption(e.target.value)}
             ></input>
+            <div className='signup error-container'>
+                {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                ))}
+            </div>
             <button type="submit" >Done</button>
         </form>
     )
