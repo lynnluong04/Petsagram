@@ -1,0 +1,33 @@
+.post-modal.container {
+    height: 607px;
+    width: 904px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.single.post.container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+
+div.right.content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+img.post-photo {
+    width: 100%;
+    height: auto;
+}
+
+img.post-user {
+    width: 32px;
+    height: 32px;
+}

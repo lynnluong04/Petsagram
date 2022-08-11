@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { thunkDeletePost, thunkLoadPosts } from '../store/post';
-import "./css/profile.css"
+// import "./css/profile.css"
 
 const SinglePost = ({postId, hideForm, setCaption}) => {
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const SinglePost = ({postId, hideForm, setCaption}) => {
     if (post) {
         return (
             <div className='single post container'>
-                <img src={post.media_url} alt="post"/>
+                <img className="post-photo" src={post.media_url} alt="post"/>
                 {/* <div>{post.caption}</div> */}
                 {/* <button onClick={() => deletePost(postId)} >Delete Post</button> */}
             </div>
