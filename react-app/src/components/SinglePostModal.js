@@ -49,14 +49,27 @@ const SinglePostModal = () => {
 
                         <div className="right content" >
                             <div className="right-top">
-                                <img className="post-user" src={user.photo_url} />
-                                {user.username}
-                                {caption}
+                                <div className="user-info">
+                                    <img className="post-user" src={user.photo_url} />
+                                    <div>{user.username}</div>
+                                </div>
                                 <EditPostModal postId={Number(postId)} />
                             </div>
 
-                            <AllComments postId={Number(postId)}/>
-                            <CreateCommentForm postId={Number(postId)} />
+                            <div className="right-bottom">
+                                <div className="user-info-caption">
+                                    <div className="caption icon">
+                                        <img className="post-user two" src={user.photo_url} />
+                                    </div>
+                                    <div className="caption-content">
+                                        {user.username} {caption}
+                                    </div>
+                                </div>
+
+                                <AllComments postId={Number(postId)} />
+                                <CreateCommentForm postId={Number(postId)} />
+                            </div>
+
                         </div>
                     </div>
                 </Modal>

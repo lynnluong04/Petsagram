@@ -55,7 +55,7 @@ const CreateCommentForm = ({ postId }) => {
                 )}
                 <textarea value={content} placeholder="Write comment here"
                     onChange={e => setContent(e.target.value)}></textarea>
-                <button type="submit">Post</button>
+                <button className='post-comment' type="submit">Post</button>
             </form>
         </div>
     )
