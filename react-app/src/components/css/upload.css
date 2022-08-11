@@ -7,3 +7,145 @@ img.preview {
     height: 564px;
     object-fit: cover;
 }
+
+.create-post.container {
+    min-width: 564px;
+    min-height: 607px;
+}
+
+.conditional.container {
+    height: fit-content;
+    width: fit-content;
+}
+
+.create-post.top.first {
+    width: 564px;
+    height: 42px;
+    border-bottom: 1px solid #DADDE1;
+    font-size: 16px;
+    color: #262626;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post.bottom {
+    width: 564px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0
+}
+
+input.upload {
+    display: none;
+}
+
+.upload-text {
+    font-size: 22px;
+    font-weight: 300;
+    margin: 20px 0 30px 0;
+}
+
+label.upload {
+    width: 164.5px;
+    height: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #0095F6;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conditional.container.two {
+    height: 607px;
+    width: 904px;
+}
+
+.create-post.top.next {
+    width: 904px;
+    height: 42px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #262626;
+    font-weight: bold;
+    border-bottom: 1px solid #DADDE1;
+}
+
+svg.arrow {
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg.arrow:hover {
+    cursor: pointer;
+}
+
+button.share {
+    border: none;
+    background-color: white;
+    font-size: 14px;
+    color:#0095F6;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.create-post.bottom.next {
+    display: flex;
+    flex-direction: row;
+    width: 904px;
+    height: 564px;
+}
+
+img.preview {
+    border-bottom-left-radius: 20px;
+}
+
+.create-post.user {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 307px;
+    height: 60px;
+    padding: 0 16px;
+}
+
+
+.caption.container {
+    width: 340px;
+    height: 564px;
+    display: flex;
+    flex-direction: column;
+}
+
+img.user {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+textarea.caption {
+    min-height: 168px;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    display: flex;
+    align-items: flex-start;
+}
+
+textarea.caption:focus {
+    border: none;
+    outline: none;
+}
