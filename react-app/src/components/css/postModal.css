@@ -66,3 +66,38 @@ div.user-info-caption {
 .right-bottom {
     padding: 15px 15px;
 }
+
+
+button.edit-post-modal {
+    background-color: transparent;
+    border: none;
+    color: #0095F6;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+
+.edit-post-container {
+    background-color: white;
+    width: 500px;
+    height: 300px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-post-container > input {
+    height: 40px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.edit-post-container > button {
+    background-color: #0095F6;
+    border: 1px solid #0095F6;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}

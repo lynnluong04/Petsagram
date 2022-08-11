@@ -9,7 +9,7 @@ const EditPostModal = ({postId}) => {
     return (
         <div>
             <div>
-                <button onClick={() => setShowModal(true)}>Edit Post</button>
+                <button className="edit-post-modal" onClick={() => setShowModal(true)}>Edit Post</button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

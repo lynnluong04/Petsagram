@@ -105,7 +105,7 @@ div.comments.create {
     bottom: 0;
     width: 100%;
     height: fit-content;
-    border-top: 1px solid #DADDE1 ;
+    /* border-top: 1px solid #DADDE1 ; */
 }
 
 form.comments {

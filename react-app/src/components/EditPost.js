@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { thunkEditPost } from "../store/post";
 
-const EditPostForm = ({postId, hideForm}) => {
+const EditPostForm = ({ postId, hideForm }) => {
     const dispatch = useDispatch();
     const post = useSelector(state => state.post[postId])
     const [editCaption, setEditCaption] = useState(post?.caption);
@@ -12,7 +12,7 @@ const EditPostForm = ({postId, hideForm}) => {
 
     const numberId = Number(postId)
 
-    console.log("POSTID FROM EDIT COMPONENT",numberId)
+    console.log("POSTID FROM EDIT COMPONENT", numberId)
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -24,27 +24,25 @@ const EditPostForm = ({postId, hideForm}) => {
         };
 
         const editedPost = await dispatch(thunkEditPost(payload));
-        console.log("PAYLOAD FROM COMPONENT", payload)
+
 
         if (editedPost) {
             setEditCaption('')
             setHasSubmitted(false)
         }
-        
+
         hideForm();
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <input type="text"
-                    value={editCaption}
-                    placeholder="Write a caption"
-                    onChange={e => setEditCaption(e.target.value)}
-                ></input>
-                <button type="submit" >Done</button>
-            </form>
-        </div>
+        <form className="edit-post-container" onSubmit={onSubmit}>
+            <input type="text"
+                value={editCaption}
+                placeholder="Write a caption"
+                onChange={e => setEditCaption(e.target.value)}
+            ></input>
+            <button type="submit" >Done</button>
+        </form>
     )
 
 }
