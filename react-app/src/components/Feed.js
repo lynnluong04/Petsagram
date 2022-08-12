@@ -47,7 +47,7 @@ const Feed = () => {
                                 <div className='post username'> {post.owner} </div>
                             </NavLink>
                             <div className='bottom-caption' >{post.caption}</div>
-                            {/* <AllComments postId={post.id} /> */}
+                            <AllComments postId={post.id} />
                             <CreateCommentForm postId={post.id} />
                         </div>
                     </div>
