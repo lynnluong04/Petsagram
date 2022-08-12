@@ -24,19 +24,19 @@ def username_exists(form, field):
 class SignUpForm(FlaskForm):
     username = StringField('username',
                            validators=[
-                               DataRequired("You must enter a username"),
+                               DataRequired(message="You must enter a username"),
                                username_exists,
 
                            ])
     name = StringField('name',
                        validators=[
-                           DataRequired("You must enter your full name"),
+                           DataRequired(message="You must enter your full name"),
 
 
                        ])
     email = StringField('email',
                         validators=[
-                            DataRequired("You must enter an email"),
+                            DataRequired(message="You must enter an email"),
                             user_exists,
                             Email(),
 
@@ -44,14 +44,14 @@ class SignUpForm(FlaskForm):
                         ])
     password = StringField('password',
                            validators=[
-                               DataRequired("You must enter a password"),
-                               EqualTo('confirm_password',
+                               DataRequired(message="You must enter a password"),
+                               EqualTo('confirm',
                                        message='Passwords must match'),
-                              
+
 
                            ])
-    confirm_password = StringField('confirm',
+    confirm = StringField('confirm',
                                    validators=[
-                                       DataRequired(
-                                           "Please confirm your password"),
-                                   ])
+                                       DataRequired(message="Please confirm your password"),
+                                   ]
+                                   )

@@ -46,7 +46,7 @@ const SignUpForm = ({ setLoggingIn }) => {
     setPassword(e.target.value);
   };
 
-  const updateRepeatPassword = (e) => {
+  const updateConfirm = (e) => {
     setConfirm(e.target.value);
   };
 
@@ -93,8 +93,8 @@ const SignUpForm = ({ setLoggingIn }) => {
           </input>
           <input
             type='password' className='home signup'
-            name='repeat_password' placeholder='Confirm Password'
-            onChange={updateRepeatPassword} value={confirm}
+            name='confirm' placeholder='Confirm Password'
+            onChange={updateConfirm} value={confirm}
           >
           </input>
           <div className='req-text'>All fields required*</div>
