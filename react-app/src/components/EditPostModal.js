@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { Modal } from "../context/Modal";
 import EditPostForm from "./EditPost";
 
-const EditPostModal = ({postId}) => {
+const EditPostModal = ({postId, closeSinglePost}) => {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const [ showModal, setShowModal ] = useState(false);
+
+
 
     return (
         <div>
@@ -13,7 +19,7 @@ const EditPostModal = ({postId}) => {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditPostForm hideForm={() => setShowModal(false)} postId={postId}/>
+                    <EditPostForm hideForm={() => setShowModal(false)} postId={postId} closeSinglePost={closeSinglePost}/>
                 </Modal>
             )}
         </div>

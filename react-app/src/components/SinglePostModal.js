@@ -53,7 +53,7 @@ const SinglePostModal = () => {
                                     <img className="post-user" src={user.photo_url} />
                                     <div>{user.username}</div>
                                 </div>
-                                <EditPostModal postId={Number(postId)} />
+                                <EditPostModal postId={Number(postId)} closeSinglePost={()=> setShowModal(false)}  />
                             </div>
 
                             <div className="right-bottom">

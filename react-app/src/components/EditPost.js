@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-import { thunkEditPost } from "../store/post";
+import { thunkDeletePost, thunkEditPost } from "../store/post";
 
-const EditPostForm = ({ postId, hideForm }) => {
+const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const post = useSelector(state => state.post[postId])
     const [errors, setErrors] = useState([]);
 
@@ -14,8 +15,12 @@ const EditPostForm = ({ postId, hideForm }) => {
 
     const numberId = Number(postId)
 
-    console.log("POSTID FROM EDIT COMPONENT", numberId)
+    const deletePost = async (id) => {
+        await dispatch(thunkDeletePost(id));
+        hideForm();
+        closeSinglePost();
 
+    }
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
@@ -38,19 +43,22 @@ const EditPostForm = ({ postId, hideForm }) => {
     }
 
     return (
-        <form className="edit-post-container" onSubmit={onSubmit}>
-            <input type="text"
-                value={editCaption}
-                placeholder="Write a caption"
-                onChange={e => setEditCaption(e.target.value)}
-            ></input>
-            <div className='signup error-container'>
-                {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                ))}
-            </div>
-            <button type="submit" >Done</button>
-        </form>
+        <div>
+            <form className="edit-post-container" onSubmit={onSubmit}>
+                <input type="text"
+                    value={editCaption}
+                    placeholder="Write a caption"
+                    onChange={e => setEditCaption(e.target.value)}
+                ></input>
+                <div className='signup error-container'>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
+                <button type="submit" >Done</button>
+            </form>
+            <button onClick={() => deletePost(postId)}>Delete Post</button>
+        </div>
     )
 
 }

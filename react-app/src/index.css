@@ -21,7 +21,8 @@ body {
     /* height: fit-content; */
     min-height: 100vh;
     display: flex;
-    justify-content: flex;
+    align-items: flex-start;
+    position: relative;
 }
 
 a:link {
