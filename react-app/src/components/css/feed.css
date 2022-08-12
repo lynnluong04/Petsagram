@@ -9,7 +9,7 @@
 
 .single-post.container {
     margin-top: 15px;
-    height: fit-content;
+    /* height: fit-content; */
     max-height: 900.5px;
     width: 470px;
     border: 1px solid #DADDE1;
@@ -72,16 +72,16 @@ img.post {
 .post-bottom {
     font-size: 14px;
     background-color: white;
+    /* min-height: 129px; */
     /* height: fit-content; */
-    min-height: 129px;
-    height: fit-content;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .comments.container {
-    height: fit-content;
+    max-height: 100px;
+    overflow: auto;
     margin-top: 20px;
 }
 
@@ -93,6 +93,7 @@ img.post {
 .single-comment {
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
 }
 
 div.comment-owner {
@@ -101,7 +102,7 @@ div.comment-owner {
 }
 
 div.comments.create {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     width: 100%;
     height: fit-content;

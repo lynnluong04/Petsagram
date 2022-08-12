@@ -11,11 +11,6 @@ const CreateCommentForm = ({ postId }) => {
     const sessionUser = useSelector(state => state.session.user);
 
 
-    useEffect(() => {
-        const errors = [];
-        if (!content) errors.push("Your comment cannot be empty");
-    }, [content]);
-
     const dateTime = new Date();
     const isoTime = dateTime.toISOString();
     const date = isoTime.slice(0, 10);
@@ -26,7 +21,8 @@ const CreateCommentForm = ({ postId }) => {
         e.preventDefault();
         setHasSubmitted(true)
 
-        if (validationErrors.length) alert("Cannot create comment");
+        if (validationErrors.length) alert("Cannot post empty comment");
+        // if (!content) validationErrors.push("Your comment cannot be empty");
 
         const payload = {
             post_id: postId,
@@ -39,6 +35,7 @@ const CreateCommentForm = ({ postId }) => {
 
         if (createdComment) {
             setContent('');
+            setValidationErrors(createdComment)
         }
         setHasSubmitted(false)
     }
@@ -46,13 +43,13 @@ const CreateCommentForm = ({ postId }) => {
     return (
         <div className='comments create'>
             <form className='comments' onSubmit={onSubmit}>
-                {hasSubmitted && validationErrors.length > 0 && (
+                {/* {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
                         {validationErrors.map(error => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                )}
+                )} */}
                 <textarea value={content} placeholder="Write comment here"
                     onChange={e => setContent(e.target.value)}></textarea>
                 <button className='post-comment' type="submit">Post</button>

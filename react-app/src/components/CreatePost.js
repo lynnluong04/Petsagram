@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { thunkCreatePost } from '../store/post';
 import "./css/upload.css"
+import { Modal } from "../context/Modal";
 
 const CreatePostForm = ({ hideForm }) => {
     const history = useHistory();
@@ -15,7 +16,7 @@ const CreatePostForm = ({ hideForm }) => {
     const [imageLoading, setImageLoading] = useState(false);
     const [caption, setCaption] = useState('');
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    // const [ validationErrors, setValidationErrors ] = useState([]);
+    const [brokenImage, setBrokenImage] = useState(false)
 
     const [preview, setPreview] = useState('')
     const [exitPreview, setExitPreview] = useState(true);
@@ -35,11 +36,6 @@ const CreatePostForm = ({ hideForm }) => {
     }, [image])
 
     console.log("WHAT IS THE IMAGE", preview)
-
-    // useEffect(() => {
-    //     const errors = [];
-    //     if (!image) errors.push("You must upload a photo");
-    // }, [image]);
 
 
     const onSubmit = async (e) => {
@@ -73,12 +69,14 @@ const CreatePostForm = ({ hideForm }) => {
         setImage(file);
     }
 
-    // let content;
-    // if (imageCropped) {
-    //     content = (
-
-    //     )
-    // }
+let brokenImageError;
+if (brokenImage) {
+    brokenImageError = (
+        <Modal onClose={() => setBrokenImage(false)}>
+            <div className='image-error' >You tried uploading an invalid photo. Please try again. </div>
+        </Modal>
+    )
+}
 
     const clearPreview = () => {
         setExitPreview(true)
@@ -124,7 +122,7 @@ const CreatePostForm = ({ hideForm }) => {
                         </div>
 
                         <div className='create-post bottom next'>
-                            <img className='preview' src={preview} />
+                            <img className='preview' src={preview} onError={(e)=>{e.target.onerror = null; setPreview(false); setBrokenImage(true)}} />
 
                             <div className='caption container'>
                                 <div className='create-post user'>
@@ -138,6 +136,8 @@ const CreatePostForm = ({ hideForm }) => {
                         </div>
                     </div>
                 )}
+
+                {brokenImage && brokenImageError}
 
                 {(imageLoading) && <p>Loading...</p>}
             </form>

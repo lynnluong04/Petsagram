@@ -114,7 +114,7 @@ const SignUpForm = ({ setLoggingIn }) => {
       <div className='about-container'>
         Connect with Developer
         <div className='link container'>
-          <a href="https://github.com/lynnluong04/Petsagram" target='_blank' rel="noreferrer">
+          <a href="https://github.com/lynnluong04/" target='_blank' rel="noreferrer">
             <div className='about'>
               <i className="fa-brands fa-github"></i>
               Github

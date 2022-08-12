@@ -43,8 +43,15 @@ export const thunkCreateComment = payload => async dispatch => {
         const comment = await res.json();
         console.log("RES FROM CREATE COMMENT THUNK?", comment)
         dispatch(add(comment));
-        return comment;
-    }
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+      }
 }
 
 export const thunkEditComment = payload => async dispatch => {
@@ -58,7 +65,14 @@ export const thunkEditComment = payload => async dispatch => {
         const comment = await res.json();
         console.log("POST FROM EDIT THUNK", comment)
         dispatch(edit(comment));
-    }
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+      }
 }
 
 export const thunkDeleteComment = commentId => async dispatch => {

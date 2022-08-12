@@ -39,6 +39,7 @@ def create_comment():
         db.session.commit()
         print("from backend after validate ", comment)
         return comment.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @comment_routes.route('/<int:commentId>/', methods=['PUT'])
 def edit_comment(commentId):
