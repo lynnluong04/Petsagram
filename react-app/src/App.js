@@ -32,7 +32,7 @@ function App() {
 
   return (
     // <BrowserRouter>
-    <div>
+    <div className='app' >
       {sessionUser && (<NavBar />)}
       <Switch location={background || location}>
         <Route path='/' exact component={Home} />
