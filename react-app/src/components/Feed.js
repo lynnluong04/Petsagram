@@ -18,7 +18,7 @@ const Feed = () => {
     useEffect(() => {
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
-    }, [dispatch]);
+    }, [dispatch, posts]);
 
 
 

@@ -18,11 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @comment_routes.route('/')
 def all_comments():
-    print("ALL COMMENTS BACKEND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    # print("FROM THE BACKEND ROUTE----------------------------------------")
     comments = Comment.query.all()
-    # print([post.to_dict() for post in posts])
-    # print("-----------------------------------------------------------")
     return {'comments': [comment.to_dict() for comment in comments]}
 
 @comment_routes.route('/', methods=['POST'])

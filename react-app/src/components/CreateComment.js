@@ -7,8 +7,9 @@ const CreateCommentForm = ({ postId }) => {
 
     const [content, setContent] = useState('')
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    const [validationErrors, setValidationErrors] = useState([]);
+    const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
+
 
 
     const dateTime = new Date();
@@ -19,10 +20,6 @@ const CreateCommentForm = ({ postId }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true)
-
-        if (validationErrors.length) alert("Cannot post empty comment");
-        // if (!content) validationErrors.push("Your comment cannot be empty");
 
         const payload = {
             post_id: postId,
@@ -34,24 +31,19 @@ const CreateCommentForm = ({ postId }) => {
         const createdComment = await dispatch(thunkCreateComment(payload));
 
         if (createdComment) {
+            setErrors(createdComment)
             setContent('');
-            setValidationErrors(createdComment)
         }
-        setHasSubmitted(false)
     }
 
     return (
         <div className='comments create'>
+            {errors && errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+            ))}
             <form className='comments' onSubmit={onSubmit}>
-                {/* {hasSubmitted && validationErrors.length > 0 && (
-                    <ul>
-                        {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                )} */}
-                <textarea value={content} placeholder="Write comment here"
-                    onChange={e => setContent(e.target.value)}></textarea>
+                <textarea value={content} maxlength='2200' placeholder="Write comment here"
+                    onChange={e => setContent(e.target.value)}> HI </textarea>
                 <button className='post-comment' type="submit">Post</button>
             </form>
         </div>
