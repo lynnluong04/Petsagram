@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -12,8 +12,11 @@ import Home from './components/Splash';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [previousRoute, setPreviousRoute] = useState('')
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const location = useLocation();
+  const background = location.state && location.state.background;
 
 
   useEffect(() => {
@@ -28,15 +31,11 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      {sessionUser && (
-        <NavBar />
-      )}
-      <Switch>
-        <Route path='/' exact={true}>
-          {/* <Feed /> */}
-          <Home />
-        </Route>
+    // <BrowserRouter>
+    <div>
+      {sessionUser && (<NavBar />)}
+      <Switch location={background || location}>
+        <Route path='/' exact component={Home} />
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -46,23 +45,15 @@ function App() {
         {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute> */}
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-
-
-        <Route path='/:userId' exact={true}>
-          <Profile />
-        </Route>
-        <Route path='/:userId/:postId' exact={true}>
-          <Profile />
-          <SinglePostModal />
-        </Route>
-        {/* <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
         </ProtectedRoute> */}
+
+        <Route path='/:userId' exact component={Profile} />
       </Switch>
-    </BrowserRouter>
+      {background && <Route path='/:userId/:postId' children={<SinglePostModal/>} />}
+    </div>
+    // </BrowserRouter>
   );
 }
 

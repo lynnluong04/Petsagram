@@ -1,6 +1,7 @@
 from .db import db
 from sqlalchemy.sql import func
 from .user import User
+from .comment import Comment
 
 likes = db.Table(
     "likes",
@@ -27,8 +28,11 @@ class Post(db.Model):
             'caption': self.caption,
             'created_at': self.created_at,
             'owner': User.query.get(self.owner_id).username,
-            'profile': User.query.get(self.owner_id).photo_url
+            'profile': User.query.get(self.owner_id).photo_url,
+            'comments_num': len(Comment.query.filter_by(post_id=self.id).all())
         }
+
+
 
 owner = db.relationship("User", back_populates="owner_posts")
 comments = db.relationship("Comment", back_populates="owner", cascade="all, delete")

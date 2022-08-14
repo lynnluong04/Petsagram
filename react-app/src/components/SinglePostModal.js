@@ -36,13 +36,10 @@ const SinglePostModal = () => {
 
     return (
         <div>
-            {/* <div>
-                <button onClick={() => setShowModal(true)}></button>
-            </div> */}
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)
-                    history.push(`/${userId}`)
+                    history.goBack()
                 }}>
                     <div className="post-modal container">
                         <SinglePost postId={Number(postId)} hideForm={() => setShowModal(false)} setCaption={setCaption} />

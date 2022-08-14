@@ -9,8 +9,7 @@ import NavDropdown from './NavDropdown';
 const NavBar = () => {
 
   const sessionUser = useSelector(state => state.session.user);
-  console.log("PHOTO URL??", sessionUser.photo_url)
-
+  
   return (
     <nav>
       <ul>
