@@ -123,7 +123,8 @@ form.comments {
     height: fit-content;
     display: flex;
     flex-direction: row;
-    border-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top: 1px solid #DADDE1;
 
 }
 
