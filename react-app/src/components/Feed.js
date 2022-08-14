@@ -40,25 +40,28 @@ const Feed = () => {
                                 <svg aria-label="More options"  color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
                             </div> */}
                         </div>
-                        {/* <NavLink to={{
-                            pathname: `/${post.owner_id}/${post.id}`,
-                            state: { background: location }
-                        }}> */}
-                            <img className='post' src={post.media_url} alt="photo post" />
-                        {/* </NavLink> */}
+
+                        <img className='post' src={post.media_url} alt="photo post" />
 
                         <div className='post-bottom'>
                             <div className='caption-container'>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
                                     <div className='post username'> {post.owner} </div>
                                 </NavLink>
-                                <div className={ expandCaption ? 'caption-full' :'caption-truncated'} >{post.caption}</div>
+                                <div className={expandCaption ? 'caption-full' : 'caption-truncated'} >{post.caption}</div>
                                 <div
-                                onClick={()=> setExpandCaption(true)} className={ expandCaption ? 'hide-more': 'show-more'}
+                                    onClick={() => setExpandCaption(true)} className={expandCaption ? 'hide-more' : 'show-more'}
                                 > more </div>
                             </div>
-                            {/* <AllComments postId={post.id} /> */}
-                            {post.comments_num > 0 && <div onClick={() => setOpenComments(true)} >View all {post.comments_num} comments</div>}
+                            {post.comments_num > 0 &&
+                                <NavLink to={{
+                                    pathname: `/${post.owner_id}/${post.id}`,
+                                    state: { background: location }
+                                }} activeClassName="active">
+                                    <div className='view-comments' onClick={() => setOpenComments(true)}>
+                                        View all {post.comments_num} comments
+                                    </div>
+                                </NavLink>}
                             <CreateCommentForm postId={post.id} />
                         </div>
                     </div>

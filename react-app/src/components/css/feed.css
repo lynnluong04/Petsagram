@@ -145,3 +145,8 @@ button.post-comment {
     background-color: transparent;
     color: #0095F6;
 }
+
+.view-comments {
+    color: #8E8E8E;
+    margin: 0px 0px 15px 10px;
+}
