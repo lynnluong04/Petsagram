@@ -21,6 +21,7 @@ const AllComments = ({ postId }) => {
                 return (
                     <div className='single-comment-container' key={comment.id}>
                         <div className='single-comment'>
+                            <img className='comment-user' src={comment.owner_profile} />
                             <div className='comment-owner'> {comment.owner} </div>
                             <div> {comment.content} </div>
                         </div>

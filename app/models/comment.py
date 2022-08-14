@@ -19,7 +19,8 @@ class Comment(db.Model):
             'owner_id': self.owner_id,
             'content': self.content,
             'created_at': self.created_at,
-            'owner': User.query.get(self.owner_id).username
+            'owner': User.query.get(self.owner_id).username,
+            'owner_profile': User.query.get(self.owner_id).photo_url
         }
 
 owner = db.relationship("User", back_populates="comments")

@@ -29,7 +29,7 @@ img.post-photo {
     height: auto;
 }
 
-img.post-user {
+img.post-user, img.comment-user {
     width: 32px;
     height: 32px;
     margin-right: 15px;
@@ -45,6 +45,12 @@ div.right-top {
     align-items: center;
 }
 
+
+
+.caption-comments {
+    overflow-y: scroll;
+}
+
 div.user-info {
     display: inline-flex;
     margin-left: 15px;
@@ -53,27 +59,11 @@ div.user-info {
 div.user-info-caption {
     display: inline-flex;
     align-items: center;
-    height: 100%;
-    margin-bottom: 30px;
-
+    margin-bottom: 20px;
+    margin: 15px 20px 15px 20px;
+    font-size: 14px;
 }
 
-.caption.icon, .caption-content {
-    display: flex;
-    align-items: flex-start;
-    height: 100%;
-}
-
-
-
-.right-bottom {
-    padding: 15px 15px;
-    height: fit-content;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    
-}
 
 
 button.edit-post-modal {
@@ -111,5 +101,17 @@ button.edit-post-modal {
 }
 
 .comments.container {
-    margin-top: 10px;
+    margin: 10px 20px 15px 10px;
+}
+
+.single-comment-container {
+    padding: 5px 0;
+    margin: 20px 0;
+    height: fit-content;
+    font-size: 14px;
+}
+
+.username {
+    font-size: 14px;
+    font-weight: bold;
 }

@@ -52,24 +52,23 @@ const SinglePostModal = () => {
                             <div className="right-top">
                                 <div className="user-info">
                                     <img className="post-user" src={user.photo_url} />
-                                    <div>{user.username}</div>
+                                    <div className="username" >{user.username}</div>
                                 </div>
-                                { sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={()=> setShowModal(false)}  />}
+                                {sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={() => setShowModal(false)} />}
                             </div>
 
-                            <div className="right-bottom">
-                                <div className="user-info-caption">
-                                    <div className="caption icon">
-                                        <img className="post-user two" src={user.photo_url} />
+                                <div className="caption-comments" >
+                                    <div className="user-info-caption">
+                                        <div className="caption icon">
+                                            <img className="post-user two" src={user.photo_url} />
+                                        </div>
+                                        <div className="caption-content">
+                                            {user.username} {caption}
+                                        </div>
                                     </div>
-                                    <div className="caption-content">
-                                        {user.username} {caption}
-                                    </div>
+                                    <AllComments postId={Number(postId)} />
                                 </div>
-
-                                <AllComments postId={Number(postId)} />
                                 <CreateCommentForm postId={Number(postId)} />
-                            </div>
 
                         </div>
                     </div>

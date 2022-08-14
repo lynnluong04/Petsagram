@@ -29,7 +29,7 @@ class Post(db.Model):
             'created_at': self.created_at,
             'owner': User.query.get(self.owner_id).username,
             'profile': User.query.get(self.owner_id).photo_url,
-            'comments_num': len(Comment.query.filter_by(post_id=self.id).all())
+            'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
         }
 
 

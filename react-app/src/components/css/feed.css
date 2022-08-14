@@ -30,7 +30,8 @@
 }
 
 .caption-container {
-    display: inline-flex
+    display: inline-flex;
+    height:fit-content;
 }
 
 .post.username {
@@ -92,6 +93,7 @@ img.post {
     position: relative;
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 
