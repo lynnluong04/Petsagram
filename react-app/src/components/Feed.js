@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+import { thunkLoadComments } from '../store/comment';
 import { thunkLoadPosts } from '../store/post';
 import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
@@ -10,15 +11,20 @@ const Feed = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const posts = useSelector(state => state.post);
+    const comments = useSelector(state => state.comment)
     const [openComments, setOpenComments] = useState(false);
     const [expandCaption, setExpandCaption] = useState(false);
 
     const postsArray = posts ? Object.values(posts) : null;
+    postsArray?.sort((a,b) => {
+        return b.id - a.id
+    });
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
-    }, [dispatch, posts]);
+    }, [dispatch]);
+
 
 
 

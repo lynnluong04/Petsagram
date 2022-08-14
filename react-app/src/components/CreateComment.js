@@ -41,7 +41,7 @@ const CreateCommentForm = ({ postId }) => {
                 <div key={ind}>{error}</div>
             ))}
             <form className='comments' onSubmit={onSubmit}>
-                <textarea value={content} maxlength='2200' placeholder="Write comment here"
+                <textarea value={content} maxLength='2200' placeholder="Write comment here"
                     onChange={e => setContent(e.target.value)}> HI </textarea>
                 <button className='post-comment' type="submit">Post</button>
             </form>

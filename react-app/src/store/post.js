@@ -105,24 +105,25 @@ export const thunkDeletePost = postId => async dispatch => {
 
 
 
-
 let newState;
 
 export default function postReducer(state = {}, action) {
     switch (action.type) {
         case LOAD:
             newState = {};
+            newState['comment-count'] = {};
             const allPosts = action.list['posts']
             allPosts.forEach(post => {
                 newState[post.id] = post
+                newState['comment-count'][post.id] = post.comments_num
             });
             return newState;
-            
+
         case LOADUSERPOSTS:
             newState = {};
             const allUserPosts = action.list['posts']
             allUserPosts.forEach(post => {
-                newState[post.id] = post
+                newState[post.id] = post;
             });
             return newState;
 
