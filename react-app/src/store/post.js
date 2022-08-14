@@ -111,11 +111,11 @@ export default function postReducer(state = {}, action) {
     switch (action.type) {
         case LOAD:
             newState = {};
-            newState['comment-count'] = {};
+            // newState['comment-count'] = {};
             const allPosts = action.list['posts']
             allPosts.forEach(post => {
                 newState[post.id] = post
-                newState['comment-count'][post.id] = post.comments_num
+                // newState['comment-count'][post.id] = post.comments_num
             });
             return newState;
 
