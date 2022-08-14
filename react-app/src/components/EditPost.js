@@ -19,8 +19,9 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
         await dispatch(thunkDeletePost(id));
         hideForm();
         closeSinglePost();
-
+        history.push(`/${post.owner_id}`)
     }
+
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
@@ -57,7 +58,7 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
                 </div>
                 <button type="submit" >Done</button>
             </form>
-            <button onClick={() => deletePost(postId)}>Delete Post</button>
+            <button onClick={() => deletePost(numberId)}>Delete Post</button>
         </div>
     )
 
