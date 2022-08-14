@@ -1,10 +1,15 @@
 const LOAD = '/posts/LOAD';
+const LOADUSERPOSTS = '/posts/LOADUSERPOSTS';
 const ADD = '/posts/ADD';
 const EDIT = '/posts/EDIT';
 const REMOVE = '/posts/REMOVE';
 
 const load = list => ({
     type: LOAD,
+    list
+})
+const loadUserPosts = list => ({
+    type: LOADUSERPOSTS,
     list
 })
 
@@ -36,7 +41,7 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${userId}`);
     if (res.ok) {
         const list = await res.json();
-        dispatch(load(list))
+        dispatch(loadUserPosts(list))
     }
 }
 
@@ -112,6 +117,15 @@ export default function postReducer(state = {}, action) {
                 newState[post.id] = post
             });
             return newState;
+            
+        case LOADUSERPOSTS:
+            newState = {};
+            const allUserPosts = action.list['posts']
+            allUserPosts.forEach(post => {
+                newState[post.id] = post
+            });
+            return newState;
+
 
         case ADD:
             newState = { ...state };

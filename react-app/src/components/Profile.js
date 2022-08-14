@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { thunkLoadPosts } from '../store/post';
+import { thunkLoadPosts, thunkLoadUserPosts } from '../store/post';
 import "./css/profile.css"
 
 const Profile = () => {
@@ -11,6 +11,7 @@ const Profile = () => {
     const numberId = Number(userId)
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
+    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)):null;
     const location = useLocation();
 
     useEffect(() => {
@@ -25,7 +26,7 @@ const Profile = () => {
     }, [userId]);
 
     useEffect(() => {
-        dispatch(thunkLoadPosts(Number(userId)));
+        dispatch(thunkLoadPosts());
     }, [dispatch]);
 
 
@@ -43,7 +44,7 @@ const Profile = () => {
                 </div>
                 <div className='photos-container'>
 
-                    {postsArray && postsArray.map(post => {
+                    {userPosts && userPosts.map(post => {
                         return (
                             <NavLink to={{
                                 pathname: `/${numberId}/${post.id}`,

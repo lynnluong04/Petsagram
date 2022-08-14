@@ -18,7 +18,6 @@ body {
 
 #root {
     width: 100%;
-    /* height: fit-content; */
     min-height: 100vh;
     display: flex;
     align-items: flex-start;

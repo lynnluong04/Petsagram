@@ -34,7 +34,7 @@ function App() {
     // <BrowserRouter>
     <div className='app' >
       {sessionUser && (<NavBar />)}
-      <Switch location={background || location}>
+      <Switch location={ background || location}>
         <Route path='/' exact component={Home} />
         {/* <Route path='/login' exact={true}>
           <LoginForm />
