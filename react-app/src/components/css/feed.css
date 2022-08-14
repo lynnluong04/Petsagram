@@ -2,18 +2,14 @@
     margin-top: 80px;
 }
 
-/* img {
-    height: 587px;
-    width: 470px;
-} */
 
 .single-post.container {
-    margin-top: 15px;
-    /* height: fit-content; */
-    max-height: 900.5px;
+    margin-top: 8px;
+    height: fit-content;
     width: 470px;
     border: 1px solid #DADDE1;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
 
 .post-top {
@@ -22,7 +18,7 @@
     background-color: white;
     display: inline-flex;
     justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .user-links {
@@ -33,23 +29,43 @@
     margin: 8px 8px 4px 8px;
 }
 
-.bottom-caption {
-    padding: 6px 12px;
+.caption-container {
+    display: inline-flex
 }
 
 .post.username {
     font-size: 14px;
     color: black;
     font-weight: bold;
-    padding: 6px 12px 0 12px ;
+    padding: 12px 6px 12px 10px;
+    text-align: left;
+}
 
+.caption-truncated {
+    padding: 12px 6px 12px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.caption-full {
+    padding: 12px 6px;
+    height: fit-content;
+}
+
+.hide-more {
+    visibility:hidden;
+}
+
+.show-more {
+    color:#8E8E8E;
+    padding: 12px 12px 12px 0px;
 }
 
 img.feed-profile {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    margin-right: 8px;
 }
 
 .post-menu {
@@ -72,18 +88,12 @@ img.post {
 .post-bottom {
     font-size: 14px;
     background-color: white;
-    /* min-height: 129px; */
-    /* height: fit-content; */
+    border-radius: 8px;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.comments.container {
-    max-height: 100px;
-    overflow: auto;
-    margin-top: 20px;
-}
 
 .single-comment-container {
     display: flex;
@@ -102,11 +112,10 @@ div.comment-owner {
 }
 
 div.comments.create {
-    /* position: absolute; */
     bottom: 0;
     width: 100%;
     height: fit-content;
-    /* border-top: 1px solid #DADDE1 ; */
+    border-radius: 8px;
 }
 
 form.comments {
@@ -114,9 +123,11 @@ form.comments {
     height: fit-content;
     display: flex;
     flex-direction: row;
+    border-radius: 8px;
+
 }
 
-form.comments > textarea {
+form.comments>textarea {
     width: 380px;
     min-height: 30px;
     padding: 5px 10px;
@@ -125,10 +136,11 @@ form.comments > textarea {
     resize: none;
     font-size: 14px;
     padding-top: 10px;
+    border-bottom-left-radius: 8px;
 }
 
 button.post-comment {
     border: none;
     background-color: transparent;
-    color:#0095F6;
+    color: #0095F6;
 }

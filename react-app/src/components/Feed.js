@@ -10,12 +10,14 @@ const Feed = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const posts = useSelector(state => state.post);
-    const [openComments, setOpenComments] = useState(false)
+    const [openComments, setOpenComments] = useState(false);
+    const [expandCaption, setExpandCaption] = useState(false);
 
     const postsArray = posts ? Object.values(posts) : null;
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
+        setExpandCaption(false)
     }, [dispatch]);
 
 
@@ -39,17 +41,22 @@ const Feed = () => {
                             </div> */}
                         </div>
                         <NavLink to={{
-                            pathname:`/${post.owner_id}/${post.id}`,
+                            pathname: `/${post.owner_id}/${post.id}`,
                             state: { background: location }
                         }}>
                             <img className='post' src={post.media_url} alt="photo post" />
                         </NavLink>
 
                         <div className='post-bottom'>
-                            <NavLink to={`/${post.owner_id}`} activeClassName="active">
-                                <div className='post username'> {post.owner} </div>
-                            </NavLink>
-                            <div className='bottom-caption' >{post.caption}</div>
+                            <div className='caption-container'>
+                                <NavLink to={`/${post.owner_id}`} activeClassName="active">
+                                    <div className='post username'> {post.owner} </div>
+                                </NavLink>
+                                <div className={ expandCaption ? 'caption-full' :'caption-truncated'} >{post.caption}</div>
+                                <div
+                                onClick={()=> setExpandCaption(true)} className={ expandCaption ? 'hide-more': 'show-more'}
+                                > more </div>
+                            </div>
                             {/* <AllComments postId={post.id} /> */}
                             {post.comments_num > 0 && <div onClick={() => setOpenComments(true)} >View all {post.comments_num} comments</div>}
                             <CreateCommentForm postId={post.id} />
