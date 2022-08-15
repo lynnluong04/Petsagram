@@ -203,6 +203,8 @@ div.about {
     font-size: 14px;
     margin: 10px 0;
     color: red;
+    display: flex;
+    justify-content: center;
 }
 
 .req-text {
