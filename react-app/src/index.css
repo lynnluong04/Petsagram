@@ -17,6 +17,14 @@ body {
     align-items: center;
 }
 
+div.app {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #root {
     width: 100%;
     min-height: 100vh;
