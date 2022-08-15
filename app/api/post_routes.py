@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.forms.edit_post import EditPost
 from app.forms.post_form import PostForm
-from app.models import Comment, Post, db
+from app.models import Post, db
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -79,5 +79,20 @@ def edit_post(postId):
 def delete_post(postId):
     post = Post.query.get(postId)
     db.session.delete(post)
+    db.session.commit()
+    return post.to_dict()
+
+
+@post_routes.route("/<int:postId>/like", methods=['PUT'])
+def like_post(postId):
+    post = Post.query.get(postId)
+    post.users_who_liked.append(current_user)
+    db.session.commit()
+    return post.to_dict()
+
+@post_routes.route("/<int:postId>/unlike", methods=['PUT'])
+def unlike_post(postId):
+    post = Post.query.get(postId)
+    post.users_who_liked.remove(current_user)
     db.session.commit()
     return post.to_dict()

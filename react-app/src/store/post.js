@@ -32,7 +32,6 @@ export const thunkLoadPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
-        console.log("FROM GET POST THUNK", list)
         dispatch(load(list));
     }
 }
@@ -41,7 +40,7 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${userId}`);
     if (res.ok) {
         const list = await res.json();
-        dispatch(loadUserPosts(list))
+        dispatch(loadUserPosts(list));
     }
 }
 
@@ -68,7 +67,6 @@ export const thunkCreatePost = formData => async dispatch => {
 }
 
 export const thunkEditPost = payload => async dispatch => {
-    console.log("PAYLOAD FROM EDIT THUNK", payload.id)
     const res = await fetch(`/api/posts/${payload.id}/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -77,7 +75,6 @@ export const thunkEditPost = payload => async dispatch => {
 
     if (res.ok) {
         const post = await res.json();
-        console.log("POST FROM EDIT THUNK", post)
         dispatch(edit(post));
         return null;
     } else if (res.status < 500) {
@@ -98,6 +95,29 @@ export const thunkDeletePost = postId => async dispatch => {
 
     if (res.ok) {
         dispatch(remove(postId))
+    }
+}
+
+export const thunkAddLike = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${postId}/like`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (res.ok) {
+        const post = await res.json();
+        dispatch(edit(post));
+    }
+}
+
+export const thunkRemoveLike = (postId) => async dispatch => {
+    const res = await fetch(`/api/posts/${postId}/unlike`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (res.ok) {
+        const post = await res.json()
+        dispatch(edit(post))
     }
 }
 
