@@ -31,8 +31,11 @@ const CreateCommentForm = ({ postId }) => {
 
         if (createdComment) {
             setErrors(createdComment)
-            setContent('');
+        } else {
+            setContent('')
         }
+
+
     }
 
     return (
