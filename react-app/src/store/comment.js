@@ -32,7 +32,6 @@ export const thunkLoadComments = () => async (dispatch) => {
 }
 
 export const thunkCreateComment = payload => async dispatch => {
-    console.log("Hitting Create Comment Thunk", payload)
     const res = await fetch('/api/comments/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -62,7 +61,6 @@ export const thunkEditComment = payload => async dispatch => {
 
     if (res.ok) {
         const comment = await res.json();
-        console.log("POST FROM EDIT THUNK", comment)
         dispatch(edit(comment));
     } else if (res.status < 500) {
         const data = await res.json();
@@ -75,7 +73,6 @@ export const thunkEditComment = payload => async dispatch => {
 }
 
 export const thunkDeleteComment = commentId => async dispatch => {
-    console.log("DELETE POST THUNK", commentId)
     const res = await fetch(`/api/comments/${commentId}`, {
         method: 'DELETE'
     })

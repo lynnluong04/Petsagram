@@ -32,7 +32,6 @@ export const thunkLoadPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
-        console.log("FROM GET POST THUNK", list)
         dispatch(load(list));
     }
 }
@@ -47,7 +46,6 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
 
 
 export const thunkCreatePost = formData => async dispatch => {
-    console.log("Hitting Create Post Thunk", formData)
     const res = await fetch('/api/posts/', {
         method: 'POST',
         body: formData
@@ -68,7 +66,6 @@ export const thunkCreatePost = formData => async dispatch => {
 }
 
 export const thunkEditPost = payload => async dispatch => {
-    console.log("PAYLOAD FROM EDIT THUNK", payload.id)
     const res = await fetch(`/api/posts/${payload.id}/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -77,7 +74,6 @@ export const thunkEditPost = payload => async dispatch => {
 
     if (res.ok) {
         const post = await res.json();
-        console.log("POST FROM EDIT THUNK", post)
         dispatch(edit(post));
         return null;
     } else if (res.status < 500) {
@@ -91,7 +87,6 @@ export const thunkEditPost = payload => async dispatch => {
 }
 
 export const thunkDeletePost = postId => async dispatch => {
-    console.log("DELETE POST THUNK", postId)
     const res = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     })

@@ -35,7 +35,6 @@ const CreatePostForm = ({ hideForm }) => {
         return () => URL.revokeObjectURL(objectUrl)
     }, [image])
 
-    console.log("WHAT IS THE IMAGE", preview)
 
 
     const onSubmit = async (e) => {
