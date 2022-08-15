@@ -3,12 +3,12 @@ from sqlalchemy.sql import func
 from .user import User
 from .comment import Comment
 
-likes = db.Table(
-    "likes",
-    db.Model.metadata,
-    db.Column('owner_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'), primary_key=True)
-)
+# likes = db.Table(
+#     "likes",
+#     db.Model.metadata,
+#     db.Column('owner_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#     db.Column('post_id', db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+# )
 
 
 class Post(db.Model):
@@ -35,4 +35,4 @@ class Post(db.Model):
 
 
 owner = db.relationship("User", back_populates="owner_posts")
-comments = db.relationship("Comment", back_populates="owner", cascade="all, delete")
+comments = db.relationship("Comment", back_populates="post", cascade="all, delete, delete-orphan")

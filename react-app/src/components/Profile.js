@@ -11,7 +11,7 @@ const Profile = () => {
     const numberId = Number(userId)
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
-    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)):null;
+    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
@@ -38,7 +38,11 @@ const Profile = () => {
         <div className='profile container'>
             <div className='profile top'>
                 <img className="profile-image" src={user?.photo_url} />
-                <div className='top-username'>{user?.username}</div>
+                <div>
+                    <div className='top-username'>{user?.username}</div>
+                    {/* <div>{user?.bio}</div> */}
+                </div>
+
             </div>
 
             <div className='profile-bottom' >
