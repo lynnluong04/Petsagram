@@ -46,6 +46,12 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
     return (
         <div>
             <form className="edit-post-container" onSubmit={onSubmit}>
+                <button>Cancel</button>
+                <div>Edit Post</div>
+                <button type="submit" >Done</button>
+
+                <img src={post.media_url}/>
+
                 <input type="text"
                     value={editCaption}
                     placeholder="Write a caption"
@@ -56,7 +62,6 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
-                <button type="submit" >Done</button>
             </form>
             <button onClick={() => deletePost(numberId)}>Delete Post</button>
         </div>
