@@ -34,7 +34,7 @@ function App() {
     // <BrowserRouter>
     <div className='app' >
       {sessionUser && (<NavBar />)}
-      <Switch location={ background || location}>
+      <Switch location={background || location}>
         <Route path='/' exact component={Home} />
         {/* <Route path='/login' exact={true}>
           <LoginForm />
@@ -50,8 +50,11 @@ function App() {
         </ProtectedRoute> */}
 
         <Route path='/:userId' exact component={Profile} />
+        <Route>
+          <div className='error-404'> Page Not Found. </div>
+        </Route>
       </Switch>
-      {background && <Route path='/:userId/:postId' children={<SinglePostModal/>} />}
+      {background && <Route path='/:userId/:postId' children={<SinglePostModal />} />}
     </div>
     // </BrowserRouter>
   );
