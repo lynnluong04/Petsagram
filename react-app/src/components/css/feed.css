@@ -94,6 +94,7 @@ img.post {
     display: flex;
     flex-direction: column;
     height: fit-content;
+    z-index: -1;
 }
 
 
