@@ -8,6 +8,7 @@ nav {
     background-color: white;
     border-bottom: 1px solid #DADDE1;
     margin: 0;
+    z-index: 1;
 
 }
 
