@@ -40,6 +40,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
             <form className="edit-comment" onSubmit={onSubmit}>
                 <input type="text"
                     value={editContent}
+                    maxLength="2200"
                     onChange={e => setEditContent(e.target.value)}>
                 </input>
                 <button className="submit-edit-comment">Submit</button>
