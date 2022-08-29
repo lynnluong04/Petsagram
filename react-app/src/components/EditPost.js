@@ -49,6 +49,7 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
                 <input type="text"
                     value={editCaption}
                     placeholder="Write a caption"
+                    maxLength="2200"
                     onChange={e => setEditCaption(e.target.value)}
                 ></input>
                 <div className='signup error-container'>

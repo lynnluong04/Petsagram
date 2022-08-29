@@ -130,7 +130,7 @@ if (brokenImage) {
                                     <div> {sessionUser.username} </div>
                                 </div>
 
-                                <textarea className='caption' type="text" placeholder='Write a caption...' value={caption} onChange={e => setCaption(e.target.value)}> </textarea>
+                                <textarea className='caption' maxLength="2200" type="text" placeholder='Write a caption...' value={caption} onChange={e => setCaption(e.target.value)}> </textarea>
                             </div>
 
                         </div>
