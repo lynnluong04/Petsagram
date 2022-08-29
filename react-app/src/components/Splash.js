@@ -5,6 +5,10 @@ import SignUpForm from './auth/SignUpForm';
 import Feed from './Feed';
 import "./css/home.css"
 
+const IMAGE = (imgName) => {
+    return require(`./images/${imgName}`).default
+  }
+
 const Home = () => {
     const sessionUser = useSelector(state => state.session.user);
     const [loggingIn, setLoggingIn] = useState('true')
@@ -17,14 +21,14 @@ const Home = () => {
     } else if (loggingIn) {
         content = (
             <div className='home inner container'>
-                <img className='home' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-7.09.29-PM.png" alt="gif" />
+                <img className='home' src={IMAGE("splash-phone.png")} alt="phone" />
                 <LoginForm setLoggingIn={setLoggingIn} />
             </div>
         )
     } else {
         content = (
             <div className='home inner container'>
-                <img className='home' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-7.09.29-PM.png" alt="gif" />
+                <img className='home' src={IMAGE("splash-phone.png")} alt="gif" />
                 <SignUpForm setLoggingIn={setLoggingIn} />
             </div>
         )
