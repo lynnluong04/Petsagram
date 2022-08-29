@@ -6,16 +6,20 @@ import CreatePostModal from './CreatePostModal';
 import "./css/navbar.css"
 import NavDropdown from './NavDropdown';
 
+const IMAGE = (imgName) => {
+  return require(`./images/${imgName}`).default
+}
+
 const NavBar = () => {
 
   const sessionUser = useSelector(state => state.session.user);
-  
+
   return (
     <nav>
       <ul>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img className='logo nav' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-8.39.47-PM_1.png" />
+            <img className='logo nav' src={IMAGE("logo-black.png")} />
           </NavLink>
         </li>
 
