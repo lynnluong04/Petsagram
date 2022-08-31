@@ -35,7 +35,7 @@ function App() {
     <div className='app' >
       {sessionUser && (<NavBar />)}
       <Switch location={background || location}>
-        <Route path='/:userId' exact component={Profile} />
+        <ProtectedRoute path='/:userId' exact component={Profile} />
         <Route path='/'  >
           <Home />
         </Route>
