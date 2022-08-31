@@ -33,7 +33,9 @@ const CreateCommentForm = ({ postId }) => {
             setErrors(createdComment)
         } else {
             setContent('')
+            setErrors([]);
         }
+
 
 
     }

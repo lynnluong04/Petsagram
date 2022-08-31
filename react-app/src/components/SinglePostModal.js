@@ -19,7 +19,11 @@ const SinglePostModal = () => {
     const { userId } = useParams();
 
     const post = useSelector(state => state.post[numPostId])
+
     const sessionUser = useSelector(state => state.session.user);
+
+    console.log("POST?? ", post)
+    console.log("USER?? ", user)
 
 
     useEffect(() => {
@@ -31,6 +35,10 @@ const SinglePostModal = () => {
             const user = await response.json();
             setUser(user);
         })();
+
+        // return () => {
+        //     setUser({});
+        // }
     }, [userId]);
 
     useEffect(() => {
@@ -54,6 +62,7 @@ const SinglePostModal = () => {
                                     <img className="post-user" src={user.photo_url} />
                                     <div className="username" >{user.username}</div>
                                 </div>
+
                                 {post && sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={() => setShowModal(false)} hideForm={() => setShowModal(false)}/>}
                             </div>
 
