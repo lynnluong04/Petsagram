@@ -35,6 +35,9 @@ function App() {
     <div className='app' >
       {sessionUser && (<NavBar />)}
       <Switch location={background || location}>
+        <ProtectedRoute path='/:userId/edit'>
+          <h2>This will be user edit page</h2>
+        </ProtectedRoute>
         <ProtectedRoute path='/:userId' exact component={Profile} />
         <Route path='/'  >
           <Home />
