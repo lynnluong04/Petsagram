@@ -43,7 +43,7 @@ const CreateCommentForm = ({ postId }) => {
     return (
         <div className='comments create'>
             {errors && errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
+                <div className='comments-error' key={ind}>{error}</div>
             ))}
             <form className='comments' onSubmit={onSubmit}>
                 <input value={content} maxLength='2200' placeholder="Write comment here"
