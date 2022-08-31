@@ -58,3 +58,8 @@ button.delete-comment {
     border-bottom-right-radius: 5px;
 }
 
+.comments-error {
+    color: red;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
