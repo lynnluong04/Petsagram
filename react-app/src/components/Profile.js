@@ -12,6 +12,7 @@ const Profile = () => {
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
+
     userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
