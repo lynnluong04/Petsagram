@@ -11,10 +11,10 @@ const EditUserForm = () => {
   const user = useSelector(state => state.user[numberId])
 
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState(user?.username);
-  const [name, setName] = useState(user?.name);
-  const [email, setEmail] = useState(user?.email);
-  const [bio, setBio] = useState(user?.bio);
+  const [username, setUsername] = useState(sessionUser.username);
+  const [name, setName] = useState(sessionUser.name);
+  const [email, setEmail] = useState(sessionUser.email);
+  const [bio, setBio] = useState(sessionUser.bio);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -35,14 +35,13 @@ const EditUserForm = () => {
     dispatch(thunkLoadUsers())
   }, [dispatch])
 
-
+if (user) {
   return (
     <div>
       <form>
-        {user && <>
+
           <div>{user.username}</div>
           <img src={user.photo_url}/>
-        </>}
 
         <label>Name
           <input
@@ -79,6 +78,11 @@ const EditUserForm = () => {
       </form>
     </div>
   )
+} else {
+  return (
+    <div>Loading...</div>
+  )
+}
 }
 
 
