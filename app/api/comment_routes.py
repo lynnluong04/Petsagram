@@ -55,4 +55,4 @@ def delete_comment(commentId):
     comment = Comment.query.get(commentId)
     db.session.delete(comment)
     db.session.commit()
-    return comment.to_dict()
+    return f'commentId'
