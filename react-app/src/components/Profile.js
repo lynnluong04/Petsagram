@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { thunkLoadPosts, thunkLoadUserPosts } from '../store/post';
+import { thunkLoadPosts } from '../store/post';
 import "./css/profile.css"
 
 const Profile = () => {

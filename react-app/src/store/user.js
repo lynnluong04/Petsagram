@@ -20,7 +20,7 @@ const remove = commentId => ({
 
 
 export const thunkLoadUsers = () => async (dispatch) => {
-    const res = await fetch('/api/users');
+    const res = await fetch('/api/users/');
     if (res.ok) {
         const list = await res.json();
         dispatch(load(list));
