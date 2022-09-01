@@ -20,6 +20,7 @@ const Feed = () => {
         return b.id - a.id
     });
 
+
     useEffect(() => {
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
