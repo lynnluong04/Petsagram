@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from .db import db
 from sqlalchemy.sql import func
 from .user import User
@@ -35,4 +36,4 @@ class Post(db.Model):
 
 
 owner = db.relationship("User", back_populates="owner_posts")
-comments = db.relationship("Comment", back_populates="post", cascade="all, delete")
+all_comments = db.relationship("Comment", back_populates="post", passive_deletes=True, cascade="all, delete, delete-orphan")
