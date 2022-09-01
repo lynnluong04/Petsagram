@@ -35,4 +35,4 @@ class Post(db.Model):
 
 
 owner = db.relationship("User", back_populates="owner_posts")
-comments = db.relationship("Comment", back_populates="post", cascade='all, delete-orphan')
+comments = db.relationship("Comment", back_populates="post", cascade="all, delete")
