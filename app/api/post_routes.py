@@ -80,4 +80,4 @@ def delete_post(postId):
     post = Post.query.get(postId)
     db.session.delete(post)
     db.session.commit()
-    return post.to_dict()
+    return f'{postId}'
