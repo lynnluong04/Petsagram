@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { thunkAddLike, thunkRemoveLike } from "../store/post";
+const IMAGE = (imgName) => {
+    return require(`./images/${imgName}`).default
+  }
 
-const LikeUnlike = ({ sessionUser, post }) => {
+const LikeUnlike = ({ post }) => {
+    const dispatch = useDispatch();
     const [like, setLike] = useState('false')
+    const sessionUser = useSelector(state => state.session.user);
+
 
     useEffect(() => {
-        if (post.users_who_liked.includes(sessionUser)) {
+        if (post?.users_who_liked?.includes(sessionUser)) {
             setLike(true)
         }
     })
 
     const likePost = async (e) => {
-        e.preventDefault();
         await dispatch(thunkAddLike(post.id))
         setLike(true)
     }
 
     const unlikePost = async (e) => {
-        e.preventDefault();
         await dispatch(thunkRemoveLike(post.id))
         setLike(false)
     }
@@ -26,7 +30,9 @@ const LikeUnlike = ({ sessionUser, post }) => {
     return (
 
         <div onClick={like? ()=> unlikePost() : () => likePost() }>
-            <img src={like? "https://www.linkpicture.com/q/file-03-red.png": "https://www.linkpicture.com/q/File-03.png"} />
+            <img className="paw" src={like? IMAGE('paw-red.png'): IMAGE('paw.png')} />
         </div>
     )
 }
+
+export default LikeUnlike;
