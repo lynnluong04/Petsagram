@@ -14,7 +14,7 @@ const NavDropdown = () => {
     return (
         <div className="profile-dropdown container" >
             <button onClick={() => setShowMenu(!showMenu)} className='nav button icon'>
-                <img className='nav profile icon' src={sessionUser.photo_url} alt="profile icon" />
+                <img className='nav profile icon' src={sessionUser.photo_url ? sessionUser.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
             </button>
             {showMenu && (
                 <div onClick={()=> setShowMenu(false)} className="dropdown container" >

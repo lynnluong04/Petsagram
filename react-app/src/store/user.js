@@ -49,6 +49,7 @@ export const thunkEditUser = payload => async dispatch => {
 }
 
 export const uploadProfilePhoto = formData => async dispatch => {
+    console.log("FORMDATE FROM THUNK PROF PIC", formData)
     const res = await fetch('/api/users/profile-pic', {
         method: 'POST',
         body: formData

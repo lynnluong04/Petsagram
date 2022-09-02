@@ -3,6 +3,9 @@ from .db import db
 from sqlalchemy.sql import func
 from .user import User
 
+from .comment import Comment
+
+
 # likes = db.Table(
 #     "likes",
 #     db.Model.metadata,
@@ -27,7 +30,7 @@ class Post(db.Model):
             'media_url': self.media_url,
             'caption': self.caption,
             'created_at': self.created_at,
-            'owner': User.query.get(self.owner_id).username,
+            'owner': self.owner.username,
             'profile': User.query.get(self.owner_id).photo_url,
             'comments_num': len(self.all_comments),
         }

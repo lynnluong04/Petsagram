@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     bio = db.Column(db.String(150), nullable=True)
-    photo_url = db.Column(db.String(1000), nullable=True, default="https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85")
+    photo_url = db.Column(db.String(1000), nullable=True)
 
     @property
     def password(self):

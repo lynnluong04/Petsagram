@@ -40,7 +40,7 @@ const Profile = () => {
     return (
         <div className='profile container'>
             <div className='profile top'>
-                <img className="profile-image" src={user?.photo_url} />
+                <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
                 <div>
                     <div className='top-username'>{user?.username}</div>
                     {/* <div>{user?.bio}</div> */}

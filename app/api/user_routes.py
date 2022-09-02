@@ -60,6 +60,7 @@ def edit_user(id):
 
 @user_routes.route('/profile-pic', methods=['POST'])
 def profile_pic():
+        print("REACHING BACKEND PROF PIC-----------------------------------")
     # try:
     #     validate_csrf(request.cookies['csrf_token'])
         if "image" not in request.files:
@@ -78,9 +79,10 @@ def profile_pic():
             return upload, 400
 
         url = upload["url"]
+        print("IMAGE URL FROM BACKEND!!!!!!!!!!!!!!!!!!", url)
 
         user = User.query.get(current_user.id)
-        user.profile_url=url
+        user.photo_url=url
         db.session.commit()
         return user.to_dict();
     # except:

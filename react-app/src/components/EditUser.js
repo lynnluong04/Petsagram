@@ -60,6 +60,8 @@ const EditUserForm = () => {
       setErrors(editedUser)
     }
 
+    console.log("SETTING FILE TO IMAGE?", image)
+
   }
 
 
@@ -82,9 +84,9 @@ const EditUserForm = () => {
 
           <div>{user.username}</div>
           <img src={user.photo_url} />
-          <label className='upload'>
+          <label className='upload profile-pic'>
             Change your profile photo
-            <input className='upload' type="file" accept="image/*" onChange={updateImage} />
+            <input className='upload profile-pic' type="file" accept="image/*" onChange={updateImage} />
           </label>
 
           <label>Name
