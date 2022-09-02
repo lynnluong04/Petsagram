@@ -30,9 +30,9 @@ const CreateCommentForm = ({ postId }) => {
         const createdComment = await dispatch(thunkCreateComment(payload));
 
         if (createdComment) {
-            setErrors(createdComment)
+            setErrors(createdComment);
         } else {
-            setContent('')
+            setContent('');
             setErrors([]);
         }
 

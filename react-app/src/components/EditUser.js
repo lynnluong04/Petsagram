@@ -49,9 +49,8 @@ const EditUserForm = () => {
     const editedUser = await dispatch(thunkEditUser(payload))
 
     if (editedUser) {
-      reset()
       setErrors(editedUser)
-    }
+    } 
 
   }
 

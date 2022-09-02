@@ -6,7 +6,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
     const dispatch = useDispatch();
     const comment = useSelector(state => state.comment[commentId])
     const [editContent, setEditContent] = useState(comment?.content)
-    const [validationErrors, setValidationErrors] = useState([]);
+    const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const deleteComment = async (id) => {
@@ -17,7 +17,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        if (validationErrors.length) alert("Cannot post empty comment");
+        // if (validationErrors.length) alert("Cannot post empty comment");
 
         const payload = {
             id: comment.id,
@@ -27,11 +27,17 @@ const EditCommentForm = ({ commentId, hideForm }) => {
         const editedComment = await dispatch(thunkEditComment(payload));
 
         if (editedComment) {
-            setEditContent('')
-            setHasSubmitted(false)
-        };
-        hideForm()
+            setErrors(editedComment);
+
+        } else {
+            hideForm();
+            setEditContent('');
+            setErrors([]);
+        }
+
+
     }
+
 
     return (
         <div className="edit-comment container">
@@ -40,6 +46,11 @@ const EditCommentForm = ({ commentId, hideForm }) => {
                 <div>Edit your comment</div>
             </div>
             <form className="edit-comment" onSubmit={onSubmit}>
+                <div className='edit-comment error-container'>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
                 <input
                     className="edit-comment"
                     type="text"

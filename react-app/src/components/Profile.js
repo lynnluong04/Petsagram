@@ -12,6 +12,7 @@ const Profile = () => {
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
+    const sessionUser = useSelector(state => state.session.user);
 
     userPosts?.sort((a, b) => {
         return b.id - a.id;
@@ -35,6 +36,7 @@ const Profile = () => {
 
 
 
+
     return (
         <div className='profile container'>
             <div className='profile top'>
@@ -43,7 +45,11 @@ const Profile = () => {
                     <div className='top-username'>{user?.username}</div>
                     {/* <div>{user?.bio}</div> */}
                 </div>
-
+                {sessionUser.id === numberId &&
+                    <NavLink
+                        to={`/${sessionUser.id}/edit`}
+                    >Edit Profile</NavLink>
+                }
             </div>
 
             <div className='profile-bottom' >
