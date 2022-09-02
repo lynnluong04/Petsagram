@@ -6,6 +6,7 @@ from sqlalchemy.sql import func
 
 
 
+
 likes = db.Table(
     "likes",
     db.Model.metadata,
