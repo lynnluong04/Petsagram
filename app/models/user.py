@@ -35,5 +35,5 @@ class User(db.Model, UserMixin):
             'photo_url': self.photo_url
         }
 
-owner_posts = db.relationship("Post", back_populates="owner")
-comments = db.relationship("Comment", back_populates="owner")
+    owner_posts = db.relationship("Post", back_populates="owner")
+    comments = db.relationship("Comment", back_populates="owner")

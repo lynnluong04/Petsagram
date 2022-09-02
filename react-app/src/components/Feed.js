@@ -20,6 +20,7 @@ const Feed = () => {
         return b.id - a.id
     });
 
+
     useEffect(() => {
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
@@ -61,7 +62,7 @@ const Feed = () => {
                                     > more </div>
                                 }
                             </div>
-                            {post.comments_num > 0 &&
+                            {/* {post.comments_num > 0 &&
                                 <NavLink to={{
                                     pathname: `/${post.owner_id}/${post.id}`,
                                     state: { background: location }
@@ -69,7 +70,7 @@ const Feed = () => {
                                     <div className='view-comments' onClick={() => setOpenComments(true)}>
                                         View all {post.comments_num} comments
                                     </div>
-                                </NavLink>}
+                                </NavLink>} */}
                             <CreateCommentForm postId={post.id} />
                         </div>
                     </div>
