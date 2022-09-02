@@ -1,7 +1,10 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
+from flask_wtf.csrf import validate_csrf
 from app.forms.edit_user import EditUserForm
 from app.models import User, db
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 user_routes = Blueprint('users', __name__)
 
@@ -54,3 +57,31 @@ def edit_user(id):
         return user.to_dict()
 
     return {'errors':validation_errors_to_error_messages(form.errors)}, 401
+
+@user_routes.route('/profile-pic', methods=['POST'])
+def profile_pic():
+    # try:
+    #     validate_csrf(request.cookies['csrf_token'])
+        if "image" not in request.files:
+            return {"errors": "image required"}, 400
+
+        image = request.files["image"]
+
+        if not allowed_file(image.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload["url"]
+
+        user = User.query.get(current_user.id)
+        user.profile_url=url
+        db.session.commit()
+        return user.to_dict();
+    # except:
+    #     return {'errors': 'Invalid csrf token'}, 400

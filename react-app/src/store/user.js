@@ -48,6 +48,18 @@ export const thunkEditUser = payload => async dispatch => {
     }
 }
 
+export const uploadProfilePhoto = formData => async dispatch => {
+    const res = await fetch('/api/users/profile-pic', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (res.ok) {
+        const user = await res.json();
+        dispatch(edit(user));
+    }
+}
+
 export const thunkDeletePost = userId => async dispatch => {
     const res = await fetch(`/api/users/${userId}`, {
         method: 'DELETE'
