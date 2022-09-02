@@ -23,5 +23,5 @@ class Comment(db.Model):
             'owner_profile': User.query.get(self.owner_id).photo_url
         }
 
-owner = db.relationship("User", back_populates="comments")
-post = db.relationship("Post", back_populates="all_comments")
+    owner = db.relationship("User", back_populates="comments")
+    post = db.relationship("Post", back_populates="all_comments")
