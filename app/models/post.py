@@ -1,7 +1,9 @@
+# from tkinter import CASCADE
 from .db import db
 from .user import User
 from .comment import Comment
 from sqlalchemy.sql import func
+
 
 
 likes = db.Table(
@@ -35,9 +37,10 @@ class Post(db.Model):
 
 
 
-owner = db.relationship("User", back_populates="owner_posts")
-comments = db.relationship("Comment", back_populates="owner", cascade="all, delete")
-users_who_liked = db.relationship("User",
+
+    owner = db.relationship("User", back_populates="owner_posts")
+    all_comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
+    users_who_liked = db.relationship("User",
     secondary=likes,
     back_populates='liked_posts'
 )

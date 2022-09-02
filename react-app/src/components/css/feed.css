@@ -130,7 +130,7 @@ form.comments {
 
 }
 
-form.comments>textarea {
+form.comments> input {
     width: 380px;
     min-height: 30px;
     padding: 5px 10px;

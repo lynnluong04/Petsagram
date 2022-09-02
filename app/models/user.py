@@ -35,9 +35,9 @@ class User(db.Model, UserMixin):
             'photo_url': self.photo_url
         }
 
-owner_posts = db.relationship("Post", back_populates="owner")
-comments = db.relationship("Comment", back_populates="owner")
-# liked_posts = db.relationship("Post",
+    owner_posts = db.relationship("Post", back_populates="owner")
+    comments = db.relationship("Comment", back_populates="owner")
+    # liked_posts = db.relationship("Post",
 #     secondary=likes,
 #     back_populates='users_who_liked'
 # )

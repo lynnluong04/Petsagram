@@ -16,9 +16,10 @@ const Feed = () => {
     const [expandCaption, setExpandCaption] = useState(false);
 
     const postsArray = posts ? Object.values(posts) : null;
-    postsArray?.sort((a,b) => {
+    postsArray?.sort((a, b) => {
         return b.id - a.id
     });
+
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
@@ -55,11 +56,13 @@ const Feed = () => {
                                     <div className='post username'> {post.owner} </div>
                                 </NavLink>
                                 <div className={expandCaption ? 'caption-full' : 'caption-truncated'} >{post.caption}</div>
-                                <div
-                                    onClick={() => setExpandCaption(true)} className={expandCaption ? 'hide-more' : 'show-more'}
-                                > more </div>
+                                {post.caption.length > 50 &&
+                                    <div
+                                        onClick={() => setExpandCaption(true)} className={expandCaption ? 'hide-more' : 'show-more'}
+                                    > more </div>
+                                }
                             </div>
-                            {post.comments_num > 0 &&
+                            {/* {post.comments_num > 0 &&
                                 <NavLink to={{
                                     pathname: `/${post.owner_id}/${post.id}`,
                                     state: { background: location }
@@ -67,7 +70,7 @@ const Feed = () => {
                                     <div className='view-comments' onClick={() => setOpenComments(true)}>
                                         View all {post.comments_num} comments
                                     </div>
-                                </NavLink>}
+                                </NavLink>} */}
                             <CreateCommentForm postId={post.id} />
                         </div>
                     </div>

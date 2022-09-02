@@ -46,7 +46,6 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
 
 
 export const thunkCreatePost = formData => async dispatch => {
-    console.log("Hitting Create Post Thunk", formData)
     const res = await fetch('/api/posts/', {
         method: 'POST',
         body: formData
@@ -88,7 +87,6 @@ export const thunkEditPost = payload => async dispatch => {
 }
 
 export const thunkDeletePost = postId => async dispatch => {
-    console.log("DELETE POST THUNK", postId)
     const res = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     })

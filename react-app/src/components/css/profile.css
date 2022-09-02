@@ -1,9 +1,12 @@
+
+
 div.profile.container {
     width: 935px;
     padding: 0px 20px 0px 20px;
     position: absolute;
     top: 100px;
-    margin: 0 auto;
+    margin: 0px auto;
+    /* height: fit-content; */
 }
 
 .profile.top {
@@ -12,11 +15,17 @@ div.profile.container {
     border-bottom: 1px solid #DADDE1;
 }
 
+.top-username {
+    font-size: 28px;
+    margin-left: 50px;
+}
+
 .profile-image {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 20px;
 }
 
 img.profile-post {
@@ -29,4 +38,23 @@ img.profile-post {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+div.categories {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+.photos-container {
+    width: 100%;
+    display: flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+img.profile-post {
+    margin-bottom: 25px;
 }

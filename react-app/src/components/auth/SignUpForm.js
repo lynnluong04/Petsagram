@@ -5,6 +5,10 @@ import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session";
 import "../css/home.css"
 
+const IMAGE = (imgName) => {
+  return require(`../images/${imgName}`).default
+}
+
 const SignUpForm = ({ setLoggingIn }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
@@ -65,10 +69,10 @@ const SignUpForm = ({ setLoggingIn }) => {
   return (
     <div className='signup form container'>
       <div className='signup upper container'>
-        <img className='logo signup' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-8.39.47-PM_1.png" />
+        <img className='logo signup' src={IMAGE("logo-black.png")} />
         <div className='signup text'>Sign up to see photos and videos from your pet friends.</div>
         <button className='signup demo' onClick={handleDemoUser}>Log in with Demo User</button>
-        <img className='or signup' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-09-at-12.07.58-AM_1.png" />
+        <img className='or signup' src={IMAGE("splash-or.png")} />
 
         <form onSubmit={onSignUp}>
           <input

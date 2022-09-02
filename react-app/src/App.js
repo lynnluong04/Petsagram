@@ -34,8 +34,11 @@ function App() {
     // <BrowserRouter>
     <div className='app' >
       {sessionUser && (<NavBar />)}
-      <Switch location={ background || location}>
-        <Route path='/' exact component={Home} />
+      <Switch location={background || location}>
+        <Route path='/:userId' exact component={Profile} />
+        <Route path='/'  >
+          <Home />
+        </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -49,9 +52,8 @@ function App() {
           <User />
         </ProtectedRoute> */}
 
-        <Route path='/:userId' exact component={Profile} />
       </Switch>
-      {background && <Route path='/:userId/:postId' children={<SinglePostModal/>} />}
+      {background && <Route path='/:userId/:postId' children={<SinglePostModal />} />}
     </div>
     // </BrowserRouter>
   );

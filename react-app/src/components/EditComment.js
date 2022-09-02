@@ -35,14 +35,20 @@ const EditCommentForm = ({ commentId, hideForm }) => {
     }
 
     return (
-        <div className="edit-form container">
-            <div>Edit your comment</div>
+        <div className="edit-comment container">
+            <div className="edit-comment-top">
+                <button onClick={() => hideForm()} className="cancel">Cancel</button>
+                <div>Edit your comment</div>
+            </div>
             <form className="edit-comment" onSubmit={onSubmit}>
-                <input type="text"
+                <input
+                    className="edit-comment"
+                    type="text"
                     value={editContent}
+                    maxLength="2200"
                     onChange={e => setEditContent(e.target.value)}>
                 </input>
-                <button className="submit-edit-comment">Submit</button>
+                <button className="edit-comment">Done</button>
             </form>
             <button className="delete-comment" onClick={() => deleteComment(comment.id)}>Delete</button>
 

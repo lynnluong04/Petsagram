@@ -65,6 +65,10 @@ label.upload {
     align-items: center;
 }
 
+label.upload:hover {
+    cursor: pointer;
+}
+
 .conditional.container.two {
     height: 607px;
     width: 904px;

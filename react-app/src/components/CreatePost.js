@@ -35,7 +35,6 @@ const CreatePostForm = ({ hideForm }) => {
         return () => URL.revokeObjectURL(objectUrl)
     }, [image])
 
-    console.log("WHAT IS THE IMAGE", preview)
 
 
     const onSubmit = async (e) => {
@@ -130,7 +129,7 @@ if (brokenImage) {
                                     <div> {sessionUser.username} </div>
                                 </div>
 
-                                <textarea className='caption' type="text" placeholder='Write a caption...' value={caption} onChange={e => setCaption(e.target.value)}> </textarea>
+                                <textarea className='caption' maxLength="2200" type="text" placeholder='Write a caption...' value={caption} onChange={e => setCaption(e.target.value)}> </textarea>
                             </div>
 
                         </div>

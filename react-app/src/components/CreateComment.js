@@ -31,18 +31,23 @@ const CreateCommentForm = ({ postId }) => {
 
         if (createdComment) {
             setErrors(createdComment)
-            setContent('');
+        } else {
+            setContent('')
+            setErrors([]);
         }
+
+
+
     }
 
     return (
         <div className='comments create'>
             {errors && errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
+                <div className='comments-error' key={ind}>{error}</div>
             ))}
             <form className='comments' onSubmit={onSubmit}>
-                <textarea value={content} maxLength='2200' placeholder="Write comment here"
-                    onChange={e => setContent(e.target.value)}> HI </textarea>
+                <input value={content} maxLength='2200' placeholder="Write comment here"
+                    onChange={e => setContent(e.target.value)}/>
                 <button className='post-comment' type="submit">Post</button>
             </form>
         </div>

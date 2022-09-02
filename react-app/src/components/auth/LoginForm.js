@@ -5,6 +5,10 @@ import * as sessionActions from "../../store/session";
 import { login } from '../../store/session';
 import "../css/home.css"
 
+const IMAGE = (imgName) => {
+  return require(`../images/${imgName}`).default
+}
+
 const LoginForm = ({ setLoggingIn }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -47,7 +51,7 @@ const LoginForm = ({ setLoggingIn }) => {
   return (
     <div className='login form container'>
       <div className='login upper container'>
-        <img className='logo login' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-08-at-8.39.47-PM_1.png" />
+        <img className='logo login' src={IMAGE("logo-black.png")} />
         <div className='req-text'>All fields required*</div>
 
         <form onSubmit={onLogin}>
@@ -70,7 +74,7 @@ const LoginForm = ({ setLoggingIn }) => {
           <button className='submit login' type='submit'>Login</button>
         </form>
 
-        <img className='or' src="https://www.linkpicture.com/q/Screen-Shot-2022-08-09-at-12.07.58-AM_1.png"/>
+        <img className='or' src={IMAGE("splash-or.png")}/>
 
         <div className='demo container'>Log in as a
           <button onClick={handleDemoUser}>Demo User</button>
