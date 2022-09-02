@@ -8,14 +8,14 @@ const load = list => ({
 })
 
 
-const edit = comment => ({
+const edit = user => ({
     type: EDIT,
-    comment
+    user
 })
 
-const remove = commentId => ({
+const remove = userId => ({
     type: REMOVE,
-    commentId
+    userId
 })
 
 
@@ -37,6 +37,14 @@ export const thunkEditUser = payload => async dispatch => {
     if (res.ok) {
         const user = await res.json();
         dispatch(edit(user))
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ['An error occurred. Please try again']
     }
 }
 

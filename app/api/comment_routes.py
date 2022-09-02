@@ -45,6 +45,7 @@ def edit_comment(commentId):
         comment = Comment.query.get(commentId)
         data = request.json
         comment.content = data['content']
+        # comment.content = form.data['content']
         db.session.commit()
         return comment.to_dict()
     return {'errors':validation_errors_to_error_messages(form.errors)}, 401

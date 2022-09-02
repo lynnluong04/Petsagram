@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { thunkLoadUsers } from "../store/user";
+import { thunkEditUser, thunkLoadUsers } from "../store/user";
 
 const EditUserForm = () => {
   const dispatch = useDispatch();
@@ -30,59 +30,92 @@ const EditUserForm = () => {
     setBio(e.target.value);
   };
 
-
   useEffect(() => {
     dispatch(thunkLoadUsers())
   }, [dispatch])
 
-if (user) {
-  return (
-    <div>
-      <form>
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      id: sessionUser.id,
+      name: name,
+      username: username,
+      email: email,
+      bio: bio
+    }
+
+    console.log("PAYLOAD FROM EDIT USER", payload)
+    const editedUser = await dispatch(thunkEditUser(payload))
+
+    if (editedUser) {
+      reset()
+      setErrors(editedUser)
+    }
+
+  }
+
+
+  const reset = () => {
+    setName('');
+    setUsername('');
+    setBio('');
+    setEmail('');
+  }
+
+  if (user) {
+    return (
+      <div>
+        <form onSubmit={onSubmit} >
+          <div className='edit-user error-container'>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
 
           <div>{user.username}</div>
-          <img src={user.photo_url}/>
+          <img src={user.photo_url} />
 
-        <label>Name
-          <input
-            type='text' placeholder='Full Name'
-            className='edit-profile' name='name'
-            onChange={updateName} value={name}>
-          </input>
-        </label>
+          <label>Name
+            <input
+              type='text' placeholder='Full Name'
+              className='edit-profile' name='name'
+              onChange={updateName} value={name}>
+            </input>
+          </label>
 
-        <label> Username
-          <input
-            className='edit-profile' placeholder='Username'
-            type='text' name='username'
-            onChange={updateUsername} value={username}>
-          </input>
-        </label>
+          <label> Username
+            <input
+              className='edit-profile' placeholder='Username'
+              type='text' name='username'
+              onChange={updateUsername} value={username}>
+            </input>
+          </label>
 
-        <label>Bio
-        <textarea
-          name='bio' value={bio}
-          onChange={updateEmail}>
-        </textarea>
-        </label>
+          <label>Bio
+            <textarea
+              name='bio' value={bio}
+              onChange={updateBio}>
+            </textarea>
+          </label>
 
-        <label>Email
-        <input
-          type='text' placeholder='Email'
-          className='edit-profile' name='email'
-          onChange={updateEmail} value={email}>
-        </input>
-        </label>
+          <label>Email
+            <input
+              type='text' placeholder='Email'
+              className='edit-profile' name='email'
+              onChange={updateEmail} value={email}>
+            </input>
+          </label>
 
-        <button>Submit</button>
-      </form>
-    </div>
-  )
-} else {
-  return (
-    <div>Loading...</div>
-  )
-}
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  } else {
+    return (
+      <div>Loading...</div>
+    )
+  }
 }
 
 

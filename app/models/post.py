@@ -2,7 +2,6 @@
 from .db import db
 from sqlalchemy.sql import func
 from .user import User
-# from .comment import Comment
 
 # likes = db.Table(
 #     "likes",
@@ -30,7 +29,7 @@ class Post(db.Model):
             'created_at': self.created_at,
             'owner': User.query.get(self.owner_id).username,
             'profile': User.query.get(self.owner_id).photo_url,
-            # 'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
+            'comments_num': len(self.all_comments),
         }
 
 

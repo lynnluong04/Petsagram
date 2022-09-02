@@ -29,7 +29,6 @@ const EditCommentForm = ({ commentId, hideForm }) => {
         if (editedComment) {
             setEditContent('')
             setHasSubmitted(false)
-
         };
         hideForm()
     }
