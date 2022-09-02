@@ -3,16 +3,8 @@ from .db import db
 from .user import User
 from .comment import Comment
 from sqlalchemy.sql import func
+from .like import likes
 
-
-
-
-likes = db.Table(
-    "likes",
-    db.Model.metadata,
-    db.Column('owner_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'), primary_key=True)
-)
 
 
 class Post(db.Model):
