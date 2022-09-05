@@ -7,19 +7,23 @@ const IMAGE = (imgName) => {
 
 const LikeUnlike = ({ post }) => {
     const dispatch = useDispatch();
-    const [like, setLike] = useState('false')
+    const [like, setLike] = useState(false)
     const sessionUser = useSelector(state => state.session.user);
 
+    // console.log('LIKE STATUS', like)
 
     useEffect(() => {
-        if (post?.users_who_liked?.includes(sessionUser)) {
+        if (post?.liked_users.includes(sessionUser.id)) {
             setLike(true)
         }
     })
 
+
+
     const likePost = async (e) => {
         await dispatch(thunkAddLike(post.id))
         setLike(true)
+        console.log(`Liking post with id ${post.id}`)
     }
 
     const unlikePost = async (e) => {
@@ -29,7 +33,7 @@ const LikeUnlike = ({ post }) => {
 
     return (
 
-        <div onClick={like? ()=> unlikePost() : () => likePost() }>
+        <div onClick={like? unlikePost : likePost }>
             <img className="paw" src={like? IMAGE('paw-red.png'): IMAGE('paw.png')} />
         </div>
     )

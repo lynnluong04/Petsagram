@@ -19,6 +19,7 @@ def all_posts():
 @post_routes.route('/<int:userId>')
 @login_required
 def user_posts(userId):
+    ("----------HITTING GET ROUTE-----------------")
     posts = Post.query.filter_by(owner_id=userId).all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])
@@ -27,6 +28,7 @@ def user_posts(userId):
 
 @post_routes.route('/', methods=['POST'])
 def create_post():
+    print("----------HITTING POST ROUTE-----------------")
     # form = PostForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
     # if form.validate_on_submit():
@@ -64,6 +66,7 @@ def create_post():
 
 @post_routes.route('/<int:postId>/', methods=['PUT'])
 def edit_post(postId):
+    ("----------HITTING PUT ROUTE-----------------")
     form = EditPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -82,8 +85,9 @@ def delete_post(postId):
     return f'{postId}'
 
 
-@post_routes.route("/<int:postId>/like", methods=['PUT'])
+@post_routes.route("/<int:postId>/like", methods=['POST'])
 def like_post(postId):
+    print("----------HITTING LIKE ROUTE-----------------")
     post = Post.query.get(postId)
     post.users_who_liked.append(current_user)
     db.session.commit()
@@ -91,6 +95,7 @@ def like_post(postId):
 
 @post_routes.route("/<int:postId>/unlike", methods=['PUT'])
 def unlike_post(postId):
+    print("----------HITTING UNLIKE ROUTE-----------------")
     post = Post.query.get(postId)
     post.users_who_liked.remove(current_user)
     db.session.commit()

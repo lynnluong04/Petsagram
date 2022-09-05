@@ -23,10 +23,12 @@ class Post(db.Model):
             'media_url': self.media_url,
             'caption': self.caption,
             'created_at': self.created_at,
-            'owner': User.query.get(self.owner_id).username,
-            'profile': User.query.get(self.owner_id).photo_url,
+            'owner': self.owner.username,
+            'profile': self.owner.photo_url,
             'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
+            'liked_users': [user.id for user in self.users_who_liked]
         }
+
 
 
 
