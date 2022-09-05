@@ -1,17 +1,11 @@
 # from tkinter import CASCADE
 from .db import db
-from sqlalchemy.sql import func
 from .user import User
 
 from .comment import Comment
+from sqlalchemy.sql import func
+from .like import likes
 
-
-# likes = db.Table(
-#     "likes",
-#     db.Model.metadata,
-#     db.Column('owner_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-#     db.Column('post_id', db.Integer, db.ForeignKey('posts.id'), primary_key=True)
-# )
 
 
 class Post(db.Model):
@@ -31,11 +25,18 @@ class Post(db.Model):
             'caption': self.caption,
             'created_at': self.created_at,
             'owner': self.owner.username,
-            'profile': User.query.get(self.owner_id).photo_url,
-            'comments_num': len(self.all_comments),
+            'profile': self.owner.photo_url,
+            'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
+            'liked_users': [user.id for user in self.users_who_liked]
         }
+
+
 
 
 
     owner = db.relationship("User", back_populates="owner_posts")
     all_comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
+    users_who_liked = db.relationship("User",
+    secondary=likes,
+    back_populates='liked_posts'
+)

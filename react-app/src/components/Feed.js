@@ -6,6 +6,7 @@ import { thunkLoadPosts } from '../store/post';
 import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
 import "./css/feed.css"
+import LikeUnlike from './LikeUnlike';
 
 const Feed = () => {
     const dispatch = useDispatch();
@@ -51,6 +52,9 @@ const Feed = () => {
                         <img className='post' src={post.media_url} alt="photo post" />
 
                         <div className='post-bottom'>
+
+                            < LikeUnlike post={post}/>
+
                             <div className='caption-container'>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
                                     <div className='post username'> {post.owner} </div>
