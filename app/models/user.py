@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .like import likes
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -35,9 +36,10 @@ class User(db.Model, UserMixin):
             'photo_url': self.photo_url
         }
 
+
     owner_posts = db.relationship("Post", back_populates="owner")
     comments = db.relationship("Comment", back_populates="owner")
     liked_posts = db.relationship("Post",
-    secondary=likes,
-    back_populates='users_who_liked'
-)
+                                  secondary=likes,
+                                  back_populates='users_who_liked'
+                                  )

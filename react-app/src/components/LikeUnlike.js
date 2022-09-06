@@ -13,7 +13,7 @@ const LikeUnlike = ({ post }) => {
     // console.log('LIKE STATUS', like)
 
     useEffect(() => {
-        if (post?.liked_users.includes(sessionUser.id)) {
+        if (post?.liked_users_id.includes(sessionUser.id)) {
             setLike(true)
         }
     })
