@@ -7,6 +7,7 @@ import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
 import "./css/feed.css"
 import LikeUnlike from './LikeUnlike';
+import PostActions from './PostActions';
 
 const Feed = () => {
     const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Feed = () => {
 
                         <div className='post-bottom'>
 
-                            < LikeUnlike post={post}/>
+                            < PostActions post={post} />
 
                             <div className='caption-container'>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">

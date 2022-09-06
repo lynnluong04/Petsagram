@@ -7,7 +7,7 @@
     margin-top: 8px;
     height: fit-content;
     width: 470px;
-    border: 1px solid #DADDE1;
+    border: 1px solid#DADDE1;
     border-radius: 8px;
     margin-bottom: 8px;
 }
@@ -156,4 +156,21 @@ button.post-comment {
 .paw {
     height: 40px;
     width: 45px;
+}
+
+.post-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-actions.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.likes-amount {
+    margin-left: 10px;
+    font-weight: bold;
 }

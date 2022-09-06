@@ -27,7 +27,8 @@ class Post(db.Model):
             'owner': self.owner.username,
             'profile': self.owner.photo_url,
             'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
-            'liked_users': [user.id for user in self.users_who_liked]
+            'liked_users': [user.id for user in self.users_who_liked],
+            'likes_amount': len(self.users_who_liked)
         }
 
 
