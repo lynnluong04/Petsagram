@@ -2,6 +2,7 @@ const LOAD = '/users/LOAD';
 const EDIT = '/users/EDIT';
 const REMOVE = '/users/REMOVE';
 
+
 const load = list => ({
     type: LOAD,
     list

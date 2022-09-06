@@ -2,6 +2,8 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .like import likes
+from .follow import follows
+from .post import Post
 
 
 class User(db.Model, UserMixin):
@@ -36,6 +38,26 @@ class User(db.Model, UserMixin):
             'photo_url': self.photo_url
         }
 
+    def is_following(self, user):
+        return self.following.filter(
+            follows.c.followee == user.id).count() > 0
+
+    def follow(self, user):
+        if not self.is_following(user):
+            self.following.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.following.remove(user)
+
+    def followed_posts(self):
+        followed = Post.query.join(
+            follows, (follows.c.followee == Post.user_id)).filter(
+                follows.c.follower == self.id)
+        own = Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Post.timestamp.desc())
+
+
 
     owner_posts = db.relationship("Post", back_populates="owner")
     comments = db.relationship("Comment", back_populates="owner")
@@ -43,3 +65,8 @@ class User(db.Model, UserMixin):
                                   secondary=likes,
                                   back_populates='users_who_liked'
                                   )
+    following = db.relationship(
+        'User', secondary=follows,
+        primaryjoin=(follows.c.follower == id),
+        secondaryjoin=(follows.c.followee == id),
+        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
