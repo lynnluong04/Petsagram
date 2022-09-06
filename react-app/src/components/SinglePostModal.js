@@ -7,6 +7,7 @@ import SinglePost from "./SinglePost";
 import EditPostModal from "./EditPostModal";
 import CreateCommentForm from "./CreateComment";
 import AllComments from "./AllComments";
+import PostActions from "./PostActions";
 
 const SinglePostModal = () => {
     const [showModal, setShowModal] = useState(false);
@@ -63,21 +64,24 @@ const SinglePostModal = () => {
                                     <div className="username" >{user.username}</div>
                                 </div>
 
-                                {post && sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={() => setShowModal(false)} hideForm={() => setShowModal(false)}/>}
+                                {post && sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={() => setShowModal(false)} hideForm={() => setShowModal(false)} />}
                             </div>
 
-                                <div className="caption-comments" >
-                                    <div className="user-info-caption">
-                                        <div className="caption icon">
-                                            <img className="post-user two" src={user.photo_url} />
-                                        </div>
-                                        <div className="caption-content">
-                                            {user.username} {caption}
-                                        </div>
+                            <div className="caption-comments" >
+                                <div className="user-info-caption">
+                                    <div className="caption icon">
+                                        <img className="post-user two" src={user.photo_url} />
                                     </div>
-                                    <AllComments postId={Number(postId)} />
+                                    <div className="caption-content">
+                                        {user.username} {caption}
+                                    </div>
                                 </div>
-                                <CreateCommentForm postId={Number(postId)} />
+                                <AllComments postId={Number(postId)} />
+                            </div>
+                            <div>
+                                <PostActions post={post} />
+                            </div>
+                            <CreateCommentForm postId={Number(postId)} />
 
                         </div>
                     </div>
