@@ -97,7 +97,7 @@ export const thunkDeletePost = postId => async dispatch => {
 }
 
 export const thunkAddLike = (postId) => async (dispatch) => {
-    console.log("THUNK LIKE WITH PAYLOAD", postId)
+    // console.log("THUNK LIKE WITH PAYLOAD", postId)
     const res = await fetch(`/api/posts/${postId}/like`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
