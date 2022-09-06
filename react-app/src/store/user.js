@@ -62,7 +62,7 @@ export const uploadProfilePhoto = formData => async dispatch => {
     }
 }
 
-export const thunkDeletePost = userId => async dispatch => {
+export const thunkDeleteUser = userId => async dispatch => {
     const res = await fetch(`/api/users/${userId}`, {
         method: 'DELETE'
     });
@@ -70,6 +70,12 @@ export const thunkDeletePost = userId => async dispatch => {
     if (res.ok) {
         dispatch(remove(userId))
     }
+}
+
+export const thunkFollowUser = userId => async dispatch => {
+    const res = await fetch(`/api/users/${userId}/follow`, {
+        method: 'POST'
+    })
 }
 
 
