@@ -11,13 +11,32 @@ div.profile.container {
 
 .profile.top {
     width: 100%;
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     border-bottom: 1px solid #DADDE1;
+}
+
+.user-info-top {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .top-username {
     font-size: 28px;
-    margin-left: 50px;
+}
+
+.username-edit-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.counts {
+    font-size: 16px;
+    margin: 25px 0;
+}
+span.num {
+    font-weight: bold;
 }
 
 .profile-image {
@@ -57,4 +76,120 @@ div.categories {
 
 img.profile-post {
     margin-bottom: 25px;
+}
+
+.edit-profile {
+    color: black;
+    font-size: 14px;
+    font-weight: 400;
+    width: fit-content;
+    height: 18px;
+    border: 1px solid rgb(219, 219, 219);
+    padding: 5px 9px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+label.edit-profile {
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.edit-user-container {
+    height: 600px;
+    width: 696px;
+    background-color: white;
+    border:1px solid #DADDE1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+input.edit-profile {
+    width: 353px;
+    height: 30px;
+    /* margin-top: 30px; */
+}
+
+textarea.edit-profile {
+    width: 353px;
+    height: 60px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    /* margin-top: 30px; */
+}
+
+.edit-user-inputs {
+    width: fit-content;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+label.edit-profile {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 0px;
+}
+
+img.edit-user-pic {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+}
+
+.edit-user-upper {
+    display: flex;
+    flex-direction: row;
+    min-width: 450px;
+    margin-left: 30px;
+}
+
+.edit-user-head {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    width: 100%;
+}
+
+.edit-user-info {
+    margin-left: 25px;
+}
+
+label.upload-profile-pic {
+    background-color: none;
+    color: #0095F6;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+label.upload-profile-pic:hover {
+    cursor: pointer;
+}
+
+input.upload-profile-pic {
+    display: none;
+}
+
+.edit-user-username {
+    font-size: 20px;
+}
+
+button.edit-user{
+    margin-top: 40px;
+    width: 76px;
+    height: 28px;
+    border-radius: 5px;
+    background-color: #0095F6;
+    color:white;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
 }

@@ -45,7 +45,9 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'photo_url': self.photo_url,
             'followers': [user.to_dict_follows() for user in self.followers],
-            'following': [user.to_dict_follows() for user in self.following]
+            'following': [user.to_dict_follows() for user in self.following],
+            'posts_num': len(self.owner_posts)
+
         }
 
     def is_following(self, user):

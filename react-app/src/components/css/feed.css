@@ -30,20 +30,23 @@
 }
 
 .caption-container {
+    display: flex;
+    align-items: center;
     display: inline-flex;
     height:fit-content;
+    margin-left: 5px;
 }
 
 .post.username {
     font-size: 14px;
     color: black;
     font-weight: bold;
-    padding: 12px 6px 12px 10px;
+    padding: 8px 6px 12px 10px;
     text-align: left;
 }
 
 .caption-truncated {
-    padding: 12px 6px 12px 0;
+    padding: 8px 6px 12px 0;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -125,15 +128,15 @@ form.comments {
     height: fit-content;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     border-bottom-left-radius: 8px;
     border-top: 1px solid #DADDE1;
-
 }
 
 form.comments> input {
     width: 380px;
     min-height: 30px;
-    padding: 5px 10px;
+    padding: 5px 15px;
     max-height: 89px;
     border: none;
     resize: none;
@@ -146,11 +149,14 @@ button.post-comment {
     border: none;
     background-color: transparent;
     color: #0095F6;
+    font-weight: bold;
+    padding: 10px;
+    margin-right: 10px;
 }
 
 .view-comments {
     color: #8E8E8E;
-    margin: 0px 0px 15px 10px;
+    margin: 0px 0px 15px 15px;
 }
 
 .paw {
@@ -168,6 +174,7 @@ button.post-comment {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 5px;
 }
 
 .likes-amount {

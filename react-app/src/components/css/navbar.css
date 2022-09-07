@@ -99,6 +99,10 @@ svg {
     margin-right: 15px;
 }
 
+svg.links:hover {
+    cursor: pointer;
+}
+
 a#profile-button{
 color: black;
 }

@@ -34,6 +34,7 @@ img.post-user, img.comment-user {
     width: 32px;
     height: 32px;
     margin-right: 15px;
+    border-radius: 50%;
 }
 
 
@@ -61,7 +62,7 @@ div.user-info-caption {
     display: inline-flex;
     align-items: center;
     margin-bottom: 20px;
-    margin: 15px 20px 15px 20px;
+    margin: 15px 20px 15px 15px;
     font-size: 14px;
 }
 
@@ -70,9 +71,8 @@ div.user-info-caption {
 button.edit-post-modal {
     background-color: transparent;
     border: none;
-    color: #0095F6;
-    font-weight: bold;
-    margin-right: 15px;
+    color: #000000;
+    font-weight: bolder;
 }
 
 
@@ -98,14 +98,23 @@ button.edit-post-modal {
 
 
 .comments.container {
-    margin: 10px 20px 15px 10px;
+    margin: 10px 20px 15px 5px;
 }
 
 .single-comment-container {
     padding: 5px 0;
     margin: 20px 0;
     height: fit-content;
+    display: flex;
+    align-items: center;
+    width: 100%;
     font-size: 14px;
+}
+
+.single-comment {
+    margin-left: 0;
+    display: flex;
+    align-items: center;
 }
 
 .username {
@@ -138,6 +147,7 @@ button.cancel, button.edit-post {
 
 button.cancel, button.edit-post{
     margin: 0 15px;
+    font-weight: bold;
 }
 
 input.edit-post {
@@ -158,8 +168,87 @@ button.delete-post {
     height: 42px;
     background-color: white;
     border: none;
-    color: red;
+    font-weight: bold;
+    color: rgb(240, 74, 79);
     border-top: 1px solid #DADDE1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.post-username {
+    font-weight: bold;
+}
+
+
+.edit-post-options {
+    width: 400px;
+    background-color: white;
+    border-radius: 15px;
+    /* height: 96px; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; */
+    font-size: 14px;
+}
+
+.delete-post-option {
+    width: 100%;
+    height: 48px;
+    border-bottom: 1px solid #DADDE1;
+    color: rgb(240, 74, 79);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.edit-post-option {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #DADDE1;
+}
+
+.cancel-edit-post {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.delete-post-container {
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upper-delete {
+    height: 104px;
+    width: 100%;
+    border-bottom: 1px solid #DADDE1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+.delete-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
 }

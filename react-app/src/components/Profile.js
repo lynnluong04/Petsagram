@@ -38,26 +38,30 @@ const Profile = () => {
     }, [dispatch]);
 
 
-
-
     return (
         <div className='profile container'>
             <div className='profile top'>
                 <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
-                <div>
-                    <div className='top-username'>{user?.username}</div>
-                    {/* <div>{user?.bio}</div> */}
-                </div>
-                {sessionUser.id === numberId &&
-                    <NavLink
-                        to={`/${sessionUser.id}/edit`}
-                    >Edit Profile</NavLink>
-                }
-                {sessionUser.id !== numberId && (
-                    <FollowUnfollow userId={userId} user={user}/>
-                )
 
-                }
+                <div className='user-info-top'>
+                    <div className='username-edit-button'>
+                        <div className='top-username'>{user?.username}</div>
+                        {sessionUser.id === numberId &&
+                            <NavLink
+                                to={`/${sessionUser.id}/edit`}
+                                className="edit-profile"
+                            >Edit Profile</NavLink>
+                        }
+                    </div>
+
+                    {sessionUser.id !== numberId && (
+                        <FollowUnfollow userId={userId} user={user} />
+                    )}
+
+                    {user.posts_num === 1 && (<div className='counts'><span className='num'>{user.posts_num}</span> post</div>)}
+                    {user.posts_num > 1 && (<div className='counts'> <span className='num'>{user.posts_num}</span> posts </div>)}
+                    <div>{user?.bio}</div>
+                </div>
             </div>
 
             <div className='profile-bottom' >

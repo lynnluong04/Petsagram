@@ -52,14 +52,14 @@ button.delete-comment {
     height: 42px;
     background-color: white;
     border: none;
-    color: red;
+    color: rgb(240, 74, 79);
     border-top: 1px solid #DADDE1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 .comments-error {
-    color: red;
+    color: rgb(240, 74, 79);
     margin-left: 10px;
     margin-bottom: 5px;
 }

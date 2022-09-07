@@ -73,7 +73,7 @@ const SinglePostModal = () => {
                                         <img className="post-user two" src={user.photo_url} />
                                     </div>
                                     <div className="caption-content">
-                                        {user.username} {caption}
+                                        <span className="post-username">{`${user.username} `}</span> {caption}
                                     </div>
                                 </div>
                                 <AllComments postId={Number(postId)} />

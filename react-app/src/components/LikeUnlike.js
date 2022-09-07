@@ -15,6 +15,8 @@ const LikeUnlike = ({ post }) => {
     useEffect(() => {
         if (post?.liked_users_id.includes(sessionUser.id)) {
             setLike(true)
+        } else {
+            setLike(false)
         }
     })
 
