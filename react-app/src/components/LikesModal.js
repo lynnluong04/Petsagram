@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const LikesModal = ({ post }) => {
     const [showModal, setShowModal] = useState(false);
-    const usersArr = Object.values(post.liked_users)
+    const usersArr = post && Object.values(post.liked_users)
 
     return (
         <div>

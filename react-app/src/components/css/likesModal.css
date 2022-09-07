@@ -30,6 +30,8 @@ img.liked-user {
 
 .liked-users-list{
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .each-user {
