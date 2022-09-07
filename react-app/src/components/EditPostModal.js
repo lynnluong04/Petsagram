@@ -9,6 +9,7 @@ const EditPostModal = ({ postId, closeSinglePost }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [showModal, setShowModal] = useState(false);
+    const [showEditPost, setShowEditPost] = useState(false);
 
 
 
@@ -23,12 +24,16 @@ const EditPostModal = ({ postId, closeSinglePost }) => {
                 <Modal onClose={() => setShowModal(false)}>
                     <div className="edit-post-options">
                         < DeletePostModal postId={postId} hideForm={() => setShowModal(false)} closeSinglePost={closeSinglePost} />
-                        <div className="edit-post-option">Edit</div>
+                        <div onClick={() => setShowEditPost(true)} className="edit-post-option">Edit</div>
                         <div className="cancel-edit-post">Cancel</div>
                     </div>
-                    {/* <EditPostForm hideForm={() => setShowModal(false)} postId={postId} closeSinglePost={closeSinglePost}/> */}
                 </Modal>
             )}
+
+            {showEditPost && (
+                <Modal onClose={() => setShowEditPost(true)}>
+                    <EditPostForm hideForm={() => setShowModal(false)} postId={postId} closeEdit={()=>setShowEditPost(false)} />
+                </Modal>)}
         </div>
     )
 };
