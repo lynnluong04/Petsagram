@@ -45,3 +45,8 @@ img.liked-user {
     justify-content: center;
     margin-left: 10px;
 }
+
+#likes-users {
+    color: black;
+    font-weight: bold;
+}

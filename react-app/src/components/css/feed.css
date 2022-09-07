@@ -30,6 +30,8 @@
 }
 
 .caption-container {
+    display: flex;
+    align-items: center;
     display: inline-flex;
     height:fit-content;
     margin-left: 5px;
@@ -44,7 +46,7 @@
 }
 
 .caption-truncated {
-    padding: 12px 6px 12px 0;
+    padding: 8px 6px 12px 0;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -134,7 +136,7 @@ form.comments {
 form.comments> input {
     width: 380px;
     min-height: 30px;
-    padding: 5px 10px;
+    padding: 5px 15px;
     max-height: 89px;
     border: none;
     resize: none;
@@ -149,6 +151,7 @@ button.post-comment {
     color: #0095F6;
     font-weight: bold;
     padding: 10px;
+    margin-right: 10px;
 }
 
 .view-comments {

@@ -15,12 +15,12 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
 
     const numberId = Number(postId)
 
-    const deletePost = async (id) => {
-        await dispatch(thunkDeletePost(id));
-        hideForm();
-        closeSinglePost();
-        history.goBack();
-    }
+    // const deletePost = async (id) => {
+    //     await dispatch(thunkDeletePost(id));
+    //     hideForm();
+    //     closeSinglePost();
+    //     history.goBack();
+    // }
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -67,7 +67,7 @@ const EditPostForm = ({ postId, hideForm, closeSinglePost }) => {
                     ))}
                 </div>
             </form>
-            <button className="delete-post" onClick={() => deletePost(numberId)}>Delete Post</button>
+            {/* <button className="delete-post" onClick={() => deletePost(numberId)}>Delete Post</button> */}
         </div>
     )
 

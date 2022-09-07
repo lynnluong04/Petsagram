@@ -19,6 +19,7 @@ const EditCommentModal = ({ commentId }) => {
             <button className="edit-comment" onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
+            
                     <EditCommentForm hideForm={() => setShowModal(false)} commentId={commentId}  />
                     {/* <button onClick={() => deleteComment(commentId)}>Delete</button> */}
                 </Modal>
