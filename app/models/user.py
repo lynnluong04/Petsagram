@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .like import likes
 from .follow import follows
-from .post import Post
+# from .post import Post
 
 
 class User(db.Model, UserMixin):
@@ -28,6 +28,14 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def to_dict_follows(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'name': self.name,
+            'photo_url': self.photo_url,
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -35,7 +43,9 @@ class User(db.Model, UserMixin):
             'name': self.name,
             'email': self.email,
             'bio': self.bio,
-            'photo_url': self.photo_url
+            'photo_url': self.photo_url,
+            'followers': [user.to_dict_follows() for user in self.followers],
+            'following': [user.to_dict_follows() for user in self.following]
         }
 
     def is_following(self, user):
@@ -51,11 +61,11 @@ class User(db.Model, UserMixin):
             self.following.remove(user)
 
     def followed_posts(self):
-        followed = Post.query.join(
-            follows, (follows.c.followee == Post.user_id)).filter(
+        followed = db.Post.query.join(
+            follows, (follows.c.followee == db.Post.user_id)).filter(
                 follows.c.follower == self.id)
-        own = Post.query.filter_by(user_id=self.id)
-        return followed.union(own).order_by(Post.timestamp.desc())
+        own = db.Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(db.Post.timestamp.desc())
 
 
 

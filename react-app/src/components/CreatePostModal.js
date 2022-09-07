@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Modal } from "../context/Modal";
-import { thunkCreatePost } from "../store/post";
 import CreatePostForm from "./CreatePost";
 
 const CreatePostModal = () => {

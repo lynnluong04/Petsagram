@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
+import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
+import FollowUnfollow from './FollowUnfollow';
 
 const Profile = () => {
     const [user, setUser] = useState({});
@@ -32,6 +34,7 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(thunkLoadPosts());
+        dispatch(thunkLoadUsers())
     }, [dispatch]);
 
 
@@ -49,6 +52,11 @@ const Profile = () => {
                     <NavLink
                         to={`/${sessionUser.id}/edit`}
                     >Edit Profile</NavLink>
+                }
+                {sessionUser.id !== numberId && (
+                    <FollowUnfollow userId={userId} user={user}/>
+                )
+
                 }
             </div>
 

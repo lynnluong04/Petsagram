@@ -89,22 +89,22 @@ def profile_pic():
     #     return {'errors': 'Invalid csrf token'}, 400
 
 @user_routes.route('/<int:id>/follow', methods=['POST'])
-def follow():
+def follow(id):
     form = EmptyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User.query.get(id)
         current_user.follow(user)
         db.session.commit()
-        return "not sure yet"
+        return {"addedUser": user.to_dict_follows(), "currentUser": current_user.to_dict_follows()}
 
 
 @user_routes.route('/<int:id>/unfollow', methods=['POST'])
-def unfollow():
+def unfollow(id):
     form = EmptyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User.query.get(id)
         current_user.unfollow(user)
         db.session.commit()
-        return "not sure yet"
+        return user.to_dict()

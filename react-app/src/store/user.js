@@ -1,6 +1,8 @@
 const LOAD = '/users/LOAD';
 const EDIT = '/users/EDIT';
 const REMOVE = '/users/REMOVE';
+const FOLLOW = '/users/FOLLOW'
+const UNFOLLOW = '/users/UNFOLLOW'
 
 
 const load = list => ({
@@ -19,6 +21,15 @@ const remove = userId => ({
     userId
 })
 
+const addToFollow = user => ({
+    type: FOLLOW,
+    user
+})
+
+const removeFollow = user => ({
+    type: UNFOLLOW,
+    user
+})
 
 export const thunkLoadUsers = () => async (dispatch) => {
     const res = await fetch('/api/users/');
@@ -74,8 +85,24 @@ export const thunkDeleteUser = userId => async dispatch => {
 
 export const thunkFollowUser = userId => async dispatch => {
     const res = await fetch(`/api/users/${userId}/follow`, {
+        method: 'POST',
+    });
+
+    if (res.ok) {
+        const user = await res.json()
+        console.log("RETURN FROM FOLLOW ROUTE", user)
+        dispatch(edit(user))
+    }
+}
+export const thunkUnfollowUser = userId => async dispatch => {
+    const res = await fetch(`/api/users/${userId}/unfollow`, {
         method: 'POST'
-    })
+    });
+
+    if (res.ok) {
+        const user = await res.json()
+        dispatch(edit(user))
+    }
 }
 
 
@@ -101,6 +128,20 @@ export default function userReducer(state = {}, action) {
             newState = {...state };
             delete newState[action.userId];
             return newState;
+
+        // case FOLLOW:
+        //     newState = {...state};
+        //     console.log("ACTION STUFF", action.userId)
+        //     const currentUser = newState[action.userId.currentUser.id]
+        //     const addedUser = newState[action.userId.addedUser.id]
+        //     console.log("NEWSTATE", state)
+        //     currentUser.following.push(addedUser)
+        //     return newState;
+
+        // case UNFOLLOW:
+        //     newState = {...state};
+        //     return newState;
+
 
         default:
             return state;
