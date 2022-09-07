@@ -96,7 +96,7 @@ def follow(id):
         user = User.query.get(id)
         current_user.follow(user)
         db.session.commit()
-        return {"addedUser": user.to_dict_follows(), "currentUser": current_user.to_dict_follows()}
+        return {"otherUser": user.to_dict(), "currentUser": current_user.to_dict()}
 
 
 @user_routes.route('/<int:id>/unfollow', methods=['POST'])
@@ -107,4 +107,4 @@ def unfollow(id):
         user = User.query.get(id)
         current_user.unfollow(user)
         db.session.commit()
-        return user.to_dict()
+        return {"otherUser": user.to_dict(), "currentUser": current_user.to_dict()}

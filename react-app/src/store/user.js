@@ -1,8 +1,7 @@
 const LOAD = '/users/LOAD';
 const EDIT = '/users/EDIT';
 const REMOVE = '/users/REMOVE';
-const FOLLOW = '/users/FOLLOW'
-const UNFOLLOW = '/users/UNFOLLOW'
+const FOLLOWING = '/users/FOLLOWING'
 
 
 const load = list => ({
@@ -21,15 +20,11 @@ const remove = userId => ({
     userId
 })
 
-const addToFollow = user => ({
-    type: FOLLOW,
+const updateFollow = user => ({
+    type: FOLLOWING,
     user
 })
 
-const removeFollow = user => ({
-    type: UNFOLLOW,
-    user
-})
 
 export const thunkLoadUsers = () => async (dispatch) => {
     const res = await fetch('/api/users/');
@@ -91,7 +86,7 @@ export const thunkFollowUser = userId => async dispatch => {
     if (res.ok) {
         const user = await res.json()
         console.log("RETURN FROM FOLLOW ROUTE", user)
-        dispatch(edit(user))
+        dispatch(updateFollow(user))
     }
 }
 export const thunkUnfollowUser = userId => async dispatch => {
@@ -101,7 +96,7 @@ export const thunkUnfollowUser = userId => async dispatch => {
 
     if (res.ok) {
         const user = await res.json()
-        dispatch(edit(user))
+        dispatch(updateFollow(user))
     }
 }
 
@@ -121,6 +116,7 @@ export default function userReducer(state = {}, action) {
 
         case EDIT:
             newState = {...state};
+            console.log("USER FROM EDIT THUNK", action.user.currentUser)
             newState[action.user.id] = action.user;
             return newState;
 
@@ -129,18 +125,11 @@ export default function userReducer(state = {}, action) {
             delete newState[action.userId];
             return newState;
 
-        // case FOLLOW:
-        //     newState = {...state};
-        //     console.log("ACTION STUFF", action.userId)
-        //     const currentUser = newState[action.userId.currentUser.id]
-        //     const addedUser = newState[action.userId.addedUser.id]
-        //     console.log("NEWSTATE", state)
-        //     currentUser.following.push(addedUser)
-        //     return newState;
-
-        // case UNFOLLOW:
-        //     newState = {...state};
-        //     return newState;
+        case FOLLOWING:
+            newState = {...state};
+            newState[action.user.currentUser.id] = action.user.currentUser;
+            newState[action.user.otherUser.id] = action.user.otherUser;
+            return newState;
 
 
         default:

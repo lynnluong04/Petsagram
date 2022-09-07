@@ -18,7 +18,7 @@ const LikeUnlike = ({ post }) => {
         } else {
             setLike(false)
         }
-    })
+    }, [post])
 
 
 

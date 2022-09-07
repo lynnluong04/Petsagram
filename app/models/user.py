@@ -46,6 +46,7 @@ class User(db.Model, UserMixin):
             'photo_url': self.photo_url,
             'followers': [user.to_dict_follows() for user in self.followers],
             'following': [user.to_dict_follows() for user in self.following],
+            'following_id': [user.id for user in self.following],
             'posts_num': len(self.owner_posts)
 
         }
