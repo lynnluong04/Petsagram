@@ -33,7 +33,8 @@ class User(db.Model, UserMixin):
             'name': self.name,
             'email': self.email,
             'bio': self.bio,
-            'photo_url': self.photo_url
+            'photo_url': self.photo_url,
+            'posts_num': len(self.owner_posts)
         }
 
 

@@ -34,6 +34,7 @@ img.post-user, img.comment-user {
     width: 32px;
     height: 32px;
     margin-right: 15px;
+    border-radius: 50%;
 }
 
 
