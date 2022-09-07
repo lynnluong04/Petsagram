@@ -6,6 +6,8 @@ import { thunkLoadPosts } from '../store/post';
 import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
 import "./css/feed.css"
+import LikeUnlike from './LikeUnlike';
+import PostActions from './PostActions';
 
 const Feed = () => {
     const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const Feed = () => {
     postsArray?.sort((a, b) => {
         return b.id - a.id
     });
+
 
     useEffect(() => {
         dispatch(thunkLoadPosts())
@@ -36,7 +39,7 @@ const Feed = () => {
                         <div className='post-top'>
                             <div className='user-links'>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
-                                    <img className='feed-profile icon' src={post.profile} />
+                                    <img className='feed-profile icon' src={post.profile ? post.profile : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
                                 </NavLink>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
                                     <div className='post username'> {post.owner} </div>
@@ -50,6 +53,9 @@ const Feed = () => {
                         <img className='post' src={post.media_url} alt="photo post" />
 
                         <div className='post-bottom'>
+
+                            < PostActions post={post} />
+
                             <div className='caption-container'>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
                                     <div className='post username'> {post.owner} </div>

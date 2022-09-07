@@ -62,6 +62,7 @@ export const thunkEditComment = payload => async dispatch => {
     if (res.ok) {
         const comment = await res.json();
         dispatch(edit(comment));
+        return null;
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {

@@ -40,7 +40,7 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${userId}`);
     if (res.ok) {
         const list = await res.json();
-        dispatch(loadUserPosts(list))
+        dispatch(loadUserPosts(list));
     }
 }
 
@@ -93,6 +93,30 @@ export const thunkDeletePost = postId => async dispatch => {
 
     if (res.ok) {
         dispatch(remove(postId))
+    }
+}
+
+export const thunkAddLike = (postId) => async (dispatch) => {
+    // console.log("THUNK LIKE WITH PAYLOAD", postId)
+    const res = await fetch(`/api/posts/${postId}/like`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (res.ok) {
+        const post = await res.json();
+        dispatch(edit(post));
+    }
+}
+
+export const thunkRemoveLike = (postId) => async dispatch => {
+    const res = await fetch(`/api/posts/${postId}/unlike`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (res.ok) {
+        const post = await res.json()
+        dispatch(edit(post))
     }
 }
 

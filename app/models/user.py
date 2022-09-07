@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .like import likes
 
 
 class User(db.Model, UserMixin):
@@ -12,7 +13,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     bio = db.Column(db.String(150), nullable=True)
-    photo_url = db.Column(db.String(1000), nullable=True, default="https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85")
+    photo_url = db.Column(db.String(1000), nullable=True)
 
     @property
     def password(self):
@@ -32,8 +33,14 @@ class User(db.Model, UserMixin):
             'name': self.name,
             'email': self.email,
             'bio': self.bio,
-            'photo_url': self.photo_url
+            'photo_url': self.photo_url,
+            'posts_num': len(self.owner_posts)
         }
 
-owner_posts = db.relationship("Post", back_populates="owner")
-comments = db.relationship("Comment", back_populates="owner")
+
+    owner_posts = db.relationship("Post", back_populates="owner")
+    comments = db.relationship("Comment", back_populates="owner")
+    liked_posts = db.relationship("Post",
+                                  secondary=likes,
+                                  back_populates='users_who_liked'
+                                  )

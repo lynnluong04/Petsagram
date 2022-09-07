@@ -6,7 +6,6 @@ import "./css/upload.css"
 import { Modal } from "../context/Modal";
 
 const CreatePostForm = ({ hideForm }) => {
-    const history = useHistory();
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
@@ -86,13 +85,7 @@ if (brokenImage) {
     return (
         <div className='create-post container'>
             <form className='post' onSubmit={onSubmit}>
-                {/* {hasSubmitted && validationErrors.length > 0 && (
-                <ul>
-                    {validationErrors.map(error => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-            )} */}
+    
                 {exitPreview && !preview && (
                     <div className='conditional container one' >
                         <div className='create-post top first'>
@@ -114,7 +107,7 @@ if (brokenImage) {
                     <div className='conditional container two'>
                         <div className="create-post top next">
                             <div onClick={() => clearPreview()}>
-                                <svg className='arrow' aria-label="Back" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline></svg>
+                                <svg className='arrow' aria-label="Back" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polyline></svg>
                             </div>
                             <div className='create-post top'>Create a new post</div>
                             <button className='share' type="submit">Share</button>

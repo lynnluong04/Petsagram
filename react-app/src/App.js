@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import Profile from './components/Profile';
 import SinglePostModal from './components/SinglePostModal';
 import Home from './components/Splash';
+import EditUserForm from './components/EditUser';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,7 +37,7 @@ function App() {
       {sessionUser && (<NavBar />)}
       <Switch location={background || location}>
         <ProtectedRoute path='/:userId/edit'>
-          <h2>This will be user edit page</h2>
+          <EditUserForm />
         </ProtectedRoute>
         <ProtectedRoute path='/:userId' exact component={Profile} />
         <Route path='/'  >
