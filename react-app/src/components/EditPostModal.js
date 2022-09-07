@@ -31,7 +31,7 @@ const EditPostModal = ({ postId, closeSinglePost }) => {
             )}
 
             {showEditPost && (
-                <Modal onClose={() => setShowEditPost(true)}>
+                <Modal onClose={() => setShowEditPost(false)}>
                     <EditPostForm hideForm={() => setShowModal(false)} postId={postId} closeEdit={()=>setShowEditPost(false)} />
                 </Modal>)}
         </div>
