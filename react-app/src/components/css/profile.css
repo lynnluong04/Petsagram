@@ -20,6 +20,8 @@ div.profile.container {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .top-username {
@@ -50,6 +52,7 @@ span.num {
 img.profile-post {
     width: 293px;
     height: 293px;
+    object-fit: cover
 }
 
 .profile-bottom {
@@ -143,6 +146,7 @@ img.edit-user-pic {
     height: 38px;
     width: 38px;
     border-radius: 50%;
+    object-fit: cover
 }
 
 .edit-user-upper {

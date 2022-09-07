@@ -140,6 +140,7 @@ img.user {
     height: 28px;
     border-radius: 50%;
     margin-right: 15px;
+    object-fit: cover
 }
 
 textarea.caption {
