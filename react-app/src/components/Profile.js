@@ -45,21 +45,39 @@ const Profile = () => {
 
                 <div className='user-info-top'>
                     <div className='username-edit-button'>
-                        <div className='top-username'>{user?.username}</div>
-                        {sessionUser.id === numberId &&
-                            <NavLink
-                                to={`/${sessionUser.id}/edit`}
-                                className="edit-profile"
-                            >Edit Profile</NavLink>
-                        }
-                    </div>
+                        <div className="top-username-buttons">
+                            <div className='top-username'>{user?.username}</div>
+                            {sessionUser.id === numberId &&
+                                <NavLink
+                                    to={`/${sessionUser.id}/edit`}
+                                    className="edit-profile"
+                                >Edit Profile</NavLink>
+                            }
+                        </div>
 
-                    {sessionUser.id !== numberId && (
-                        <FollowUnfollow userId={userId} user={user} />
+                        {sessionUser.id !== numberId && (
+                            <FollowUnfollow userId={userId} user={user} />
+                        )}
+                    </div>
+                    {user?.posts_num > 0 && (
+                        <div className='posts-num'>
+                            <span className='num'>{user.posts_num}</span>
+                            {user.posts_num > 1 ? " posts" : " post"}
+                        </div>
                     )}
 
-                    {user.posts_num === 1 && (<div className='counts'><span className='num'>{user.posts_num}</span> post</div>)}
-                    {user.posts_num > 1 && (<div className='counts'> <span className='num'>{user.posts_num}</span> posts </div>)}
+                    {/* {user?.followers > 0 && (
+                        <div className="followers-num">
+                            <span className='num'> {}</span>
+                            {user.followers > 1 ? " followers" : " follower"}
+                        </div>
+                    )}
+                    {user?.following > 0 && (
+                        <div className="following-num">
+                            <span className='num'> {user.following_num}</span>
+                            following
+                        </div>
+                    )} */}
                     <div>{user?.bio}</div>
                 </div>
             </div>

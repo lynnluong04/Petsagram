@@ -197,3 +197,9 @@ button.edit-user{
     border: none;
     font-size: 14px;
 }
+
+.top-username-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}

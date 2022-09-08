@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .like import likes
 from .follow import follows
-# from .post import Post
+from .post import Post
 
 
 class User(db.Model, UserMixin):
@@ -45,6 +45,8 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'photo_url': self.photo_url,
             'followers': [user.to_dict_follows() for user in self.followers],
+            # 'followers_num': len(self.followers),
+            # 'following_num': len(self.following),
             'following': [user.to_dict_follows() for user in self.following],
             'following_id': [user.id for user in self.following],
             'posts_num': len(self.owner_posts)
@@ -64,11 +66,11 @@ class User(db.Model, UserMixin):
             self.following.remove(user)
 
     def followed_posts(self):
-        followed = db.Post.query.join(
-            follows, (follows.c.followee == db.Post.user_id)).filter(
+        followed = Post.query.join(
+            follows, (follows.c.followee == Post.owner_id)).filter(
                 follows.c.follower == self.id)
-        own = db.Post.query.filter_by(user_id=self.id)
-        return followed.union(own).order_by(db.Post.timestamp.desc())
+        own = Post.query.filter_by(owner_id=self.id)
+        return followed.union(own).order_by(Post.created_at.desc())
 
 
 
