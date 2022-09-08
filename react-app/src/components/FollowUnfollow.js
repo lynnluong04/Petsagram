@@ -20,7 +20,6 @@ const FollowUnfollow = ({ userId, user }) => {
 
     }, [user])
 
-    console.log("FOLLOWING USER??", sessionUser.following_id)
     const onFollow = async (e) => {
         await dispatch(thunkFollowUser(user.id))
         setIsFollowing(true)

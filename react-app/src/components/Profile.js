@@ -15,6 +15,10 @@ const Profile = () => {
     const postsArray = posts ? Object.values(posts) : null;
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
+    // const followers = user ? Object.values(user.followers_list) : null;
+    // const following = user && user.following_list.length
+
+    // console.log("TESTING", user.following_num)
 
     userPosts?.sort((a, b) => {
         return b.id - a.id;
@@ -38,15 +42,16 @@ const Profile = () => {
     }, [dispatch]);
 
 
+if (user) {
     return (
         <div className='profile container'>
             <div className='profile top'>
-                <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                <img className="profile-image" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
 
                 <div className='user-info-top'>
                     <div className='username-edit-button'>
                         <div className="top-username-buttons">
-                            <div className='top-username'>{user?.username}</div>
+                            <div className='top-username'>{user.username}</div>
                             {sessionUser.id === numberId &&
                                 <NavLink
                                     to={`/${sessionUser.id}/edit`}
@@ -66,18 +71,19 @@ const Profile = () => {
                         </div>
                     )}
 
-                    {/* {user?.followers > 0 && (
+                  {user.followers_num > 0 && (
                         <div className="followers-num">
-                            <span className='num'> {}</span>
-                            {user.followers > 1 ? " followers" : " follower"}
+                            <span className='num'> {`${user.followers_num} `} </span>
+                            {user.followers_num > 1 ? " followers" : " follower"}
                         </div>
                     )}
-                    {user?.following > 0 && (
+                      {user.following_num > 0 && (
                         <div className="following-num">
-                            <span className='num'> {user.following_num}</span>
+                            <span className='num'> {`${user.following_num} `}</span>
                             following
                         </div>
-                    )} */}
+                    )}
+
                     <div>{user?.bio}</div>
                 </div>
             </div>
@@ -106,6 +112,11 @@ const Profile = () => {
 
         </div>
     )
+} else {
+    return (
+        <div> Loading...</div>
+    )
+}
 };
 
 export default Profile;

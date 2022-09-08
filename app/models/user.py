@@ -44,10 +44,10 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'bio': self.bio,
             'photo_url': self.photo_url,
-            'followers': [user.to_dict_follows() for user in self.followers],
-            # 'followers_num': len(self.followers),
-            # 'following_num': len(self.following),
-            'following': [user.to_dict_follows() for user in self.following],
+            'followers_list': [user.to_dict_follows() for user in self.followers],
+            'followers_num': len(self.followers),
+            'following_num': len(self.following),
+            'following_list': [user.to_dict_follows() for user in self.following],
             'following_id': [user.id for user in self.following],
             'posts_num': len(self.owner_posts)
 
@@ -84,4 +84,4 @@ class User(db.Model, UserMixin):
         'User', secondary=follows,
         primaryjoin=(follows.c.follower == id),
         secondaryjoin=(follows.c.followee == id),
-        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+        backref=db.backref('followers', lazy='select'), lazy='select')
