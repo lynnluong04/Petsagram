@@ -17,6 +17,7 @@ const EditUserForm = () => {
   const [name, setName] = useState(sessionUser.name);
   const [email, setEmail] = useState(sessionUser.email);
   const [bio, setBio] = useState(sessionUser.bio);
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const [image, setImage] = useState(null)
 
 
@@ -49,51 +50,53 @@ const EditUserForm = () => {
       bio: bio
     }
 
-    console.log("PAYLOAD FROM EDIT USER", payload)
     const editedUser = await dispatch(thunkEditUser(payload))
-
-    const formData = new FormData();
-    formData.append("image", image);
-    await dispatch(uploadProfilePhoto(formData))
 
     if (editedUser) {
       setErrors(editedUser)
     }
+    setHasSubmitted(true)
 
-    console.log("SETTING FILE TO IMAGE?", image)
-
+    setTimeout(()=> {
+      setHasSubmitted(false)
+    }, 5000)
   }
 
 
 
-  const updateImage = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
+  const updateImage = async (e) => {
 
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    await dispatch(uploadProfilePhoto(formData))
+    // setImage(file);
   }
 
   if (user) {
     return (
-      <div>
-        <form className="edit-user-container" onSubmit={onSubmit} >
-          <div className="edit-user-head">Edit Profile</div>
-          <div className='edit-user error-container'>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div className="edit-user-upper">
-            <img className="edit-user-pic" src={user.photo_url} />
-            <div className="edit-user-info">
-              <div className="edit-user-username">{user.username}</div>
+      <div className="edit-user-container">
+        <div className="edit-user-head">Edit Profile</div>
+        {hasSubmitted && <div className="success-msg">Profile updated successfully.</div>}
+        <div className='edit-user error-container'>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div className="edit-user-upper">
+          <img className="edit-user-pic" src={user.photo_url} />
+          <div className="edit-user-info">
+            <div className="edit-user-username">{user.username}</div>
+            <form>
               <label className='upload-profile-pic'>
                 Change profile photo
                 <input className='upload-profile-pic' type="file" accept="image/*" onChange={updateImage} />
               </label>
-            </div>
+            </form>
           </div>
+        </div>
 
-          <div className="edit-user-inputs">
+        <form className="edit-user-bottom" onSubmit={onSubmit} >
             <label className='edit-profile'>Name
               <input
                 type='text' placeholder='Full Name'
@@ -125,7 +128,6 @@ const EditUserForm = () => {
                 onChange={updateEmail} value={email}>
               </input>
             </label>
-          </div>
 
           <button className="edit-user">Submit</button>
         </form>

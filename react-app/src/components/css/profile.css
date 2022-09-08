@@ -123,9 +123,10 @@ textarea.edit-profile {
     /* margin-top: 30px; */
 }
 
-.edit-user-inputs {
+
+form.edit-user-bottom {
+    min-height: 70%;
     width: fit-content;
-    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -192,4 +193,8 @@ button.edit-user{
     font-weight: bold;
     border: none;
     font-size: 14px;
+}
+
+.success-msg {
+    color:#0095F6;
 }
