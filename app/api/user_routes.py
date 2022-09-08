@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from flask_wtf.csrf import validate_csrf
 from app.forms.edit_user import EditUserForm
-from app.forms.empty_form import EmptyForm
 from app.models import User, db
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
@@ -33,9 +32,10 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+
 @user_routes.route('/<int:id>', methods=['PUT'])
 def edit_user(id):
-    # print("--------HITTING BACKEND EDIT USER------------")
+    print("--------HITTING BACKEND EDIT USER------------")
     form = EditUserForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -87,24 +87,3 @@ def profile_pic():
         return user.to_dict();
     # except:
     #     return {'errors': 'Invalid csrf token'}, 400
-
-@user_routes.route('/<int:id>/follow', methods=['POST'])
-def follow(id):
-    form = EmptyForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        user = User.query.get(id)
-        current_user.follow(user)
-        db.session.commit()
-        return {"otherUser": user.to_dict(), "currentUser": current_user.to_dict()}
-
-
-@user_routes.route('/<int:id>/unfollow', methods=['POST'])
-def unfollow(id):
-    form = EmptyForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        user = User.query.get(id)
-        current_user.unfollow(user)
-        db.session.commit()
-        return {"otherUser": user.to_dict(), "currentUser": current_user.to_dict()}

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+import { thunkLoadComments } from '../store/comment';
 import { thunkLoadPosts } from '../store/post';
+import AllComments from './AllComments';
 import CreateCommentForm from './CreateComment';
 import "./css/feed.css"
+import LikeUnlike from './LikeUnlike';
 import PostActions from './PostActions';
 
 const Feed = () => {

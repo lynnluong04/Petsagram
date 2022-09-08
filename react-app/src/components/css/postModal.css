@@ -28,8 +28,6 @@ div.right.content {
 img.post-photo {
     width: 100%;
     height: auto;
-    object-fit: cover
-
 }
 
 img.post-user, img.comment-user {
@@ -37,7 +35,6 @@ img.post-user, img.comment-user {
     height: 32px;
     margin-right: 15px;
     border-radius: 50%;
-    object-fit: cover
 }
 
 

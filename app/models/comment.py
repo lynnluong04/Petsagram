@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from .user import User
 
 
 class Comment(db.Model):

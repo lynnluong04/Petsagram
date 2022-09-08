@@ -16,7 +16,6 @@ img.liked-user {
     height: 44px;
     width: 44px;
     border-radius: 50%;
-    object-fit: cover
 }
 
 .likes-top {

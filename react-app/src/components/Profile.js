@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
-import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
-import FollowUnfollow from './FollowUnfollow';
 
 const Profile = () => {
-    const location = useLocation();
     const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const { userId } = useParams();
@@ -17,9 +14,10 @@ const Profile = () => {
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
-    // userPosts?.sort((a, b) => {
-    //     return b.id - a.id;
-    // });
+    userPosts?.sort((a, b) => {
+        return b.id - a.id;
+    });
+    const location = useLocation();
 
     useEffect(() => {
         if (!userId) {
@@ -34,52 +32,28 @@ const Profile = () => {
 
     useEffect(() => {
         dispatch(thunkLoadPosts());
-        dispatch(thunkLoadUsers())
     }, [dispatch]);
 
 
-if (user) {
+
+
     return (
         <div className='profile container'>
             <div className='profile top'>
-                <img className="profile-image" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
 
                 <div className='user-info-top'>
                     <div className='username-edit-button'>
-                        <div className="top-username-buttons">
-                            <div className='top-username'>{user.username}</div>
-                            {sessionUser.id === numberId &&
-                                <NavLink
-                                    to={`/${sessionUser.id}/edit`}
-                                    className="edit-profile"
-                                >Edit Profile</NavLink>
-                            }
-                        </div>
-
-                        {sessionUser.id !== numberId && (
-                            <FollowUnfollow userId={userId} user={user} />
-                        )}
+                        <div className='top-username'>{user?.username}</div>
+                    {sessionUser.id === numberId &&
+                        <NavLink
+                        to={`/${sessionUser.id}/edit`}
+                        className="edit-profile"
+                        >Edit Profile</NavLink>
+                    }
                     </div>
-                    {user?.posts_num > 0 && (
-                        <div className='posts-num'>
-                            <span className='num'>{user.posts_num}</span>
-                            {user.posts_num > 1 ? " posts" : " post"}
-                        </div>
-                    )}
-
-                  {user.followers_num > 0 && (
-                        <div className="followers-num">
-                            <span className='num'> {`${user.followers_num} `} </span>
-                            {user.followers_num > 1 ? " followers" : " follower"}
-                        </div>
-                    )}
-                      {user.following_num > 0 && (
-                        <div className="following-num">
-                            <span className='num'> {`${user.following_num} `}</span>
-                            following
-                        </div>
-                    )}
-
+                    {user.posts_num === 1 && ( <div className='counts'><span className='num'>{user.posts_num}</span> post</div>)}
+                    {user.posts_num > 1 && ( <div className='counts'> <span className='num'>{user.posts_num}</span> posts </div>)}
                     <div>{user?.bio}</div>
                 </div>
             </div>
@@ -108,11 +82,6 @@ if (user) {
 
         </div>
     )
-} else {
-    return (
-        <div> Loading...</div>
-    )
-}
 };
 
 export default Profile;

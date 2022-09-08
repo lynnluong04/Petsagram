@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { thunkLoadComments } from '../store/comment';
+import { thunkDeleteComment, thunkLoadComments } from '../store/comment';
 import EditCommentModal from './EditCommentModal';
 
 const AllComments = ({ postId }) => {

@@ -1,8 +1,6 @@
 const LOAD = '/users/LOAD';
 const EDIT = '/users/EDIT';
 const REMOVE = '/users/REMOVE';
-const FOLLOWING = '/users/FOLLOWING'
-
 
 const load = list => ({
     type: LOAD,
@@ -18,11 +16,6 @@ const edit = user => ({
 const remove = userId => ({
     type: REMOVE,
     userId
-})
-
-const updateFollow = user => ({
-    type: FOLLOWING,
-    user
 })
 
 
@@ -68,35 +61,13 @@ export const uploadProfilePhoto = formData => async dispatch => {
     }
 }
 
-export const thunkDeleteUser = userId => async dispatch => {
+export const thunkDeletePost = userId => async dispatch => {
     const res = await fetch(`/api/users/${userId}`, {
         method: 'DELETE'
     });
 
     if (res.ok) {
         dispatch(remove(userId))
-    }
-}
-
-export const thunkFollowUser = userId => async dispatch => {
-    const res = await fetch(`/api/users/${userId}/follow`, {
-        method: 'POST',
-    });
-
-    if (res.ok) {
-        const user = await res.json()
-        console.log("RETURN FROM FOLLOW ROUTE", user)
-        dispatch(updateFollow(user))
-    }
-}
-export const thunkUnfollowUser = userId => async dispatch => {
-    const res = await fetch(`/api/users/${userId}/unfollow`, {
-        method: 'POST'
-    });
-
-    if (res.ok) {
-        const user = await res.json()
-        dispatch(updateFollow(user))
     }
 }
 
@@ -116,7 +87,6 @@ export default function userReducer(state = {}, action) {
 
         case EDIT:
             newState = {...state};
-            console.log("USER FROM EDIT THUNK", action.user.currentUser)
             newState[action.user.id] = action.user;
             return newState;
 
@@ -124,13 +94,6 @@ export default function userReducer(state = {}, action) {
             newState = {...state };
             delete newState[action.userId];
             return newState;
-
-        case FOLLOWING:
-            newState = {...state};
-            newState[action.user.currentUser.id] = action.user.currentUser;
-            newState[action.user.otherUser.id] = action.user.otherUser;
-            return newState;
-
 
         default:
             return state;

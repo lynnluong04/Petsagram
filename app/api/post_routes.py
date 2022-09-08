@@ -10,11 +10,11 @@ post_routes = Blueprint('posts', __name__)
 
 @post_routes.route('/')
 def all_posts():
-    all_posts = current_user.followed_posts()
+    posts = Post.query.all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])
     # print("-----------------------------------------------------------")
-    return {'posts': [post.to_dict() for post in all_posts]}
+    return {'posts': [post.to_dict() for post in posts]}
 
 @post_routes.route('/<int:userId>')
 @login_required
