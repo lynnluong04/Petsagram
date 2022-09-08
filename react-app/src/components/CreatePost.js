@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { thunkCreatePost } from '../store/post';
 import "./css/upload.css"
 import { Modal } from "../context/Modal";
@@ -10,7 +10,6 @@ const CreatePostForm = ({ hideForm }) => {
 
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const ownerId = Number(userId);
     const [image, setImage] = useState(null)
     const [imageLoading, setImageLoading] = useState(false);
     const [caption, setCaption] = useState('');
@@ -85,7 +84,7 @@ if (brokenImage) {
     return (
         <div className='create-post container'>
             <form className='post' onSubmit={onSubmit}>
-    
+
                 {exitPreview && !preview && (
                     <div className='conditional container one' >
                         <div className='create-post top first'>

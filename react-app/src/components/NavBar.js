@@ -1,7 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 import CreatePostModal from './CreatePostModal';
 import "./css/navbar.css"
 import NavDropdown from './NavDropdown';
@@ -12,7 +10,6 @@ const IMAGE = (imgName) => {
 
 const NavBar = () => {
   const history = useHistory()
-  const sessionUser = useSelector(state => state.session.user);
 
   const refreshHome = () => {
     history.push('/')

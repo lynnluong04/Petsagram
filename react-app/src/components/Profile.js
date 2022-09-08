@@ -7,6 +7,7 @@ import "./css/profile.css"
 import FollowUnfollow from './FollowUnfollow';
 
 const Profile = () => {
+    const location = useLocation();
     const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const { userId } = useParams();
@@ -15,15 +16,10 @@ const Profile = () => {
     const postsArray = posts ? Object.values(posts) : null;
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
-    // const followers = user ? Object.values(user.followers_list) : null;
-    // const following = user && user.following_list.length
 
-    // console.log("TESTING", user.following_num)
-
-    userPosts?.sort((a, b) => {
-        return b.id - a.id;
-    });
-    const location = useLocation();
+    // userPosts?.sort((a, b) => {
+    //     return b.id - a.id;
+    // });
 
     useEffect(() => {
         if (!userId) {
