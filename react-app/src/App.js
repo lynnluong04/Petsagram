@@ -10,6 +10,7 @@ import Profile from './components/Profile';
 import SinglePostModal from './components/SinglePostModal';
 import Home from './components/Splash';
 import EditUserForm from './components/EditUser';
+import { thunkLoadUsers } from './store/user';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,6 +19,7 @@ function App() {
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
   const background = location.state && location.state.background;
+
 
 
   useEffect(() => {

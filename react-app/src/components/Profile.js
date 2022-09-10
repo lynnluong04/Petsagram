@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
+import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
 
 const Profile = () => {
@@ -13,6 +14,8 @@ const Profile = () => {
     const postsArray = posts ? Object.values(posts) : null;
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.user[numberId])
+
 
     userPosts?.sort((a, b) => {
         return b.id - a.id;
@@ -28,7 +31,7 @@ const Profile = () => {
             const user = await response.json();
             setUser(user);
         })();
-    }, [userId]);
+    }, []);
 
     useEffect(() => {
         dispatch(thunkLoadPosts());
@@ -52,8 +55,8 @@ const Profile = () => {
                         >Edit Profile</NavLink>
                     }
                     </div>
-                    {user.posts_num === 1 && ( <div className='counts'><span className='num'>{user.posts_num}</span> post</div>)}
-                    {user.posts_num > 1 && ( <div className='counts'> <span className='num'>{user.posts_num}</span> posts </div>)}
+                    {user?.posts_num === 1 && ( <div className='counts'><span className='num'>{user?.posts_num}</span> post</div>)}
+                    {user?.posts_num > 1 && ( <div className='counts'> <span className='num'>{user?.posts_num}</span> posts </div>)}
                     <div>{user?.bio}</div>
                 </div>
             </div>

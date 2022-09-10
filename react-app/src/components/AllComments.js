@@ -21,7 +21,7 @@ const AllComments = ({ postId }) => {
                 return (
                     <div className='single-comment-container' key={comment.id}>
                         <div className='single-comment'>
-                            <img className='comment-user' src={comment.owner_profile} />
+                            <img className='comment-user' src={comment.owner_profile ? comment.owner_profile : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
                             <div className='comment-owner'> {comment.owner} </div>
                             <div> {comment.content} </div>
                         </div>
