@@ -25,7 +25,7 @@ const LikeUnlike = ({ post }) => {
     const likePost = async (e) => {
         await dispatch(thunkAddLike(post.id))
         setLike(true)
-        console.log(`Liking post with id ${post.id}`)
+        // console.log(`Liking post with id ${post.id}`)
     }
 
     const unlikePost = async (e) => {
