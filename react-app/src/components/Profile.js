@@ -14,6 +14,8 @@ const Profile = () => {
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
+    const postNum = userPosts.length
+
     userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
@@ -52,8 +54,8 @@ const Profile = () => {
                         >Edit Profile</NavLink>
                     }
                     </div>
-                    {user.posts_num === 1 && ( <div className='counts'><span className='num'>{user.posts_num}</span> post</div>)}
-                    {user.posts_num > 1 && ( <div className='counts'> <span className='num'>{user.posts_num}</span> posts </div>)}
+                    {postNum=== 1 && ( <div className='counts'><span className='num'>{postNum}</span> post</div>)}
+                    {postNum > 1 && ( <div className='counts'> <span className='num'>{postNum}</span> posts </div>)}
                     <div>{user?.bio}</div>
                 </div>
             </div>
