@@ -27,7 +27,7 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
                         <div className="profile-text"> Profile </div>
                     </NavLink>
                     {/* <div className="logout-dropdown"> */}
-                    <LogoutButton />
+                    <LogoutButton setLoadProfile={setLoadProfile} />
                     {/* </div> */}
                 </div>
             )}

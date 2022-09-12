@@ -5,12 +5,13 @@ import "../css/navbar.css"
 import { useHistory } from 'react-router-dom';
 
 
-const LogoutButton = () => {
+const LogoutButton = ({setLoadProfile}) => {
   const dispatch = useDispatch()
   const history = useHistory();
   const onLogout = async (e) => {
     e.preventDefault()
     await dispatch(logout());
+    setLoadProfile(false);
     history.push('/')
   };
 
