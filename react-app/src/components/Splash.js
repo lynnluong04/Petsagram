@@ -9,14 +9,14 @@ const IMAGE = (imgName) => {
     return require(`./images/${imgName}`).default
   }
 
-const Home = () => {
+const Home = ({loadingHome}) => {
     const sessionUser = useSelector(state => state.session.user);
     const [loggingIn, setLoggingIn] = useState('true')
 
     let content;
     if (sessionUser) {
         content = (
-            <Feed />
+            <Feed loadingHome={loadingHome}/>
         )
     } else if (loggingIn) {
         content = (

@@ -9,7 +9,7 @@ import "./css/feed.css"
 import LikeUnlike from './LikeUnlike';
 import PostActions from './PostActions';
 
-const Feed = () => {
+const Feed = ({loadingHome}) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const posts = useSelector(state => state.post);
@@ -24,6 +24,7 @@ const Feed = () => {
 
 
     useEffect(() => {
+        loadingHome();
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
     }, [dispatch, comments]);

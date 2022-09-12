@@ -14,11 +14,13 @@ import { thunkLoadUsers } from './store/user';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [previousRoute, setPreviousRoute] = useState('')
+  const [loadHome, setLoadHome] = useState(false);
+  const [loadProfile, setLoadProfile] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
   const background = location.state && location.state.background;
+
 
 
   useEffect(() => {
@@ -36,14 +38,16 @@ function App() {
   return (
     // <BrowserRouter>
     <div className='app' >
-      {sessionUser && (<NavBar />)}
+      {sessionUser && (<NavBar loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>)}
       <Switch location={background || location}>
         <ProtectedRoute path='/:userId/edit'>
           <EditUserForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/:userId' exact component={Profile} />
+        <ProtectedRoute path='/:userId' exact={true}>
+          <Profile loadingProfile={() => {setLoadProfile(true); setLoadHome(false)}} />
+        </ProtectedRoute>
         <Route path='/'  >
-          <Home />
+          <Home loadingHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />

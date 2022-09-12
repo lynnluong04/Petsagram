@@ -4,7 +4,7 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
 import "./css/profile.css"
 
-const Profile = () => {
+const Profile = ({loadingProfile}) => {
     const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const { userId } = useParams();
@@ -33,6 +33,7 @@ const Profile = () => {
     }, [userId]);
 
     useEffect(() => {
+        loadingProfile();
         dispatch(thunkLoadPosts());
     }, [dispatch]);
 

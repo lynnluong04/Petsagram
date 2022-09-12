@@ -53,6 +53,13 @@ img.profile.icon {
     border-radius: 50%;
 }
 
+img.nav-selected {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
 .profile-dropdown {
     position: relative;
 }

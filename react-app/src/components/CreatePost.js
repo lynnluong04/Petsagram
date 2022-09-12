@@ -56,6 +56,7 @@ const CreatePostForm = ({ hideForm }) => {
         setHasSubmitted(false);
         setImageLoading(false);
         hideForm();
+        window.scrollTo({top: 0, left: 0});
     }
     const reset = () => {
         setImage("");
