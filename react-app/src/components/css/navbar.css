@@ -105,3 +105,7 @@ svg.links:hover {
 a#profile-button{
 color: black;
 }
+
+.nav-logo:hover {
+    cursor: pointer;
+}

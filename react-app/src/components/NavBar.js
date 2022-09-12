@@ -16,16 +16,19 @@ const NavBar = () => {
 
   const refreshHome = () => {
     history.push('/')
-    window.location.reload()
+    // window.location.reload()
+    window.scrollTo({top: 0, left: 0});
   }
 
   return (
     <nav>
       <ul>
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <div className='nav-logo' onClick={refreshHome}>
+          {/* <NavLink to='/' exact={true} activeClassName='active'> */}
             <img className='logo nav' src={IMAGE("logo-black.png")} />
-          </NavLink>
+          {/* </NavLink> */}
+          </div>
         </li>
 
         <li className='nav-right'>
