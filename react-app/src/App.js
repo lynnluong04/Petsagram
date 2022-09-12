@@ -10,6 +10,7 @@ import Profile from './components/Profile';
 import SinglePostModal from './components/SinglePostModal';
 import Home from './components/Splash';
 import EditUserForm from './components/EditUser';
+import { thunkLoadUsers } from './store/user';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -23,6 +24,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(thunkLoadUsers)
       setLoaded(true);
     })();
   }, [dispatch]);
