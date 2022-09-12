@@ -88,7 +88,7 @@ const EditUserForm = () => {
         <div className="edit-user-upper">
           <img className="edit-user-pic" src={sessionUser.photo_url} />
           <div className="edit-user-info">
-            <div className="edit-user-username">{user.username}</div>
+            <div className="edit-user-username">{user?.username}</div>
             <form>
               <label className='upload-profile-pic'>
                 Change profile photo
