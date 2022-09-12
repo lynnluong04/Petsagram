@@ -55,9 +55,10 @@ const EditUserForm = () => {
 
     if (editedUser) {
       setErrors(editedUser)
+    } else {
+      setHasSubmitted(true)
+      history.goBack();
     }
-    setHasSubmitted(true)
-    history.goBack();
     // setTimeout(()=> {
     //   setHasSubmitted(false)
     // }, 5000)
