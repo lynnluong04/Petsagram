@@ -81,8 +81,7 @@ button.edit-post-modal {
     width: 500px;
     min-height: 150px;
     height: fit-content;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -205,6 +204,10 @@ button.delete-post {
     border-top: none;
     border-left: none;
     border-right: none;
+}
+
+.cancel-edit-post:hover, .edit-post-option:hover {
+    cursor: pointer;
 }
 
 .edit-post-option {

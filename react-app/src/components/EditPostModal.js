@@ -25,14 +25,14 @@ const EditPostModal = ({ postId, closeSinglePost }) => {
                     <div className="edit-post-options">
                         < DeletePostModal postId={postId} hideForm={() => setShowModal(false)} closeSinglePost={closeSinglePost} />
                         <div onClick={() => setShowEditPost(true)} className="edit-post-option">Edit</div>
-                        <div className="cancel-edit-post">Cancel</div>
+                        <div onClick={() => setShowModal(false)} className="cancel-edit-post">Cancel</div>
                     </div>
                 </Modal>
             )}
 
             {showEditPost && (
                 <Modal onClose={() => setShowEditPost(false)}>
-                    <EditPostForm hideForm={() => setShowModal(false)} postId={postId} closeEdit={()=>setShowEditPost(false)} />
+                    <EditPostForm hideForm={() => setShowModal(false)} postId={postId} closeEdit={()=>setShowEditPost(false) } />
                 </Modal>)}
         </div>
     )

@@ -64,7 +64,7 @@ const SinglePostModal = () => {
                                     <div className="username" >{user.username}</div>
                                 </div>
 
-                                {post && sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={() => setShowModal(false)} hideForm={() => setShowModal(false)} />}
+                                {post && sessionUser.id === post.owner_id && <EditPostModal postId={Number(postId)} closeSinglePost={() => setShowModal(false)} />}
                             </div>
 
                             <div className="caption-comments" >

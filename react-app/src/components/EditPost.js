@@ -38,16 +38,19 @@ const EditPostForm = ({ postId, hideForm, closeEdit }) => {
             setEditCaption('')
             setHasSubmitted(false)
             setErrors(editedPost)
+        } else {
+            hideForm();
+            closeEdit();
         }
 
-        hideForm();
+
     }
 
     return (
         <div>
             <form className="edit-post-container" onSubmit={onSubmit}>
                 <div className="edit-post-top">
-                    <button onClick={()=>closeEdit()} className="cancel">Cancel</button>
+                    <button onClick={()=> closeEdit()} className="cancel">Cancel</button>
                     <div className="edit-post text">Edit Post</div>
                     <button className="edit-post" type="submit" >Done</button>
                 </div>
