@@ -21,7 +21,7 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 
 ## How to Start the Development Environment
 1. Clone this repository
-    git clone https://github.com/kevin9gao/accord-flask-react-project.git
+    git clone https://github.com/lynnluong04/Petsagram.git
 2. Install dependencies
     pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
 3. Create a **.env** file based on the example with the proper settings for your development environment
@@ -40,7 +40,6 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 ## Future Features to Implement
 * Followers
 * Direct Messaging
-* Likes
 * Discover
 * Hashtags
 * Tagging
