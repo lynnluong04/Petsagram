@@ -1,6 +1,6 @@
 # Petsagram
 
-Petsagram is a fullstack web application modeled after the popular social media app, Instagram. Signed up users have the ability to post images of pets or animals and comment on other users posts.
+Petsagram is a fullstack web application modeled after the popular social media app, Instagram. Signed up users have the ability to post images of pets or animals, comment on and like other users posts.
 
 Visit the live site here :https://petsagram-solo.herokuapp.com/
 
@@ -13,7 +13,7 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 * **Cloud Computing Service:** AWS
 
 ## Links
-* [Visit Accord Live Site]
+* [Visit Live Site](https://petsagram-solo.herokuapp.com/)
 * [Feature List](https://github.com/lynnluong04/Petsagram/wiki/Features)
 * [Database Schema](https://github.com/lynnluong04/Petsagram/wiki/DB-Schema)
 * [User Stories](https://github.com/lynnluong04/Petsagram/wiki/User-Stories)
@@ -21,7 +21,7 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 
 ## How to Start the Development Environment
 1. Clone this repository
-    git clone https://github.com/kevin9gao/accord-flask-react-project.git
+    git clone https://github.com/lynnluong04/Petsagram.git
 2. Install dependencies
     pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
 3. Create a **.env** file based on the example with the proper settings for your development environment
@@ -40,7 +40,6 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 ## Future Features to Implement
 * Followers
 * Direct Messaging
-* Likes
 * Discover
 * Hashtags
 * Tagging
