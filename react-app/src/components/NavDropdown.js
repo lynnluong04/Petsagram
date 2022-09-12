@@ -1,5 +1,5 @@
 
-import React, { useState, } from "react";
+import React, { useEffect, useState, } from "react";
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
@@ -10,16 +10,15 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
+
     return (
         <div className="profile-dropdown container" >
             <button onClick={() => {
                 setShowMenu(!showMenu);
-                setLoadProfile(!loadProfile);
-                {loadHome ? setLoadHome( !loadHome) : setLoadProfile(true)}
-
+                {!loadProfile && setLoadHome(!loadHome)}
             }}
                 className='nav button icon'>
-                <img className={loadHome ? 'nav profile icon' : 'nav-selected'} src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
+                <img className={ showMenu || loadProfile ? 'nav-selected' : 'nav profile icon' } src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
             </button>
             {showMenu && (
                 <div onClick={() => setShowMenu(false)} className="dropdown container" >
