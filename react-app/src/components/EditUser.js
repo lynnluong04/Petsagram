@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { thunkEditUser, thunkLoadUsers } from "../store/user";
 import { Modal } from "../context/Modal";
 import { uploadProfilePhoto } from "../store/session";
@@ -12,12 +12,12 @@ const EditUserForm = () => {
   const numberId = Number(userId)
   const sessionUser = useSelector(state => state.session.user);
   const user = useSelector(state => state.user[numberId])
-
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState(sessionUser.username);
-  const [name, setName] = useState(sessionUser.name);
-  const [email, setEmail] = useState(sessionUser.email);
-  const [bio, setBio] = useState(sessionUser.bio);
+  const [username, setUsername] = useState(user?.username);
+  const [name, setName] = useState(user?.name);
+  const [email, setEmail] = useState(user?.email);
+  const [bio, setBio] = useState(user?.bio);
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [image, setImage] = useState(null)
 
@@ -57,10 +57,10 @@ const EditUserForm = () => {
       setErrors(editedUser)
     }
     setHasSubmitted(true)
-
-    setTimeout(()=> {
-      setHasSubmitted(false)
-    }, 5000)
+    history.goBack();
+    // setTimeout(()=> {
+    //   setHasSubmitted(false)
+    // }, 5000)
   }
 
 
@@ -87,7 +87,7 @@ const EditUserForm = () => {
         <div className="edit-user-upper">
           <img className="edit-user-pic" src={sessionUser.photo_url} />
           <div className="edit-user-info">
-            <div className="edit-user-username">{sessionUser.username}</div>
+            <div className="edit-user-username">{user.username}</div>
             <form>
               <label className='upload-profile-pic'>
                 Change profile photo
