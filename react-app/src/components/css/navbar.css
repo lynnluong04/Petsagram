@@ -70,7 +70,7 @@ img.profile.icon {
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
-.logout-dropdown, #profile-button {
+.logout-button, #profile-button {
     padding: 8px 16px;
     display: flex;
     justify-content: flex-start;
@@ -79,21 +79,20 @@ img.profile.icon {
 
 }
 
-.logout-dropdown:hover, #profile-button:hover {
+.logout-button:hover, #profile-button:hover {
     background-color: #efefef;
 }
 
-.logout-dropdown {
+.logout-button {
+    border: none;
+    background-color: transparent;
+    height: 35px;
     border-top: 1px solid lightgray;
 }
 
-button.logout {
-    border: none;
-    background-color: transparent;
-    padding: 0;
+.logout-text {
     margin-left: 30px;
 }
-
 
 svg {
     margin-right: 15px;
