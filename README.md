@@ -13,7 +13,7 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 * **Cloud Computing Service:** AWS
 
 ## Links
-* [Visit Accord Live Site]
+* [Visit Live Site](https://petsagram-solo.herokuapp.com/)
 * [Feature List](https://github.com/lynnluong04/Petsagram/wiki/Features)
 * [Database Schema](https://github.com/lynnluong04/Petsagram/wiki/DB-Schema)
 * [User Stories](https://github.com/lynnluong04/Petsagram/wiki/User-Stories)
