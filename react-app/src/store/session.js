@@ -1,6 +1,8 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT = '/session/EDIT';
+
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +11,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+})
+
+const edit = user => ({
+  type: EDIT,
+  user
 })
 
 const initialState = { user: null };
@@ -99,12 +106,31 @@ export const signUp = (username, name, email, password, confirm) => async (dispa
   }
 }
 
+export const uploadProfilePhoto = formData => async dispatch => {
+  // console.log("FORMDATE FROM THUNK PROF PIC", formData)
+  const res = await fetch('/api/users/profile-pic', {
+      method: 'POST',
+      body: formData
+  });
+
+  if (res.ok) {
+      const user = await res.json();
+      dispatch(edit(user));
+  }
+}
+
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case EDIT:
+      let newState = {...state};
+      console.log("ACTION", action)
+      newState["user"] = action.user;
+      return newState;
     default:
       return state;
   }

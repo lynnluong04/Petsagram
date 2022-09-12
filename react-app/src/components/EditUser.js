@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { thunkEditUser, thunkLoadUsers, uploadProfilePhoto } from "../store/user";
+import { thunkEditUser, thunkLoadUsers } from "../store/user";
 import { Modal } from "../context/Modal";
+import { uploadProfilePhoto } from "../store/session";
 
 
 const EditUserForm = () => {
@@ -84,9 +85,9 @@ const EditUserForm = () => {
           ))}
         </div>
         <div className="edit-user-upper">
-          <img className="edit-user-pic" src={user.photo_url} />
+          <img className="edit-user-pic" src={sessionUser.photo_url} />
           <div className="edit-user-info">
-            <div className="edit-user-username">{user.username}</div>
+            <div className="edit-user-username">{sessionUser.username}</div>
             <form>
               <label className='upload-profile-pic'>
                 Change profile photo

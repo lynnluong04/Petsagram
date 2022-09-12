@@ -41,11 +41,12 @@ const EditCommentForm = ({ commentId, hideForm }) => {
 
     return (
         <div className="edit-comment container">
-            <div className="edit-comment-top">
-                <button onClick={() => hideForm()} className="cancel">Cancel</button>
-                <div>Edit your comment</div>
-            </div>
             <form className="edit-comment" onSubmit={onSubmit}>
+                <div className="edit-comment-top">
+                    <button onClick={() => hideForm()} className="cancel">Cancel</button>
+                    <div>Edit your comment</div>
+                    <button className="edit-comment done">Done</button>
+                </div>
                 <div className='edit-comment error-container'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
@@ -58,7 +59,6 @@ const EditCommentForm = ({ commentId, hideForm }) => {
                     maxLength="2200"
                     onChange={e => setEditContent(e.target.value)}>
                 </input>
-                <button className="edit-comment">Done</button>
             </form>
             <button className="delete-comment" onClick={() => deleteComment(comment.id)}>Delete</button>
 

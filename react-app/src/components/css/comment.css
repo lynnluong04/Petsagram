@@ -31,7 +31,10 @@ button.edit-comment {
     color:#0095F6;
     border: none;
     margin: 0 15px;
+}
 
+.edit-comment.done {
+    font-weight: bold;
 }
 
 input.edit-comment {
@@ -56,6 +59,7 @@ button.delete-comment {
     border-top: 1px solid #DADDE1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-weight: bold;
 }
 
 .comments-error {
