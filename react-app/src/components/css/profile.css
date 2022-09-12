@@ -71,6 +71,7 @@ div.categories {
     flex-direction: row;
     flex-shrink: 0;
     flex-wrap: wrap;
+    justify-content: flex-start;
 
 }
 
