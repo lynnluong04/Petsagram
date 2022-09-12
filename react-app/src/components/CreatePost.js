@@ -85,7 +85,7 @@ if (brokenImage) {
     return (
         <div className='create-post container'>
             <form className='post' onSubmit={onSubmit}>
-    
+
                 {exitPreview && !preview && (
                     <div className='conditional container one' >
                         <div className='create-post top first'>
@@ -131,7 +131,7 @@ if (brokenImage) {
 
                 {brokenImage && brokenImageError}
 
-                {(imageLoading) && <p>Loading...</p>}
+                {/* {(imageLoading) && <p>Loading...</p>} */}
             </form>
         </div>
     )

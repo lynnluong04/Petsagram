@@ -54,7 +54,7 @@ const Profile = () => {
                         >Edit Profile</NavLink>
                     }
                     </div>
-                    {postNum=== 1 && ( <div className='counts'><span className='num'>{postNum}</span> post</div>)}
+                    {postNum === 1 && ( <div className='counts'><span className='num'>{postNum}</span> post</div>)}
                     {postNum > 1 && ( <div className='counts'> <span className='num'>{postNum}</span> posts </div>)}
                     <div>{user?.bio}</div>
                 </div>
