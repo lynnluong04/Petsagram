@@ -1,6 +1,6 @@
 # Petsagram
 
-Petsagram is a fullstack web application modeled after the popular social media app, Instagram. Signed up users have the ability to post images of pets or animals, comment on and like other users posts.
+Petsagram is a fullstack web application modeled after the popular social media photo sharing app, Instagram. Signed up users have the ability to post images of pets or animals, comment on and like other users posts.
 
 Visit the live site here :https://petsagram-solo.herokuapp.com/
 
