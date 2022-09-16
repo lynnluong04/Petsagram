@@ -40,12 +40,15 @@ function App() {
     <div className='app' >
       {sessionUser && (<NavBar loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>)}
       <Switch location={background || location}>
+
         <ProtectedRoute path='/:userId/edit'>
           <EditUserForm notHomeorProfile= {() => {setLoadProfile(false); setLoadHome(false)}}/>
         </ProtectedRoute>
+
         <ProtectedRoute path='/:userId' exact={true}>
           <Profile loadingProfile={() => {setLoadProfile(true); setLoadHome(false)}} />
         </ProtectedRoute>
+        ``
         <Route path='/'  >
           <Home loadHome={()=>setLoadHome(true)}/>
         </Route>
