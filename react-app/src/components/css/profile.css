@@ -50,6 +50,7 @@ span.num {
 img.profile-post {
     width: 293px;
     height: 293px;
+    object-fit: cover;
 }
 
 .profile-bottom {
@@ -77,6 +78,7 @@ div.categories {
 
 img.profile-post {
     margin: 10px;
+    object-fit: cover;
 }
 
 .edit-profile {
@@ -145,6 +147,7 @@ img.edit-user-pic {
     height: 38px;
     width: 38px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .edit-user-upper {

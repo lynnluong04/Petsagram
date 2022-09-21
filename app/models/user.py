@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .like import likes
 from .follow import follows
-from .post import Post
+# from .post import Post
 
 
 
@@ -67,11 +67,11 @@ class User(db.Model, UserMixin):
             self.following.remove(user)
 
     def followed_posts(self):
-        followed = Post.query.join(
-            follows, (follows.c.followee == Post.owner_id)).filter(
+        followed = db.Post.query.join(
+            follows, (follows.c.followee == db.Post.owner_id)).filter(
                 follows.c.follower == self.id)
-        own = Post.query.filter_by(owner_id=self.id)
-        return followed.union(own).order_by(Post.created_at.desc())
+        own = db.Post.query.filter_by(owner_id=self.id)
+        return followed.union(own).order_by(db.Post.created_at.desc())
 
 
     owner_posts = db.relationship("Post", back_populates="owner")
