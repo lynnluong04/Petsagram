@@ -4,6 +4,7 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
 import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
+import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
 const Profile = ({ loadingProfile }) => {
@@ -17,7 +18,10 @@ const Profile = ({ loadingProfile }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     const postNum = userPosts.length
+    const followingList = user?.following_list
+    const followersList = user?.followers_list
 
+    console.log("FOLLOWERS" , followersList)
     userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
@@ -67,18 +71,8 @@ const Profile = ({ loadingProfile }) => {
                         {postNum === 1 && (<div className='counts'><span className='num'>{postNum}</span> post</div>)}
                         {postNum > 1 && (<div className='counts'> <span className='num'>{postNum}</span> posts </div>)}
 
-                        {user.followers_num > 0 && (
-                            <div className="followers-num">
-                                <span className='num'> {`${user.followers_num} `} </span>
-                                {user.followers_num > 1 ? " followers" : " follower"}
-                            </div>
-                        )}
-                        {user.following_num > 0 && (
-                            <div className="following-num">
-                                <span className='num'> {`${user.following_num} `}</span>
-                                following
-                            </div>
-                        )}
+                        <FollowListModal usersList={followersList} isFollowers={true}/>
+                        <FollowListModal usersList={followingList} isFollowers={false}/>
 
                         <div>{user?.bio}</div>
                     </div>

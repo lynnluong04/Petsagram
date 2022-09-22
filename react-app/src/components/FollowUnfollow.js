@@ -22,6 +22,7 @@ const FollowUnfollow = ({ userId, user }) => {
 
     const onFollow = async (e) => {
         await dispatch(thunkFollowUser(user.id))
+        console.log("FROM FOLLOW COMPONENT", user.id)
         setIsFollowing(true)
     };
 

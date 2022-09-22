@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1e381706f4ac
-Revises:
-Create Date: 2022-08-08 18:27:26.517566
+Revision ID: 7ea7dece8d75
+Revises: 
+Create Date: 2022-09-20 21:28:01.779847
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1e381706f4ac'
+revision = '7ea7dece8d75'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,6 +30,13 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    op.create_table('follows',
+    sa.Column('follower', sa.Integer(), nullable=False),
+    sa.Column('followee', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['followee'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['follower'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('follower', 'followee')
+    )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
@@ -41,8 +48,8 @@ def upgrade():
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
+    sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=2200), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
@@ -56,7 +63,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('owner_id', 'post_id')
     )
-    ### end Alembic commands ###
+    # ### end Alembic commands ###
 
 
 def downgrade():
@@ -64,5 +71,6 @@ def downgrade():
     op.drop_table('likes')
     op.drop_table('comments')
     op.drop_table('posts')
+    op.drop_table('follows')
     op.drop_table('users')
-    ### end Alembic commands ###
+    # ### end Alembic commands ###
