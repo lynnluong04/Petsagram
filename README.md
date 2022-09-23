@@ -38,7 +38,7 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 
 
 ## Future Features to Implement
-* Followers
+* Following
 * Direct Messaging
 * Discover
 * Hashtags
