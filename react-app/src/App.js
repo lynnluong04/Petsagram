@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      await dispatch(thunkLoadUsers)
+      await dispatch(thunkLoadUsers());
       setLoaded(true);
     })();
   }, [dispatch]);

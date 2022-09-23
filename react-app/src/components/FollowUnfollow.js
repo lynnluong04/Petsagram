@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkFollowUser, thunkUnfollowUser } from "../store/user";
 import { Modal } from "../context/Modal";
 import './css/followsModal.css'
+import { authenticate } from "../store/session";
 
 const FollowUnfollow = ({ userId, user }) => {
     const dispatch = useDispatch();
@@ -10,9 +11,10 @@ const FollowUnfollow = ({ userId, user }) => {
     const [unfollowModal, setUnfollowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
 
+    console.log("FROM FOLLOW BUTTON", isFollowing)
 
     useEffect(() => {
-        if (sessionUser.following_id.includes(user.id)) {
+        if (user?.followers_id.includes(sessionUser.id)) {
             setIsFollowing(true)
         } else {
             setIsFollowing(false)

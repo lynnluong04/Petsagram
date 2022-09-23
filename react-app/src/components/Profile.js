@@ -8,10 +8,11 @@ import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
 const Profile = ({ loadingProfile }) => {
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const numberId = Number(userId)
+    const numberId = Number(userId);
+    const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
@@ -27,21 +28,21 @@ const Profile = ({ loadingProfile }) => {
     });
     const location = useLocation();
 
-    useEffect(() => {
-        if (!userId) {
-            return;
-        }
-        (async () => {
-            const response = await fetch(`/api/users/${userId}`);
-            const user = await response.json();
-            setUser(user);
-        })();
-    }, [userId]);
+    // useEffect(() => {
+    //     if (!userId) {
+    //         return;
+    //     }
+    //     (async () => {
+    //         const response = await fetch(`/api/users/${userId}`);
+    //         const user = await response.json();
+    //         setUser(user);
+    //     })();
+    // }, [userId]);
 
-    useEffect(() => {
+    useEffect(async() => {
         loadingProfile();
-        dispatch(thunkLoadPosts());
-        dispatch(thunkLoadUsers());
+        await dispatch(thunkLoadPosts());
+        await dispatch(thunkLoadUsers());
 
     }, [dispatch]);
 

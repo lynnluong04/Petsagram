@@ -85,7 +85,6 @@ export const thunkFollowUser = userId => async dispatch => {
 
     if (res.ok) {
         const user = await res.json()
-        console.log("RETURN FROM FOLLOW ROUTE", user)
         dispatch(updateFollow(user))
     }
 }

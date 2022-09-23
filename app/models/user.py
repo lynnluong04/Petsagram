@@ -49,7 +49,8 @@ class User(db.Model, UserMixin):
             # 'followers_num': len(self.followers),
             # 'following_num': len(self.following),
             'following_list': [user.to_dict_follows() for user in self.following],
-            'following_id': [user.id for user in self.following]
+            'following_id': [user.id for user in self.following],
+            'followers_id': [user.id for user in self.followers],
             # 'posts_num': len(self.owner_posts)
         }
 
@@ -85,4 +86,4 @@ class User(db.Model, UserMixin):
         'User', secondary=follows,
         primaryjoin=(follows.c.follower == id),
         secondaryjoin=(follows.c.followee == id),
-        backref=db.backref('followers', lazy='select'), lazy='select')
+        backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
