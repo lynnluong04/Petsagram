@@ -66,6 +66,12 @@ div.categories {
     margin: 15px;
 }
 
+div.outer-photos-container {
+    width: 100%;
+    display: flex;
+
+}
+
 .photos-container {
     display: flex;
     flex-direction: row;
@@ -77,6 +83,7 @@ div.categories {
 
 img.profile-post {
     margin: 10px;
+    object-fit: cover;
 }
 
 .edit-profile {
