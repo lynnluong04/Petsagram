@@ -69,6 +69,7 @@ div.categories {
 div.outer-photos-container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 
 }
 
