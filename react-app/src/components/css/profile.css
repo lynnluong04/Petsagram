@@ -57,6 +57,8 @@ img.profile-post {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
+    height: fit-content;
+    width: 940px;
 }
 
 div.categories {
@@ -70,17 +72,18 @@ div.outer-photos-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    height: fit-content;
 
 }
 
-.photos-container {
+/* .photos-container {
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
     flex-wrap: wrap;
     justify-content: flex-start;
 
-}
+} */
 
 img.profile-post {
     margin: 10px;
