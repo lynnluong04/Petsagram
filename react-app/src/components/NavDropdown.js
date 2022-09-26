@@ -10,15 +10,34 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
+    useEffect(() => {
+        if (!showMenu) {
+            if (!loadProfile) {
+                setLoadHome(true)
+            }
+            return;
+        } else {
+            setLoadHome(false)
+        }
+
+        const closeMenu = () => {
+            setShowMenu(false);
+            //   setLoadHome(true);
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
 
     return (
         <div className="profile-dropdown container" >
             <button onClick={() => {
                 setShowMenu(!showMenu);
-                {!loadProfile && setLoadHome(!loadHome)}
+                // {showMenu && setLoadHome(false)};
             }}
                 className='nav button icon'>
-                <img className={ showMenu || loadProfile ? 'nav-selected' : 'nav profile icon' } src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
+                <img className={showMenu || loadProfile ? 'nav-selected' : 'nav profile icon'} src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
             </button>
             {showMenu && (
                 <div onClick={() => setShowMenu(false)} className="dropdown container" >
