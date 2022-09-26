@@ -19,10 +19,8 @@ const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
     // window.location.reload()
     window.scrollTo({ top: 0, left: 0 });
     setLoadHome(true)
-    setLoadProfile(false)
   }
 
-  console.log("????", loadHome, loadProfile)
 
   return (
     <nav>

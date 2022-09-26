@@ -22,6 +22,7 @@ const Profile = ({ loadingProfile }) => {
     const location = useLocation();
 
     useEffect(() => {
+        loadingProfile();
         if (!userId) {
             return;
         }
@@ -32,9 +33,8 @@ const Profile = ({ loadingProfile }) => {
         })();
     }, [userId]);
 
-    useEffect(() => {
-        loadingProfile();
-        dispatch(thunkLoadPosts());
+    useEffect(async() => {
+       await dispatch(thunkLoadPosts());
     }, [dispatch]);
 
 

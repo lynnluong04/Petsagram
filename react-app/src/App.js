@@ -14,7 +14,7 @@ import { thunkLoadUsers } from './store/user';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [loadHome, setLoadHome] = useState(false);
+  const [loadHome, setLoadHome] = useState(true);
   const [loadProfile, setLoadProfile] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -50,7 +50,7 @@ function App() {
         </ProtectedRoute>
         ``
         <Route path='/'  >
-          <Home loadHome={()=>setLoadHome(true)}/>
+          <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
