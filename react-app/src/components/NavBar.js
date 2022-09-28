@@ -5,6 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import CreatePostModal from './CreatePostModal';
 import "./css/navbar.css"
 import NavDropdown from './NavDropdown';
+import SearchBar from './Search';
 
 const IMAGE = (imgName) => {
   return require(`./images/${imgName}`).default
@@ -24,13 +25,17 @@ const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
 
   return (
     <nav>
-      <ul>
+      <ul className='navbar'>
         <li>
           <div className='nav-logo' onClick={refreshHome}>
             {/* <NavLink to='/' exact={true} activeClassName='active'> */}
             <img className='logo nav' src={IMAGE("logo-black.png")} />
             {/* </NavLink> */}
           </div>
+        </li>
+
+        <li>
+          <SearchBar />
         </li>
 
         <li className='nav-right'>

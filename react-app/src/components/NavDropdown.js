@@ -13,16 +13,15 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
     useEffect(() => {
         if (!showMenu) {
             if (!loadProfile) {
-                setLoadHome(true)
+                setLoadHome(true);
             }
             return;
         } else {
-            setLoadHome(false)
-        }
+            setLoadHome(false);
+        };
 
         const closeMenu = () => {
             setShowMenu(false);
-            //   setLoadHome(true);
         };
 
         document.addEventListener('click', closeMenu);
@@ -30,11 +29,11 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
+    console.log("NAVDROP", showMenu)
     return (
         <div className="profile-dropdown container" >
             <button onClick={() => {
                 setShowMenu(!showMenu);
-                // {showMenu && setLoadHome(false)};
             }}
                 className='nav button icon'>
                 <img className={showMenu || loadProfile ? 'nav-selected' : 'nav profile icon'} src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
