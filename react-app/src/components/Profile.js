@@ -22,7 +22,7 @@ const Profile = ({ loadingProfile }) => {
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
-    console.log("FOLLOWERS" , followersList)
+    console.log("FOLLOWERS", followersList)
     userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
@@ -39,7 +39,7 @@ const Profile = ({ loadingProfile }) => {
     //     })();
     // }, [userId]);
 
-    useEffect(async() => {
+    useEffect(async () => {
         loadingProfile();
         await dispatch(thunkLoadPosts());
         await dispatch(thunkLoadUsers());
@@ -63,44 +63,45 @@ const Profile = ({ loadingProfile }) => {
                                     className="edit-profile"
                                 >Edit Profile</NavLink>
                             }
-                        </div>
-
                         {sessionUser.id !== numberId && (
                             <FollowUnfollow userId={userId} user={user} />
                         )}
+                        </div>
 
-                        {postNum === 1 && (<div className='counts'><span className='num'>{postNum}</span> post</div>)}
-                        {postNum > 1 && (<div className='counts'> <span className='num'>{postNum}</span> posts </div>)}
+                        <div className='profile-counts'>
+                            {postNum === 1 && (<div className='counts'><span >{postNum}</span> post</div>)}
+                            {postNum > 1 && (<div className='counts'> <span>{postNum}</span> posts </div>)}
 
-                        <FollowListModal usersList={followersList} isFollowers={true}/>
-                        <FollowListModal usersList={followingList} isFollowers={false}/>
+                            <FollowListModal usersList={followersList} isFollowers={true} />
+                            <FollowListModal usersList={followingList} isFollowers={false} />
+                        </div>
 
-                        <div>{user?.bio}</div>
+                        <div className='profile-bio'>{user?.bio}</div>
                     </div>
                 </div>
 
-            <div className='profile-bottom' >
-                <div className='categories'>
-                    <svg aria-label="" class="_ab6-" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12"><rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="14.985" y2="14.985"></line></svg>
-                    <span>POSTS</span>
-                </div>
-                <div className='outer-photos-container'>
-                    <div className='photos-container'>
+                <div className='profile-bottom' >
+                    <div className='categories'>
+                        <svg aria-label="" class="_ab6-" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12"><rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="14.985" y2="14.985"></line></svg>
+                        <span>POSTS</span>
+                    </div>
+                    <div className='outer-photos-container'>
+                        <div className='photos-container'>
 
-                        {userPosts && userPosts.map(post => {
-                            return (
-                                <NavLink to={{
-                                    pathname: `/${numberId}/${post.id}`,
-                                    state: { background: location }
-                                }}
-                                    key={post.id}>
-                                    <img className='profile-post' src={post.media_url} alt="post of" />
-                                </NavLink>
-                            )
-                        })}
+                            {userPosts && userPosts.map(post => {
+                                return (
+                                    <NavLink to={{
+                                        pathname: `/${numberId}/${post.id}`,
+                                        state: { background: location }
+                                    }}
+                                        key={post.id}>
+                                        <img className='profile-post' src={post.media_url} alt="post of" />
+                                    </NavLink>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         )
     } else {

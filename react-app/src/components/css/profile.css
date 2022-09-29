@@ -213,3 +213,26 @@ button.edit-user{
 .success-msg {
     color:#0095F6;
 }
+
+.profile-counts {
+    display: flex;
+    flex-direction: row;
+}
+button.counts {
+    border: none;
+    background-color: transparent;
+    margin-left: 30px;
+}
+
+span {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.profile-bio {
+    font-size: 16px;
+}
+
+button.isfollowing, button.notfollowing {
+    margin-left: 30px;
+}

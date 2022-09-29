@@ -9,6 +9,8 @@ const SearchBar = () => {
     const [searchInput, setSearchInput] = useState('')
     let searchValues = [];
 
+    console.log("SEARCH RESULTS", searchResults)
+    console.log("SEARCHDROP??", searchDrop)
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('/api/users/');
@@ -27,6 +29,7 @@ const SearchBar = () => {
                 return true
         })
         setSearchResults(searchValues)
+
         if (searchResults && e.target.value) {
             setSearchDrop(true)
         } else {
@@ -36,6 +39,8 @@ const SearchBar = () => {
 
     const closeDropdown = () => {
         setSearchDrop(false);
+        setSearchResults([])
+        setSearchInput("")
     }
 
 
@@ -45,14 +50,17 @@ const SearchBar = () => {
         <div>
             <div className="search">
                 <svg aria-label="Search" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="16" role="img" viewBox="0 0 24 24" width="16"><path d="M19 10.5A8.5 8.5 0 1110.5 2a8.5 8.5 0 018.5 8.5z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="16.511" x2="22" y1="16.511" y2="22"></line></svg>
-                    <input onChange={searchForResults} value={searchInput} className="search" id={"search-input"}type="text" placeholder="Search" >
-                    </input>
+                <input onChange={searchForResults} value={searchInput} className="search" id={"search-input"} type="text" placeholder="Search" >
+                </input>
+                <i onClick={()=> closeDropdown()} class="fa-sharp fa-solid fa-circle-xmark"></i>
             </div>
 
             {searchDrop && (
                 <div className="results-container">
                     {searchResults && searchResults.map(user => {
+                        return (
                         <Link to={`/${user.id}`}> {user.username} </Link>
+                        )
                     })}
                 </div>
             )}

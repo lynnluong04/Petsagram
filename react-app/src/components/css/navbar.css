@@ -151,3 +151,14 @@ span.search {
     color: #8e8e8e;
 }
 
+.results-container {
+    background-color: aqua;
+    display: flex;
+    z-index: 1;
+    height: 450px;
+    width: 375px;
+    position: absolute;
+    top:60px;
+    color: black;
+    flex-direction: column;
+}
