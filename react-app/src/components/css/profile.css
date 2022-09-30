@@ -224,7 +224,7 @@ button.counts {
     margin-left: 30px;
 }
 
-span {
+span.num {
     font-weight: bold;
     font-size: 16px;
 }

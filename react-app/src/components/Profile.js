@@ -69,8 +69,8 @@ const Profile = ({ loadingProfile }) => {
                         </div>
 
                         <div className='profile-counts'>
-                            {postNum === 1 && (<div className='counts'><span >{postNum}</span> post</div>)}
-                            {postNum > 1 && (<div className='counts'> <span>{postNum}</span> posts </div>)}
+                            {postNum === 1 && (<div className='counts'><span className='num' >{postNum}</span> post</div>)}
+                            {postNum > 1 && (<div className='counts'> <span className='num' >{postNum}</span> posts </div>)}
 
                             <FollowListModal usersList={followersList} isFollowers={true} />
                             <FollowListModal usersList={followingList} isFollowers={false} />
