@@ -162,3 +162,14 @@ span.search {
     color: black;
     flex-direction: column;
 }
+
+.info-icon {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
