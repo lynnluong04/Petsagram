@@ -16,6 +16,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadHome, setLoadHome] = useState(true);
   const [loadProfile, setLoadProfile] = useState(false);
+  const [loadChat, setLoadChat] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
@@ -38,17 +39,19 @@ function App() {
   return (
     // <BrowserRouter>
     <div className='app' >
-      {sessionUser && (<NavBar loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>)}
+      {sessionUser && (<NavBar
+      loadHome={loadHome} loadProfile={loadProfile} loadChat={loadChat}
+      setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} setLoadChat={setLoadChat}/>)}
       <Switch location={background || location}>
-
+        <ProtectedRoute path='/about' exact={true}>
+          <div>THIS IS THE ABOUT PAGE</div>
+        </ProtectedRoute>
         <ProtectedRoute path='/:userId/edit'>
           <EditUserForm notHomeorProfile= {() => {setLoadProfile(false); setLoadHome(false)}}/>
         </ProtectedRoute>
-
         <ProtectedRoute path='/:userId' exact={true}>
           <Profile loadingProfile={() => {setLoadProfile(true); setLoadHome(false)}} />
         </ProtectedRoute>
-        ``
         <Route path='/'  >
           <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
         </Route>
