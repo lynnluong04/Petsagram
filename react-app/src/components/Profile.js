@@ -40,7 +40,9 @@ const Profile = ({ loadingProfile }) => {
     // }, [userId]);
 
     useEffect(async () => {
-        loadingProfile();
+        if (sessionUser.id === numberId) {
+            loadingProfile();
+        }
         await dispatch(thunkLoadPosts());
         await dispatch(thunkLoadUsers());
 
@@ -63,9 +65,9 @@ const Profile = ({ loadingProfile }) => {
                                     className="edit-profile"
                                 >Edit Profile</NavLink>
                             }
-                        {sessionUser.id !== numberId && (
-                            <FollowUnfollow userId={userId} user={user} />
-                        )}
+                            {sessionUser.id !== numberId && (
+                                <FollowUnfollow userId={userId} user={user} />
+                            )}
                         </div>
 
                         <div className='profile-counts'>

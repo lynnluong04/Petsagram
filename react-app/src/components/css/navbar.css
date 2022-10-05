@@ -167,7 +167,11 @@ span.search {
 }
 
 .fa-circle-xmark {
-    color: #8e8e8e;
+    color: rgb(199, 199, 199);
+}
+
+.fa-circle-xmark:hover {
+cursor: pointer;
 }
 
 #hidden-close {
