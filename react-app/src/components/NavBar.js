@@ -34,9 +34,9 @@ const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
           </div>
         </li>
 
-        {/* <li>
+        <li>
           <SearchBar />
-        </li> */}
+        </li>
 
         <li className='nav-right'>
           <div className='nav icon links'>
