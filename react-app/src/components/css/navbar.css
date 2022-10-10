@@ -223,3 +223,21 @@ img.search {
     border-radius: 50%;
     margin-right: 15px;
 }
+
+.load-info-icon {
+    border: 2px solid black;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 21px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+
+.info-icon:hover, .load-info-icon:hover {
+    cursor: pointer;
+}

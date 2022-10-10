@@ -11,7 +11,7 @@ const IMAGE = (imgName) => {
   return require(`./images/${imgName}`).default
 }
 
-const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
+const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome }) => {
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user);
 
@@ -39,7 +39,10 @@ const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
         </li>
 
         <li className='nav-right'>
-              <div className='info-icon'><i class="fa-solid fa-info"></i></div>
+          <NavLink to={'/about'} className={loadAbout? 'load-info-icon':'info-icon'}>
+            <i class="fa-solid fa-info"></i>
+            </NavLink>
+
           <div className='nav icon links'>
             <div onClick={refreshHome}>
               {loadHome ?

@@ -7,7 +7,7 @@ import "./css/profile.css"
 import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
-const Profile = ({ setLoadProfile, setLoadHome }) => {
+const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     // const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const location = useLocation();
@@ -46,6 +46,7 @@ const Profile = ({ setLoadProfile, setLoadHome }) => {
             setLoadProfile(false)
         }
         setLoadHome(false)
+        setLoadAbout(false)
         await dispatch(thunkLoadPosts());
         await dispatch(thunkLoadUsers());
 

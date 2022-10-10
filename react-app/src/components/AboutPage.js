@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-const AboutPage = () => {
+const AboutPage = ({loadAbout}) => {
+
+    useEffect (()=> {
+        loadAbout();
+    })
+
     return (
-        <diV>
-            
-        </diV>
+        <div>
+            About page coming soon!
+        </div>
     )
 }
 
