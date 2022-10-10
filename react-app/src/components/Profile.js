@@ -7,10 +7,12 @@ import "./css/profile.css"
 import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
-const Profile = ({ loadingProfile }) => {
+const Profile = ({ setLoadProfile, setLoadHome }) => {
     // const [user, setUser] = useState({});
     const dispatch = useDispatch();
+    const location = useLocation();
     const { userId } = useParams();
+
     const numberId = Number(userId);
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
@@ -22,11 +24,9 @@ const Profile = ({ loadingProfile }) => {
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
-    console.log("FOLLOWERS", followersList)
     userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
-    const location = useLocation();
 
     // useEffect(() => {
     //     if (!userId) {
@@ -41,12 +41,15 @@ const Profile = ({ loadingProfile }) => {
 
     useEffect(async () => {
         if (sessionUser.id === numberId) {
-            loadingProfile();
+            setLoadProfile(true)
+        } else {
+            setLoadProfile(false)
         }
+        setLoadHome(false)
         await dispatch(thunkLoadPosts());
         await dispatch(thunkLoadUsers());
 
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
 
 

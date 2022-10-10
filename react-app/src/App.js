@@ -46,9 +46,9 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/:userId' exact={true}>
-          <Profile loadingProfile={() => {setLoadProfile(true); setLoadHome(false)}} />
+          <Profile setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} />
         </ProtectedRoute>
-        ``
+      
         <Route path='/'  >
           <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
         </Route>
