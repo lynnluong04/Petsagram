@@ -86,7 +86,7 @@ const EditUserForm = () => {
           ))}
         </div>
         <div className="edit-user-upper">
-          <img className="edit-user-pic" src={sessionUser.photo_url} />
+          <img className="edit-user-pic" src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
           <div className="edit-user-info">
             <div className="edit-user-username">{user?.username}</div>
             <form>
