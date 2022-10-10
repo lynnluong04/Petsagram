@@ -48,7 +48,7 @@ function App() {
         <ProtectedRoute path='/:userId' exact={true}>
           <Profile setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} />
         </ProtectedRoute>
-      
+        
         <Route path='/'  >
           <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
         </Route>

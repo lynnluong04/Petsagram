@@ -39,6 +39,7 @@ const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
         </li>
 
         <li className='nav-right'>
+              <div className='info-icon'><i class="fa-solid fa-info"></i></div>
           <div className='nav icon links'>
             <div onClick={refreshHome}>
               {loadHome ?
@@ -48,10 +49,11 @@ const NavBar = ({ loadHome, loadProfile, setLoadProfile, setLoadHome }) => {
               }
             </div>
             <CreatePostModal />
+
           </div>
 
           <div className='nav profile icon'>
-            <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>
+            <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} />
           </div>
         </li>
       </ul>
