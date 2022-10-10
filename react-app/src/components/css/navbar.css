@@ -218,8 +218,8 @@ img.search {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 19px;
-    width: 19px;
+    height: 20px;
+    width: 21px;
     border-radius: 50%;
     margin-right: 15px;
 }
