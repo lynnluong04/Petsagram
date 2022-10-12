@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { thunkLoadPosts } from '../store/post';
+import { thunkLoadPosts, thunkLoadUserPosts } from '../store/post';
 import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
 import FollowListModal from './FollowListModal';
@@ -15,15 +15,14 @@ const Profile = ({ loadingProfile }) => {
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
-    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
+    // const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
-    const postNum = userPosts.length
+    const postNum = postsArray.length
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
-    console.log("FOLLOWERS", followersList)
-    userPosts?.sort((a, b) => {
+    postsArray?.sort((a, b) => {
         return b.id - a.id;
     });
     const location = useLocation();
@@ -41,8 +40,8 @@ const Profile = ({ loadingProfile }) => {
 
     useEffect(async () => {
         loadingProfile();
-        await dispatch(thunkLoadPosts());
         await dispatch(thunkLoadUsers());
+        await dispatch(thunkLoadUserPosts(numberId));
 
     }, [dispatch]);
 
@@ -88,7 +87,7 @@ const Profile = ({ loadingProfile }) => {
                     <div className='outer-photos-container'>
                         <div className='photos-container'>
 
-                            {userPosts && userPosts.map(post => {
+                            {postsArray && postsArray.map(post => {
                                 return (
                                     <NavLink to={{
                                         pathname: `/${numberId}/${post.id}`,

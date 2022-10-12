@@ -25,10 +25,10 @@ class Post(db.Model):
             'created_at': self.created_at,
             'owner': self.owner.username,
             'profile': self.owner.photo_url,
-            'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
+            # 'comments_num': len(Comment.query.filter_by(post_id=self.id).all()),
             'liked_users': [user.to_dict() for user in self.users_who_liked],
             'liked_users_id': [user.id for user in self.users_who_liked],
-            'likes_amount': len(self.users_who_liked)
+            # 'likes_amount': len(self.users_who_liked)
         }
 
 

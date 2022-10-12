@@ -5,12 +5,18 @@ from app.forms.post_form import PostForm
 from app.models import Post, db
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
-
+from app.models.follow import follows
 post_routes = Blueprint('posts', __name__)
 
 @post_routes.route('/')
-def all_posts():
-    posts = Post.query.all()
+@login_required
+def followed_posts():
+    following_posts = Post.query.join(
+    follows, (follows.c.followee == Post.owner_id)).filter(
+        follows.c.follower == current_user.id).all()
+    my_posts = Post.query.filter_by(owner_id=current_user.id).all()
+
+    posts = my_posts + following_posts
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])
     # print("-----------------------------------------------------------")
