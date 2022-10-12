@@ -19,6 +19,7 @@ const AboutPage = ({ loadAbout }) => {
                     <i class="fa-brands fa-linkedin"></i>
                     <i class="fa-brands fa-github"></i>
                 </div>
+                <div>Hi, thanks for visiting my page! My name is Lynn and I am a software engineer.  </div>
             </div>
             About page coming soon!
         </div>
