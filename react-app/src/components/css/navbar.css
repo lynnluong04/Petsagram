@@ -167,7 +167,11 @@ span.search {
 }
 
 .fa-circle-xmark {
-    color: #8e8e8e;
+    color: rgb(195, 195, 195);
+}
+
+.fa-circle-xmark:hover {
+cursor: pointer;
 }
 
 #hidden-close {
@@ -207,4 +211,33 @@ img.search {
 }
 .search-name {
     color: #8e8e8e;
+}
+
+.info-icon {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 21px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.load-info-icon {
+    border: 2px solid black;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 21px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+
+.info-icon:hover, .load-info-icon:hover {
+    cursor: pointer;
 }

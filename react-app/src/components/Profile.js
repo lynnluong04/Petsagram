@@ -7,10 +7,12 @@ import "./css/profile.css"
 import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
-const Profile = ({ loadingProfile }) => {
+const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     // const [user, setUser] = useState({});
     const dispatch = useDispatch();
+    const location = useLocation();
     const { userId } = useParams();
+
     const numberId = Number(userId);
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
@@ -25,7 +27,6 @@ const Profile = ({ loadingProfile }) => {
     postsArray?.sort((a, b) => {
         return b.id - a.id;
     });
-    const location = useLocation();
 
     // useEffect(() => {
     //     if (!userId) {
@@ -39,11 +40,18 @@ const Profile = ({ loadingProfile }) => {
     // }, [userId]);
 
     useEffect(async () => {
-        loadingProfile();
+        if (sessionUser.id === numberId) {
+            setLoadProfile(true)
+        } else {
+            setLoadProfile(false)
+        }
+        setLoadHome(false)
+        setLoadAbout(false)
+        // await dispatch(thunkLoadPosts());
         await dispatch(thunkLoadUsers());
         await dispatch(thunkLoadUserPosts(numberId));
 
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
 
 
@@ -62,9 +70,9 @@ const Profile = ({ loadingProfile }) => {
                                     className="edit-profile"
                                 >Edit Profile</NavLink>
                             }
-                        {sessionUser.id !== numberId && (
-                            <FollowUnfollow userId={userId} user={user} />
-                        )}
+                            {sessionUser.id !== numberId && (
+                                <FollowUnfollow userId={userId} user={user} />
+                            )}
                         </div>
 
                         <div className='profile-counts'>

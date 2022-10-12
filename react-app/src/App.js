@@ -11,11 +11,13 @@ import SinglePostModal from './components/SinglePostModal';
 import Home from './components/Splash';
 import EditUserForm from './components/EditUser';
 import { thunkLoadUsers } from './store/user';
+import AboutPage from './components/AboutPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadHome, setLoadHome] = useState(true);
   const [loadProfile, setLoadProfile] = useState(false);
+  const [loadAbout, setLoadAbout] = useState(false)
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
@@ -38,19 +40,23 @@ function App() {
   return (
     // <BrowserRouter>
     <div className='app' >
-      {sessionUser && (<NavBar loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>)}
+      {sessionUser && (<NavBar loadAbout={loadAbout} loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>)}
       <Switch location={background || location}>
 
+        <ProtectedRoute path='/about' exact={true}>
+          <AboutPage loadAbout = {()=> {setLoadHome(false); setLoadProfile(false); setLoadAbout(true)}} />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/:userId/edit'>
-          <EditUserForm notHomeorProfile= {() => {setLoadProfile(false); setLoadHome(false)}}/>
+          <EditUserForm />
         </ProtectedRoute>
 
         <ProtectedRoute path='/:userId' exact={true}>
-          <Profile loadingProfile={() => {setLoadProfile(true); setLoadHome(false)}} />
+          <Profile setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} setLoadAbout={setLoadAbout}/>
         </ProtectedRoute>
-        ``
+
         <Route path='/'  >
-          <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
+          <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false); setLoadAbout(false)}}/>
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
