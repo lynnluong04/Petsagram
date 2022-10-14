@@ -29,9 +29,9 @@ function App() {
     (async () => {
       await dispatch(authenticate());
 
-      if(sessionUser !== null) {
-        await dispatch(thunkLoadUsers());
-      }
+      // if(sessionUser !== null) {
+      //   await dispatch(thunkLoadUsers());
+      // }
 
       setLoaded(true);
     })();
