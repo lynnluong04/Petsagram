@@ -6,7 +6,7 @@ Visit the live site here :https://petsagram-solo.herokuapp.com/
 
 ## Technologies Used
 * **Languages:** Javascript, Python, HTML/CSS
-* **Backend:** Flask
+* **Backend:** Flask, SQLAlchemy
 * **Frontend:** React, Redux
 * **Database:** PostgreSQL
 * **Hosting:** Heroku
