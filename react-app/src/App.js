@@ -28,9 +28,14 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      // await dispatch(thunkLoadUsers());
+
+      if(sessionUser !== null) {
+        await dispatch(thunkLoadUsers());
+      }
+
       setLoaded(true);
     })();
+
   }, [dispatch]);
 
   if (!loaded) {
