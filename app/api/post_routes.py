@@ -17,7 +17,6 @@ def followed_posts():
         follows.c.follower == current_user.id,
         Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
 
-    print("!!!!!!!!!", [post.to_dict() for post in posts])
     # following_posts = Post.query.join(
     # follows, (follows.c.followee == Post.owner_id)).filter(
     #     follows.c.follower == current_user.id).all()
