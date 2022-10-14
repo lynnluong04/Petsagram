@@ -133,9 +133,10 @@ export default function postReducer(state = {}, action) {
             // newState['comment-count'] = {};
             const allPosts = action.list['posts']
             allPosts.forEach(post => {
-                newState[post.id] = post
-                // newState['comment-count'][post.id] = post.comments_num
+                newState[allPosts.indexOf(post) + 1] = post
+                // newState[post.id] = post
             });
+            console.log("STATE", newState)
             return newState;
 
         case LOADUSERPOSTS:

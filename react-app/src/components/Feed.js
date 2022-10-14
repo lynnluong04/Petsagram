@@ -16,10 +16,12 @@ const Feed = ({loadHome}) => {
     const [expandCaption, setExpandCaption] = useState(false);
 
     const postsArray = posts ? Object.values(posts) : null;
-    postsArray?.sort((a, b) => {
-        return b.id - a.id
-    });
 
+    // postsArray?.sort((a, b) => {
+    //     return b.id - a.id
+    // });
+
+    console.log("POSTS", posts)
 
     useEffect(() => {
         loadHome();

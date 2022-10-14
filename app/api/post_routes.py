@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.forms.edit_post import EditPost
 from app.forms.post_form import PostForm
-from sqlalchemy import or_
+from sqlalchemy import or_, desc
 from app.models import Post, db
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
@@ -17,6 +17,7 @@ def followed_posts():
         follows.c.follower == current_user.id,
         Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
 
+    print("!!!!!!!!!", [post.to_dict() for post in posts])
     # following_posts = Post.query.join(
     # follows, (follows.c.followee == Post.owner_id)).filter(
     #     follows.c.follower == current_user.id).all()
