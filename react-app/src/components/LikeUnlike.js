@@ -10,7 +10,6 @@ const LikeUnlike = ({ post }) => {
     const [like, setLike] = useState(false)
     const sessionUser = useSelector(state => state.session.user);
 
-    // console.log('LIKE STATUS', like)
 
     useEffect(() => {
         if (post?.liked_users_id.includes(sessionUser.id)) {
@@ -25,7 +24,6 @@ const LikeUnlike = ({ post }) => {
     const likePost = async (e) => {
         await dispatch(thunkAddLike(post.id))
         setLike(true)
-        // console.log(`Liking post with id ${post.id}`)
     }
 
     const unlikePost = async (e) => {

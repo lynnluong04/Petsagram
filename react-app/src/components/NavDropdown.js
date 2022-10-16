@@ -29,7 +29,6 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
-    console.log("NAVDROP", showMenu)
     return (
         <div className="profile-dropdown container" >
             <button onClick={() => {

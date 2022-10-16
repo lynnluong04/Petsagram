@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { thunkDeletePost, thunkLoadPosts } from '../store/post';
+import { thunkDeletePost, thunkLoadUserPosts } from '../store/post';
 // import "./css/profile.css"
 
 const SinglePost = ({postId, hideForm, setCaption}) => {
@@ -12,7 +12,7 @@ const SinglePost = ({postId, hideForm, setCaption}) => {
     const post = useSelector(state => state.post[postId]);
 
     useEffect(() => {
-        dispatch(thunkLoadPosts())
+        dispatch(thunkLoadUserPosts())
     }, [dispatch]);
 
     useEffect(()=> {
