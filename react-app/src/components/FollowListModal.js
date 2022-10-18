@@ -10,7 +10,7 @@ const FollowListModal = ({ usersList, isFollowers }) => {
     return (
         <div>
             {isFollowers ?
-                (usersList?.length === 1 ? <button className="counts" onClick={()=> setShowModal(true)} ><span>{usersList?.length}</span>  follower</button> :
+                (usersList?.length === 1 ? <button className="counts" onClick={()=> setShowModal(true)} ><span className='num' >{usersList?.length}</span>  follower</button> :
                     <button className="counts" onClick={()=> setShowModal(true)} ><span className='num'>{usersList?.length}</span> followers</button>
                 ) :
                 <button className="counts" onClick={()=> setShowModal(true)} ><span className='num'>{usersList.length}</span> following</button>
