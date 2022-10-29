@@ -11,7 +11,7 @@ const FollowUnfollow = ({ userId, user }) => {
     const [unfollowModal, setUnfollowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
 
-    console.log("FROM FOLLOW BUTTON", isFollowing)
+    // console.log("FROM FOLLOW BUTTON", isFollowing)
 
     useEffect(() => {
         if (user?.followers_id.includes(sessionUser.id)) {
@@ -24,7 +24,7 @@ const FollowUnfollow = ({ userId, user }) => {
 
     const onFollow = async (e) => {
         await dispatch(thunkFollowUser(user.id))
-        console.log("FROM FOLLOW COMPONENT", user.id)
+        // console.log("FROM FOLLOW COMPONENT", user.id)
         setIsFollowing(true)
     };
 

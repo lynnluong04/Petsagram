@@ -21,7 +21,7 @@ const Feed = ({loadHome}) => {
         return b.id - a.id
     });
 
-    console.log("POSTS", posts)
+    // console.log("POSTS", posts)
 
     useEffect(() => {
         loadHome();
