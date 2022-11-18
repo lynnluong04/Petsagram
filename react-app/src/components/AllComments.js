@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { thunkDeleteComment, thunkLoadComments } from '../store/comment';
+import { thunkLoadComments } from '../store/comment';
 import EditCommentModal from './EditCommentModal';
 
 const AllComments = ({ postId }) => {
@@ -21,7 +21,7 @@ const AllComments = ({ postId }) => {
                 return (
                     <div className='single-comment-container' key={comment.id}>
                         <div className='single-comment'>
-                            <img className='comment-user' src={comment.owner_profile} />
+                            <img className='comment-user' src={comment.owner_profile} alt="user pic"/>
                             <div className='comment-owner'> {comment.owner} </div>
                             <div> {comment.content} </div>
                         </div>

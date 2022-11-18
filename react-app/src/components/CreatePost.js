@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { thunkCreatePost } from '../store/post';
 import "./css/upload.css"
 import { Modal } from "../context/Modal";
 
 const CreatePostForm = ({ hideForm }) => {
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const ownerId = Number(userId);
+    // const ownerId = Number(userId);
     const [image, setImage] = useState(null)
-    const [imageLoading, setImageLoading] = useState(false);
+    // const [imageLoading, setImageLoading] = useState(false);
     const [caption, setCaption] = useState('');
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
     const [brokenImage, setBrokenImage] = useState(false)
 
     const [preview, setPreview] = useState('')
@@ -38,7 +38,7 @@ const CreatePostForm = ({ hideForm }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
+        // setHasSubmitted(true);
 
         const formData = new FormData();
         formData.append("image", image)
@@ -46,15 +46,15 @@ const CreatePostForm = ({ hideForm }) => {
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
-        setImageLoading(true);
+        // setImageLoading(true);
 
         // if (validationErrors.length) alert("Cannot create post");
 
         const createdPost = await dispatch(thunkCreatePost(formData))
 
         if (createdPost) reset();
-        setHasSubmitted(false);
-        setImageLoading(false);
+        // setHasSubmitted(false);
+        // setImageLoading(false);
         hideForm();
         window.scrollTo({top: 0, left: 0});
     }
@@ -115,11 +115,11 @@ if (brokenImage) {
                         </div>
 
                         <div className='create-post bottom next'>
-                            <img className='preview' src={preview} onError={(e)=>{e.target.onerror = null; setPreview(false); setBrokenImage(true)}} />
+                            <img className='preview' src={preview} onError={(e)=>{e.target.onerror = null; setPreview(false); setBrokenImage(true)}} alt="post preview" />
 
                             <div className='caption container'>
                                 <div className='create-post user'>
-                                    <img className='user' src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                                    <img className='user' src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
                                     <div> {sessionUser.username} </div>
                                 </div>
 

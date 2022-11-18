@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { thunkCreateComment } from '../store/comment';
 
 const CreateCommentForm = ({ postId }) => {
     const dispatch = useDispatch();
     const [content, setContent] = useState('')
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
 

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { thunkLoadPosts, thunkLoadUserPosts } from '../store/post';
+import { thunkLoadUserPosts } from '../store/post';
 import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
 import FollowListModal from './FollowListModal';
@@ -39,17 +39,19 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     //     })();
     // }, [userId]);
 
-    useEffect(async () => {
-        if (sessionUser.id === numberId) {
-            setLoadProfile(true)
-        } else {
-            setLoadProfile(false)
-        }
-        setLoadHome(false)
-        setLoadAbout(false)
-        // await dispatch(thunkLoadPosts());
-        await dispatch(thunkLoadUsers());
-        await dispatch(thunkLoadUserPosts(numberId));
+    useEffect(() => {
+        (async() => {
+            if (sessionUser.id === numberId) {
+                setLoadProfile(true)
+            } else {
+                setLoadProfile(false)
+            }
+            setLoadHome(false)
+            setLoadAbout(false)
+            // await dispatch(thunkLoadPosts());
+            await dispatch(thunkLoadUsers());
+            await dispatch(thunkLoadUserPosts(numberId));
+        })();
 
     }, [dispatch, userId]);
 
@@ -59,7 +61,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
         return (
             <div className='profile container'>
                 <div className='profile top'>
-                    <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                    <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
 
                     <div className='user-info-top'>
                         <div className='username-edit-button'>

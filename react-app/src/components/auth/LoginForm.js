@@ -51,7 +51,7 @@ const LoginForm = ({ setLoggingIn }) => {
   return (
     <div className='login form container'>
       <div className='login upper container'>
-        <img className='logo login' src={IMAGE("logo-black.png")} />
+        <img className='logo login' src={IMAGE("logo-black.png")} alt="login logo" />
         <div className='req-text'>All fields required*</div>
 
         <form onSubmit={onLogin}>
@@ -74,7 +74,7 @@ const LoginForm = ({ setLoggingIn }) => {
           <button className='submit login' type='submit'>Login</button>
         </form>
 
-        <img className='or' src={IMAGE("splash-or.png")}/>
+        <img className='or' src={IMAGE("splash-or.png")} alt="iphone"/>
 
         <div className='demo container'>Log in as a
           <button onClick={handleDemoUser}>Demo User</button>

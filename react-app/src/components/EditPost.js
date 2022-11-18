@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
 
-import { thunkDeletePost, thunkEditPost } from "../store/post";
+import { thunkEditPost } from "../store/post";
 
 const EditPostForm = ({ postId, hideForm, closeEdit }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const post = useSelector(state => state.post[postId])
     const [errors, setErrors] = useState([]);
 
     const [editCaption, setEditCaption] = useState(post?.caption);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const numberId = Number(postId)
 
@@ -24,7 +22,7 @@ const EditPostForm = ({ postId, hideForm, closeEdit }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
+        // setHasSubmitted(true);
 
         const payload = {
             id: numberId,
@@ -36,7 +34,7 @@ const EditPostForm = ({ postId, hideForm, closeEdit }) => {
 
         if (editedPost) {
             setEditCaption('')
-            setHasSubmitted(false)
+            // setHasSubmitted(false)
             setErrors(editedPost)
         } else {
             hideForm();

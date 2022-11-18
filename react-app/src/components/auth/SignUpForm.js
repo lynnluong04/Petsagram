@@ -69,10 +69,10 @@ const SignUpForm = ({ setLoggingIn }) => {
   return (
     <div className='signup form container'>
       <div className='signup upper container'>
-        <img className='logo signup' src={IMAGE("logo-black.png")} />
+        <img className='logo signup' src={IMAGE("logo-black.png")} alt="signup logo"/>
         <div className='signup text'>Sign up to see photos and videos from your pet friends.</div>
         <button className='signup demo' onClick={handleDemoUser}>Log in with Demo User</button>
-        <img className='or signup' src={IMAGE("splash-or.png")} />
+        <img className='or signup' src={IMAGE("splash-or.png")} alt="iphone" />
 
         <form onSubmit={onSignUp}>
           <input

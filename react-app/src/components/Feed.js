@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
-import { thunkLoadComments } from '../store/comment';
 import { thunkLoadPosts } from '../store/post';
 import CreateCommentForm from './CreateComment';
 import "./css/feed.css"
@@ -40,7 +39,7 @@ const Feed = ({loadHome}) => {
                         <div className='post-top'>
                             <div className='user-links'>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
-                                    <img className='feed-profile icon' src={post.profile ? post.profile : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                                    <img className='feed-profile icon' src={post.profile ? post.profile : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
                                 </NavLink>
                                 <NavLink to={`/${post.owner_id}`} activeClassName="active">
                                     <div className='post username'> {post.owner} </div>
@@ -51,7 +50,7 @@ const Feed = ({loadHome}) => {
                             </div> */}
                         </div>
 
-                        <img className='post' src={post.media_url} alt="photo post" />
+                        <img className='post' src={post.media_url} alt="post" />
 
                         <div className='post-bottom'>
 

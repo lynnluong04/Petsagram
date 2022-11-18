@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 const SearchBar = () => {
     const [searchResults, setSearchResults] = useState([])
@@ -25,9 +25,13 @@ const SearchBar = () => {
 
     const searchForResults = (e) => {
         setSearchInput(e.target.value)
-        searchValues = users?.filter(user => {
-            if (user.name.toLowerCase().includes(e.target.value.toLowerCase()) || user.username.toLowerCase().includes(e.target.value.toLowerCase()))
+        searchValues = users?.filter(user =>
+        {
+            if (user.name.toLowerCase().includes(e.target.value.toLowerCase()) || user.username.toLowerCase().includes(e.target.value.toLowerCase())) {
                 return true
+            } else {
+                return false
+            }
         })
         setSearchResults(searchValues)
 
@@ -61,7 +65,7 @@ const SearchBar = () => {
                     {searchResults && searchResults.map(user => {
                         return (
                             <Link onClick={()=> closeDropdown()} className="search link container" to={`/${user.id}`}>
-                                <img className="search icon" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                                <img className="search icon" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="search icon" />
                                 <div className="search-names">
                                     <div className="search-username">{user.username} </div>
                                     <div className="search-name">{user.name}</div>

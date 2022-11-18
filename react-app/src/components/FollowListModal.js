@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./css/likesModal.css"
-import { Modal } from "../context/Modal";
-import { NavLink } from "react-router-dom";
-import FollowUnfollow from "./FollowUnfollow";
+// import { Modal } from "../context/Modal";
+// import { NavLink } from "react-router-dom";
+// import FollowUnfollow from "./FollowUnfollow";
 
 const FollowListModal = ({ usersList, isFollowers }) => {
     const [showModal, setShowModal] = useState(false);

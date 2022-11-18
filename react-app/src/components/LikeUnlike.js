@@ -18,7 +18,7 @@ const LikeUnlike = ({ post }) => {
         } else {
             setLike(false)
         }
-    })
+    }, [])
 
 
 
@@ -36,7 +36,7 @@ const LikeUnlike = ({ post }) => {
     return (
 
         <div onClick={like? unlikePost : likePost }>
-            <img className="paw" src={like? IMAGE('paw-red.png'): IMAGE('paw-bold.png')} />
+            <img className="paw" src={like? IMAGE('paw-red.png'): IMAGE('paw-bold.png')} alt="like icon"/>
         </div>
     )
 }

@@ -1,13 +1,12 @@
 
 import React, { useEffect, useState, } from "react";
 import { useSelector } from 'react-redux';
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 
 
 const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => {
     const [showMenu, setShowMenu] = useState(false);
-    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {

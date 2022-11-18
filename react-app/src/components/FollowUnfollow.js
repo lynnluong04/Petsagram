@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkFollowUser, thunkUnfollowUser } from "../store/user";
 import { Modal } from "../context/Modal";
 import './css/followsModal.css'
-import { authenticate } from "../store/session";
+// import { authenticate } from "../store/session";
 
 const FollowUnfollow = ({ userId, user }) => {
     const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const FollowUnfollow = ({ userId, user }) => {
                 <Modal onClose={() => setUnfollowModal(false)}>
                     <div className="unfollow-container">
                         <div className="unfollow-top">
-                            <img className="unfollow-pic" src={user.photo_url} />
+                            <img className="unfollow-pic" src={user.photo_url} alt="user pic"/>
                             <div>Leave @{user.username}?</div>
                         </div>
                         <button className="unfollow-button" onClick={onUnfollow}>Unfollow</button>
