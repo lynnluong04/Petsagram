@@ -1,13 +1,16 @@
 """empty message
 
 Revision ID: 7ea7dece8d75
-Revises: 
+Revises:
 Create Date: 2022-09-20 21:28:01.779847
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = '7ea7dece8d75'
@@ -30,6 +33,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('follows',
     sa.Column('follower', sa.Integer(), nullable=False),
     sa.Column('followee', sa.Integer(), nullable=False),
@@ -37,6 +43,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['follower'], ['users.id'], ),
     sa.PrimaryKeyConstraint('follower', 'followee')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
+
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
@@ -46,6 +55,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
+
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
@@ -56,6 +68,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+
     op.create_table('likes',
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('post_id', sa.Integer(), nullable=False),
@@ -63,7 +78,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('owner_id', 'post_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
+
 
 
 def downgrade():
