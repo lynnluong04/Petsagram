@@ -2,14 +2,14 @@
 
 Petsagram is a fullstack web application modeled after the popular social media photo sharing app, Instagram. Signed up users have the ability to post images of pets or animals, comment on and like other users posts.
 
-Visit the live site here :https://petsagram-solo.herokuapp.com/
+Visit the live site here : https://petsagram.onrender.com/
 
 ## Technologies Used
 * **Languages:** Javascript, Python, HTML/CSS
 * **Backend:** Flask, SQLAlchemy
 * **Frontend:** React, Redux
 * **Database:** PostgreSQL
-* **Hosting:** Heroku
+* **Hosting:** Render
 * **Cloud Computing Service:** AWS
 
 ## Links
