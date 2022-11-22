@@ -61,8 +61,7 @@ function App() {
         </ProtectedRoute>
 
         <Route path='/'  >
-          {/* <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false); setLoadAbout(false)}}/> */}
-          <div className='down-message'>Site under maintenance 11/22/22. Will be back up in 24hours 11/23/22 </div>
+          <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false); setLoadAbout(false)}}/>
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />

@@ -49,9 +49,3 @@ a, a:link, a:visited, a:hover, a:active {
     font-size: 16px;
 }
 
-.down-message {
-    display: flex;
-    font-size: 50px;
-    justify-content: center;
-    align-items: center;
-}
