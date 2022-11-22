@@ -1,7 +1,7 @@
 from flask.cli import AppGroup
+from app.models.db import db, environment, SCHEMA
 from .users import seed_users, undo_users
 from .posts_seeds import seed_posts, undo_posts
-from app.models.db import db, environment, SCHEMA
 from .comments_seeds import seed_comments, undo_comments
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -16,7 +16,7 @@ def seed():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
-        
+
     seed_users()
     seed_posts()
     seed_comments()
