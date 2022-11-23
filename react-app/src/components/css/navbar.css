@@ -241,3 +241,9 @@ img.search {
 .info-icon:hover, .load-info-icon:hover {
     cursor: pointer;
 }
+
+.info-icon:visited {
+
+    text-decoration: none;
+    color: black;
+}
