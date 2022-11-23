@@ -5,16 +5,15 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
-from app.models.db import db
-from app.models.user import User
-from app.api.user_routes import user_routes
-from app.api.auth_routes import auth_routes
-from app.api.comment_routes import comment_routes
-from app.api.post_routes import post_routes
+from .models import db, User
+from .api.user_routes import user_routes
+from .api.auth_routes import auth_routes
+from .api.comment_routes import comment_routes
+from .api.post_routes import post_routes
 
-from app.seeds import seed_commands
+from .seeds import seed_commands
 
-from app.config import Config
+from .config import Config
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
