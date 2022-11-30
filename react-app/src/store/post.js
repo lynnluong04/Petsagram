@@ -29,6 +29,7 @@ const remove = postId => ({
 })
 
 export const thunkLoadPosts = () => async (dispatch) => {
+    console.log("hitting load feed thunk")
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
@@ -43,6 +44,10 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
         dispatch(loadUserPosts(list));
     }
 }
+
+// export const thunkLoadFeed = (userId) => async (dispatch) => {
+//     const res = await fetch()
+// }
 
 
 export const thunkCreatePost = formData => async dispatch => {

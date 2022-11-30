@@ -11,9 +11,9 @@ const SinglePost = ({postId, hideForm, setCaption}) => {
 
     const post = useSelector(state => state.post[postId]);
 
-    useEffect(() => {
-        dispatch(thunkLoadPosts())
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(thunkLoadPosts())
+    // }, [dispatch]);
 
     useEffect(()=> {
         if (post) setCaption(post.caption)

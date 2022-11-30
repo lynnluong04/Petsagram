@@ -16,7 +16,7 @@ def followed_posts():
         follows, (follows.c.followee == Post.owner_id)).filter(or_(
         follows.c.follower == current_user.id,
         Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
-
+    print("FEED POSTS from QUERY", posts)
     # following_posts = Post.query.join(
     # follows, (follows.c.followee == Post.owner_id)).filter(
     #     follows.c.follower == current_user.id).all()
@@ -29,7 +29,6 @@ def followed_posts():
 @post_routes.route('/<int:userId>')
 @login_required
 def user_posts(userId):
-    ("----------HITTING GET ROUTE-----------------")
     posts = Post.query.filter_by(owner_id=userId).all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])
