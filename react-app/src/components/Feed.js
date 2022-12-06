@@ -20,15 +20,11 @@ const Feed = ({loadHome}) => {
         return b.id - a.id
     });
 
-    // console.log("POSTS", posts)
-
     useEffect(() => {
         loadHome();
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
     }, [dispatch, comments]);
-
-
 
 
     return (

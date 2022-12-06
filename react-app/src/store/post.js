@@ -29,7 +29,6 @@ const remove = postId => ({
 })
 
 export const thunkLoadPosts = () => async (dispatch) => {
-    console.log("hitting load feed thunk")
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
