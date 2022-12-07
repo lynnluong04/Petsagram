@@ -13,7 +13,7 @@ def seed_users():
 
     db.session.add(demouser)
     db.session.add(jadepets)
-    db.session.add(axel)
+    db.session.add(axelthelotl)
 
     db.session.commit()
 
