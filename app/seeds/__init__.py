@@ -18,7 +18,7 @@ def seed():
         # db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         # # Add a truncate command here for every table that will be seeded.
         # db.session.commit()
-        undo_comments()
+        # undo_comments()
         # undo_posts()
         undo_users()
 
@@ -32,6 +32,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    # undo_posts()
-    # undo_comments()
+    undo_posts()
+    undo_comments()
     # Add other undo functions here
