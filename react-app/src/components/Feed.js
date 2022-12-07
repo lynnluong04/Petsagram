@@ -24,7 +24,7 @@ const Feed = ({loadHome}) => {
         loadHome();
         dispatch(thunkLoadPosts())
         setExpandCaption(false)
-    }, [dispatch, comments]);
+    }, [dispatch, comments, loadHome]);
 
 
     return (

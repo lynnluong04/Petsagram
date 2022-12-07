@@ -19,12 +19,12 @@ def seed():
         # # Add a truncate command here for every table that will be seeded.
         # db.session.commit()
         undo_comments()
-        undo_posts()
+        # undo_posts()
         undo_users()
 
     seed_users()
-    seed_posts()
-    seed_comments()
+    # seed_posts()
+    # seed_comments()
     # Add other seed functions here
 
 
@@ -32,6 +32,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_posts()
-    undo_comments()
+    # undo_posts()
+    # undo_comments()
     # Add other undo functions here

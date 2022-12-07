@@ -16,7 +16,6 @@ def followed_posts():
         follows, (follows.c.followee == Post.owner_id)).filter(or_(
         follows.c.follower == current_user.id,
         Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
-    print("FEED POSTS from QUERY", posts)
     # following_posts = Post.query.join(
     # follows, (follows.c.followee == Post.owner_id)).filter(
     #     follows.c.follower == current_user.id).all()
