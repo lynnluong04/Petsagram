@@ -9,11 +9,11 @@ def seed_users():
     jadepets = User(
         username='JADEpets', name="88's pets", email='jadepets@aa.io', password='password', bio="Room 88's Pets")
     axelthelotl = User(
-        username='axelotl', name="Axel", email='axelotl@aa.io', password='password', bio="Hi I'm Axel, the axolotl")
+        username='axel', name="Axel", email='axelotl@aa.io', password='password', bio="Hi I'm Axel, the axolotl")
 
     db.session.add(demouser)
     db.session.add(jadepets)
-    db.session.add(axelthelotl)
+    db.session.add(axel)
 
     db.session.commit()
 
