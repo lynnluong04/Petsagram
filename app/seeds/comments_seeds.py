@@ -1,5 +1,6 @@
 from app.models import db, Comment
 from datetime import datetime
+from app.models.db import db, environment, SCHEMA
 
 
 def seed_comments():
@@ -11,5 +12,8 @@ def seed_comments():
     db.session.commit()
 
 def undo_comments():
-    db.session.execute('TRUNCATE comments RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute('TRUNCATE comments RESTART IDENTITY CASCADE;')
     db.session.commit()
