@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { thunkLoadUserPosts } from '../store/post';
+import { thunkLoadUserPosts, thunkLoadPosts } from '../store/post';
 import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
 import FollowListModal from './FollowListModal';
@@ -17,7 +17,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
-    // const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
+    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
     const postNum = postsArray.length
@@ -48,9 +48,9 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
             }
             setLoadHome(false)
             setLoadAbout(false)
-            // await dispatch(thunkLoadPosts());
+            await dispatch(thunkLoadPosts());
             await dispatch(thunkLoadUsers());
-            await dispatch(thunkLoadUserPosts(numberId));
+            // await dispatch(thunkLoadUserPosts(numberId));
         })();
 
     }, [dispatch, userId]);
@@ -97,7 +97,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
                     <div className='outer-photos-container'>
                         <div className='photos-container'>
 
-                            {postsArray && postsArray.map(post => {
+                            {userPosts && userPosts.map(post => {
                                 return (
                                     <NavLink to={{
                                         pathname: `/${numberId}/${post.id}`,
