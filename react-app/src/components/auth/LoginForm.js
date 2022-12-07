@@ -40,7 +40,7 @@ const LoginForm = ({ setLoggingIn }) => {
   const handleDemoUser = async (e) => {
     e.preventDefault();
 
-    const email = 'demo@aa.io';
+    const email = 'demouser@aa.io';
     const password = 'password';
 
     await dispatch(sessionActions.login(email, password));
