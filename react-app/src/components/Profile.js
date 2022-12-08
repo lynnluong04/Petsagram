@@ -20,7 +20,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
-    const postNum = postsArray.length
+    const postNum = userPosts.length
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
@@ -78,8 +78,9 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
                         </div>
 
                         <div className='profile-counts'>
+                            {postNum === 0 && (<div className='counts'><span className='num' > 0 </span> posts</div>)}
                             {postNum === 1 && (<div className='counts'><span className='num' >{postNum}</span> post</div>)}
-                            {postNum > 1 && (<div className='counts'> <span className='num' >{postNum}</span> posts </div>)}
+                            {postNum > 1 && (<div className='counts'> <span className='num' >{postNum}</span> posts</div>)}
 
                             <FollowListModal usersList={followersList} isFollowers={true} />
                             <FollowListModal usersList={followingList} isFollowers={false} />
