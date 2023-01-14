@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
+import {Route, Switch, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+// import UsersList from './components/UsersList';
+// import User from './components/User';
 import { authenticate } from './store/session';
 import Profile from './components/Profile';
 import SinglePostModal from './components/SinglePostModal';
 import Home from './components/Splash';
 import EditUserForm from './components/EditUser';
 import { thunkLoadUsers } from './store/user';
+import AboutPage from './components/AboutPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadHome, setLoadHome] = useState(true);
   const [loadProfile, setLoadProfile] = useState(false);
+<<<<<<< HEAD
   const [loadChat, setLoadChat] = useState(false);
+=======
+  const [loadAbout, setLoadAbout] = useState(false)
+>>>>>>> main
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
@@ -27,9 +32,14 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      await dispatch(thunkLoadUsers());
+
+      if(sessionUser !== null) {
+        await dispatch(thunkLoadUsers());
+      }
+
       setLoaded(true);
     })();
+
   }, [dispatch]);
 
   if (!loaded) {
@@ -39,21 +49,21 @@ function App() {
   return (
     // <BrowserRouter>
     <div className='app' >
-      {sessionUser && (<NavBar
-      loadHome={loadHome} loadProfile={loadProfile} loadChat={loadChat}
-      setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} setLoadChat={setLoadChat}/>)}
+      {sessionUser && (<NavBar loadAbout={loadAbout} loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>)}
       <Switch location={background || location}>
+
         <ProtectedRoute path='/about' exact={true}>
-          <div>THIS IS THE ABOUT PAGE</div>
+          <AboutPage loadAbout = {()=> {setLoadHome(false); setLoadProfile(false); setLoadAbout(true)}} />
         </ProtectedRoute>
+
         <ProtectedRoute path='/:userId/edit'>
-          <EditUserForm notHomeorProfile= {() => {setLoadProfile(false); setLoadHome(false)}}/>
+          <EditUserForm />
         </ProtectedRoute>
         <ProtectedRoute path='/:userId' exact={true}>
-          <Profile loadingProfile={() => {setLoadProfile(true); setLoadHome(false)}} />
+          <Profile setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} setLoadAbout={setLoadAbout}/>
         </ProtectedRoute>
         <Route path='/'  >
-          <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false)}}/>
+          <Home loadHome={()=>{setLoadHome(true); setLoadProfile(false); setLoadAbout(false)}}/>
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />

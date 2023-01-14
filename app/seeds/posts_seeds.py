@@ -1,5 +1,6 @@
 from app.models import db, Post
 from datetime import datetime
+from app.models.db import db, environment, SCHEMA
 
 
 def seed_posts():
@@ -14,5 +15,9 @@ def seed_posts():
 
 
 def undo_posts():
-    db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
+
+    else:
+        db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
     db.session.commit()

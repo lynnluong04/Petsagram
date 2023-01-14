@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-import { thunkLoadPosts } from '../store/post';
+import { thunkLoadUserPosts, thunkLoadPosts } from '../store/post';
 import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
 import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
-const Profile = ({ loadingProfile }) => {
+const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     // const [user, setUser] = useState({});
     const dispatch = useDispatch();
+    const location = useLocation();
     const { userId } = useParams();
+
     const numberId = Number(userId);
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
@@ -22,11 +24,9 @@ const Profile = ({ loadingProfile }) => {
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
-    console.log("FOLLOWERS", followersList)
-    userPosts?.sort((a, b) => {
+    postsArray?.sort((a, b) => {
         return b.id - a.id;
     });
-    const location = useLocation();
 
     // useEffect(() => {
     //     if (!userId) {
@@ -39,12 +39,21 @@ const Profile = ({ loadingProfile }) => {
     //     })();
     // }, [userId]);
 
-    useEffect(async () => {
-        loadingProfile();
-        await dispatch(thunkLoadPosts());
-        await dispatch(thunkLoadUsers());
+    useEffect(() => {
+        (async() => {
+            if (sessionUser.id === numberId) {
+                setLoadProfile(true)
+            } else {
+                setLoadProfile(false)
+            }
+            setLoadHome(false)
+            setLoadAbout(false)
+            await dispatch(thunkLoadPosts());
+            await dispatch(thunkLoadUsers());
+            // await dispatch(thunkLoadUserPosts(numberId));
+        })();
 
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
 
 
@@ -52,7 +61,7 @@ const Profile = ({ loadingProfile }) => {
         return (
             <div className='profile container'>
                 <div className='profile top'>
-                    <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                    <img className="profile-image" src={user?.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
 
                     <div className='user-info-top'>
                         <div className='username-edit-button'>
@@ -63,14 +72,15 @@ const Profile = ({ loadingProfile }) => {
                                     className="edit-profile"
                                 >Edit Profile</NavLink>
                             }
-                        {sessionUser.id !== numberId && (
-                            <FollowUnfollow userId={userId} user={user} />
-                        )}
+                            {sessionUser.id !== numberId && (
+                                <FollowUnfollow userId={userId} user={user} />
+                            )}
                         </div>
 
                         <div className='profile-counts'>
+                            {postNum === 0 && (<div className='counts'><span className='num' > 0 </span> posts</div>)}
                             {postNum === 1 && (<div className='counts'><span className='num' >{postNum}</span> post</div>)}
-                            {postNum > 1 && (<div className='counts'> <span className='num' >{postNum}</span> posts </div>)}
+                            {postNum > 1 && (<div className='counts'> <span className='num' >{postNum}</span> posts</div>)}
 
                             <FollowListModal usersList={followersList} isFollowers={true} />
                             <FollowListModal usersList={followingList} isFollowers={false} />

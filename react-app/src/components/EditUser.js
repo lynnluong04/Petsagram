@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { thunkEditUser, thunkLoadUsers } from "../store/user";
-import { Modal } from "../context/Modal";
 import { uploadProfilePhoto } from "../store/session";
 
 
@@ -19,7 +18,6 @@ const EditUserForm = () => {
   const [email, setEmail] = useState(user?.email);
   const [bio, setBio] = useState(user?.bio);
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  const [image, setImage] = useState(null)
 
 
   const updateUsername = (e) => {
@@ -86,7 +84,7 @@ const EditUserForm = () => {
           ))}
         </div>
         <div className="edit-user-upper">
-          <img className="edit-user-pic" src={sessionUser.photo_url} />
+          <img className="edit-user-pic" src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
           <div className="edit-user-info">
             <div className="edit-user-username">{user?.username}</div>
             <form>

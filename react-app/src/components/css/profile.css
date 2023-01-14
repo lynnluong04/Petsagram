@@ -29,6 +29,8 @@ div.profile.container {
 .username-edit-button {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .counts {
@@ -235,4 +237,11 @@ span.num {
 
 button.isfollowing, button.notfollowing {
     margin-left: 30px;
+    width: 96px;
+    height: 30px;
+    background-color: #0095F6;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
 }

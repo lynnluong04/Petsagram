@@ -2,24 +2,32 @@ from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.forms.edit_post import EditPost
 from app.forms.post_form import PostForm
+from sqlalchemy import or_, desc
 from app.models import Post, db
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
-
+from app.models.follow import follows
 post_routes = Blueprint('posts', __name__)
 
 @post_routes.route('/')
-def all_posts():
-    posts = Post.query.all()
-    # print("FROM THE BACKEND ROUTE----------------------------------------")
-    # print([post.to_dict() for post in posts])
-    # print("-----------------------------------------------------------")
+@login_required
+def followed_posts():
+    posts = Post.query.join(
+        follows, (follows.c.followee == Post.owner_id)).filter(or_(
+        follows.c.follower == current_user.id,
+        Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
+    # following_posts = Post.query.join(
+    # follows, (follows.c.followee == Post.owner_id)).filter(
+    #     follows.c.follower == current_user.id).all()
+    # my_posts = Post.query.filter_by(owner_id=current_user.id).all()
+
+    # posts = my_posts + following_posts
+
     return {'posts': [post.to_dict() for post in posts]}
 
 @post_routes.route('/<int:userId>')
 @login_required
 def user_posts(userId):
-    ("----------HITTING GET ROUTE-----------------")
     posts = Post.query.filter_by(owner_id=userId).all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])

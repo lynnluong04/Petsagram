@@ -32,6 +32,7 @@ export const thunkLoadPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
+        console.log(list)
         dispatch(load(list));
     }
 }
@@ -43,6 +44,10 @@ export const thunkLoadUserPosts = (userId) => async (dispatch) => {
         dispatch(loadUserPosts(list));
     }
 }
+
+// export const thunkLoadFeed = (userId) => async (dispatch) => {
+//     const res = await fetch()
+// }
 
 
 export const thunkCreatePost = formData => async dispatch => {
@@ -133,9 +138,10 @@ export default function postReducer(state = {}, action) {
             // newState['comment-count'] = {};
             const allPosts = action.list['posts']
             allPosts.forEach(post => {
+                // newState[allPosts.indexOf(post) + 1] = post
                 newState[post.id] = post
-                // newState['comment-count'][post.id] = post.comments_num
             });
+            // console.log("STATE", newState)
             return newState;
 
         case LOADUSERPOSTS:
@@ -149,6 +155,8 @@ export default function postReducer(state = {}, action) {
 
         case ADD:
             newState = { ...state };
+            // console.log(Object.keys(newState).length)
+            // newState[Object.keys(newState).length + 1] = action.post;
             newState[action.post.id] = action.post;
             return newState;
 

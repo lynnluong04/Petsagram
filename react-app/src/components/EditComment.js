@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkDeleteComment, thunkEditComment } from "../store/comment";
 
@@ -7,7 +7,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
     const comment = useSelector(state => state.comment[commentId])
     const [editContent, setEditContent] = useState(comment?.content)
     const [errors, setErrors] = useState([]);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const deleteComment = async (id) => {
         await dispatch(thunkDeleteComment(id));
@@ -15,7 +15,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
+        // setHasSubmitted(true);
 
         // if (validationErrors.length) alert("Cannot post empty comment");
 

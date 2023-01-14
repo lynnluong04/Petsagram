@@ -23,7 +23,7 @@ const LikesModal = ({ post }) => {
                                 return (
                                     <div className="each-user" key={user.name}>
                                         <NavLink to={`/${user.id}`} activeClassName="active">
-                                            <img className="liked-user" src={user.photo_url} />
+                                            <img className="liked-user" src={user.photo_url} alt="user pic"/>
                                         </NavLink>
                                         <div className="user-names">
                                             <NavLink to={`/${user.id}`} activeClassName="active" id="likes-users"> {user.username} </NavLink>

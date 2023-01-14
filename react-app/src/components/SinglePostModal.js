@@ -60,7 +60,7 @@ const SinglePostModal = () => {
                         <div className="right content" >
                             <div className="right-top">
                                 <div className="user-info">
-                                    <img className="post-user" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                                    <img className="post-user" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
                                     <div className="username" >{user.username}</div>
                                 </div>
 
@@ -70,7 +70,7 @@ const SinglePostModal = () => {
                             <div className="caption-comments" >
                                 <div className="user-info-caption">
                                     <div className="caption icon">
-                                        <img className="post-user two" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} />
+                                        <img className="post-user two" src={user.photo_url ? user.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"}alt="user pic"/>
                                     </div>
                                     <div className="caption-content">
                                         <span className="post-username">{`${user.username} `}</span> {caption}

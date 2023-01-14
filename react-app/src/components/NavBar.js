@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+// import LogoutButton from './auth/LogoutButton';
 import CreatePostModal from './CreatePostModal';
 import "./css/navbar.css"
 import NavDropdown from './NavDropdown';
@@ -11,9 +11,9 @@ const IMAGE = (imgName) => {
   return require(`./images/${imgName}`).default
 }
 
-const NavBar = ({ loadHome, loadProfile, loadChat, setLoadProfile, setLoadHome }) => {
+const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome }) => {
   const history = useHistory()
-  const sessionUser = useSelector(state => state.session.user);
+  // const sessionUser = useSelector(state => state.session.user);
 
   const refreshHome = () => {
     history.push('/')
@@ -29,16 +29,20 @@ const NavBar = ({ loadHome, loadProfile, loadChat, setLoadProfile, setLoadHome }
         <li>
           <div className='nav-logo' onClick={refreshHome}>
             {/* <NavLink to='/' exact={true} activeClassName='active'> */}
-            <img className='logo nav' src={IMAGE("logo-black.png")} />
+            <img className='logo nav' src={IMAGE("logo-black.png")} alt="logo"/>
             {/* </NavLink> */}
           </div>
         </li>
 
-        {/* <li>
+        <li>
           <SearchBar />
-        </li> */}
+        </li>
 
         <li className='nav-right'>
+          <NavLink to={'/about'} className={loadAbout? 'load-info-icon':'info-icon'}>
+            <i class="fa-solid fa-info"></i>
+            </NavLink>
+
           <div className='nav icon links'>
             <div onClick={refreshHome}>
               {loadHome ?
@@ -56,10 +60,11 @@ const NavBar = ({ loadHome, loadProfile, loadChat, setLoadProfile, setLoadHome }
                 }
               </div>
             <CreatePostModal />
+
           </div>
 
           <div className='nav profile icon'>
-            <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome}/>
+            <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} />
           </div>
         </li>
       </ul>
