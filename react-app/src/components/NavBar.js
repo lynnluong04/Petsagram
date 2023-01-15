@@ -33,8 +33,8 @@ const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome 
         </li>
 
         <li>
-          <div className='menu-item'>
-            <div onClick={refreshHome}>
+          <div className='menu-item' onClick={refreshHome}>
+            <div >
               {loadHome ?
                 <svg className="links" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M22 23h-6.001a1 1 0 01-1-1v-5.455a2.997 2.997 0 10-5.993 0V22a1 1 0 01-1 1H2a1 1 0 01-1-1V11.543a1.002 1.002 0 01.31-.724l10-9.543a1.001 1.001 0 011.38 0l10 9.543a1.002 1.002 0 01.31.724V22a1 1 0 01-1 1z"></path></svg>
                 :
@@ -44,25 +44,22 @@ const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome 
             <div className='menu-text'>Home</div>
           </div>
 
-          <div className='menu-item'>
+          {/* <div className='menu-item'>
           <svg aria-label="Search" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="16.511" x2="22" y1="16.511" y2="22"></line></svg>
-            {/* <SearchBar /> */}
+            <SearchBar />
             <div className='menu-text'>Search</div>
-          </div>
+          </div> */}
 
-          <div className='menu-item'>
-            <NavLink to={'/about'} className={loadAbout ? 'load-info-icon' : 'info-icon'}>
+            {/* <NavLink to={'/about'} className={loadAbout ? 'load-info-icon menu-item' : 'info-icon menu-item'}>
               <i class="fa-solid fa-info"></i>
-            </NavLink>
             <div className='menu-text'>About</div>
-          </div>
+            </NavLink> */}
 
           <div className='create menu-item'>
             <CreatePostModal />
-            <div className='menu-text'>Create</div>
           </div>
 
-          <div className='menu-item'>
+          <div className='menu-item profile'>
             <div className='nav profile icon'>
               <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} />
             </div>
