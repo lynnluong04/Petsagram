@@ -52,6 +52,10 @@ function App() {
           <AboutPage loadAbout = {()=> {setLoadHome(false); setLoadProfile(false); setLoadAbout(true)}} />
         </ProtectedRoute>
 
+        <ProtectedRoute path='/direct' exact={true}>
+          <div>DM chat page</div>
+        </ProtectedRoute>
+
         <ProtectedRoute path='/:userId/edit'>
           <EditUserForm />
         </ProtectedRoute>
