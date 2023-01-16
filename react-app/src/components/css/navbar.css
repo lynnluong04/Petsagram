@@ -32,10 +32,10 @@ img.logo.nav {
     height: 50px;
     width: auto;
     margin-top: 5px;
-
 }
 
-.nav.button {
+/*BUTTON FOR NAV DROPDOWN*/
+/* .nav.button {
     border-radius: 50%;
     height: fit-content;
     width: fit-content;
@@ -44,23 +44,32 @@ img.logo.nav {
     margin-right: 15px;
     margin-left: 10px;
 
-}
+} */
 
 
 img.profile.icon {
     height: 24px;
     width: 24px;
+    display: flex;
+    align-items: center;
     border-radius: 50%;
-
+    border: 1px solid rgb(197, 196, 196);
+    margin-right: 15px;
+    margin-left: 10px;
 }
 
+.nav.profile.icon {
+    display: flex;
+    align-items: center;
+}
 
-img.nav-selected {
+/*PREVIOUS CODE FOR IMAGE ICON ON MENU WHEN SELECTED*/
+/* img.nav-selected {
     height: 24px;
     width: 24px;
     border-radius: 50%;
     border: 1px solid black;
-}
+} */
 
 .profile-dropdown {
     position: relative;

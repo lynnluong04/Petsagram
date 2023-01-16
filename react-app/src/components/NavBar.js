@@ -13,13 +13,17 @@ const IMAGE = (imgName) => {
 
 const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome }) => {
   const history = useHistory()
-  // const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user);
 
   const refreshHome = () => {
     history.push('/')
     // window.location.reload()
     window.scrollTo({ top: 0, left: 0 });
     setLoadHome(true)
+  }
+
+  const goToProfile = () => {
+    history.push(`/${sessionUser.id}`)
   }
 
 
@@ -59,9 +63,10 @@ const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome 
             <CreatePostModal />
           </div>
 
-          <div className='menu-item profile'>
+          <div className='menu-item profile' onClick={goToProfile}>
             <div className='nav profile icon'>
-              <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} />
+              {/* <NavDropdown loadHome={loadHome} loadProfile={loadProfile} setLoadProfile={setLoadProfile} setLoadHome={setLoadHome} /> */}
+              <img className='nav profile icon' src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
             </div>
 
             <div className='menu-text'>Profile</div>

@@ -35,6 +35,7 @@ const NavDropdown = ({ setLoadProfile, loadHome, loadProfile, setLoadHome }) => 
                 setShowMenu(!showMenu);
             }}
                 className='nav button icon'>
+            {/* code for IMAGE ICON ON NAVBAR MENU */}
                 <img className={showMenu || loadProfile ? 'nav-selected' : 'nav profile icon'} src={sessionUser?.photo_url ? sessionUser?.photo_url : "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="profile icon" />
             </button>
             {showMenu && (
