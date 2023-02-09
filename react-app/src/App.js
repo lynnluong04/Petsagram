@@ -12,7 +12,7 @@ import Home from './components/Splash';
 import EditUserForm from './components/EditUser';
 import { thunkLoadUsers } from './store/user';
 import AboutPage from './components/AboutPage';
-
+import Chat from './components/Socket';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadHome, setLoadHome] = useState(true);
@@ -53,7 +53,10 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/direct' exact={true}>
-          <div>DM chat page</div>
+          <div>
+            <div>DM CHAT PAGE</div>
+            <Chat/>
+          </div>
         </ProtectedRoute>
 
         <ProtectedRoute path='/:userId/edit'>
