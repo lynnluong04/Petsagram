@@ -24,20 +24,11 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
+
     postsArray?.sort((a, b) => {
         return b.id - a.id;
     });
 
-    // useEffect(() => {
-    //     if (!userId) {
-    //         return;
-    //     }
-    //     (async () => {
-    //         const response = await fetch(`/api/users/${userId}`);
-    //         const user = await response.json();
-    //         setUser(user);
-    //     })();
-    // }, [userId]);
 
     useEffect(() => {
         (async() => {
@@ -50,7 +41,6 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
             setLoadAbout(false)
             await dispatch(thunkLoadPosts());
             await dispatch(thunkLoadUsers());
-            // await dispatch(thunkLoadUserPosts(numberId));
         })();
 
     }, [dispatch, userId]);
