@@ -99,7 +99,8 @@ img.profile-post {
     font-weight: 400;
     width: fit-content;
     height: 18px;
-    border: 1px solid rgb(219, 219, 219);
+    border: 1px solid #efefef;
+    background-color: #efefef;
     border-radius: 5px;
     padding: 5px 9px;
     margin-top: 5px;
@@ -244,4 +245,51 @@ button.isfollowing, button.notfollowing {
     font-weight: bold;
     border: none;
     border-radius: 5px;
+}
+
+.follow-list.container {
+    background-color: white;
+    height: 400px;
+    width: 400px;
+    border-radius: 12px;
+}
+
+.follows-list.top {
+    width: 400px;
+    height: 42px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #DADDE1;
+}
+
+.follows-list.bottom {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-user.container {
+    padding: 8px 16px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-pic {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+}
+
+.follows-list.username {
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.follows-list.name {
+    color: rgb(143, 143, 143);
 }

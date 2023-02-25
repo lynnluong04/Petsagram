@@ -50,7 +50,7 @@ const FollowUnfollow = ({ userId, user }) => {
                 <Modal onClose={() => setUnfollowModal(false)}>
                     <div className="unfollow-container">
                         <div className="unfollow-top">
-                            <img className="unfollow-pic" src={user.photo_url} alt="user pic"/>
+                            <img className="unfollow-pic" src={user.photo_url? user.photo_url: "https://cdn140.picsart.com/297361716279211.png?to=crop&type=webp&r=1456x1388&q=85"} alt="user pic"/>
                             <div>Leave @{user.username}?</div>
                         </div>
                         <button className="unfollow-button" onClick={onUnfollow}>Unfollow</button>
