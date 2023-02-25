@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkDeleteComment, thunkEditComment } from "../store/comment";
+import { thunkDeleteComment, thunkEditComment } from "../../store/comment";
 
 const EditCommentForm = ({ commentId, hideForm }) => {
     const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { useHistory, useParams } from 'react-router-dom';
-import { thunkLoadPosts } from '../store/post';
+import { thunkLoadPosts } from '../../store/post';
 // import "./css/profile.css"
 
 const SinglePost = ({postId, hideForm, setCaption}) => {

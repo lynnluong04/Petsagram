@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import "./css/postModal.css"
-import { Modal } from "../context/Modal";
+import { Modal } from "../../context/Modal";
 import SinglePost from "./SinglePost";
 import EditPostModal from "./EditPostModal";
 import CreateCommentForm from "./CreateComment";

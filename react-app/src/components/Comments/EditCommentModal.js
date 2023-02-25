@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { Modal } from "../context/Modal";
-import { thunkDeleteComment } from "../store/comment";
+import { Modal } from "../../context/Modal";
+import { thunkDeleteComment } from "../../store/comment";
 import EditCommentForm from "./EditComment";
 import "./css/comment.css"
 
@@ -19,7 +19,7 @@ const EditCommentModal = ({ commentId }) => {
             <button className="edit-comment" onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-            
+
                     <EditCommentForm hideForm={() => setShowModal(false)} commentId={commentId}  />
                     {/* <button onClick={() => deleteComment(commentId)}>Delete</button> */}
                 </Modal>

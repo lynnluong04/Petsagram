@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DeletePostModal from './DeletePostModal'
-import { Modal } from "../context/Modal";
+import { Modal } from "../../context/Modal";
 import EditPostForm from "./EditPost";
 
 const EditPostModal = ({ postId, closeSinglePost }) => {

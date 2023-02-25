@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { Modal } from "../context/Modal";
+import { Modal } from "../../context/Modal";
 import CreatePostForm from "./CreatePost";
 
 const CreatePostModal = () => {

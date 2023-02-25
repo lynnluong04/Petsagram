@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { thunkDeletePost } from "../store/post";
-import { Modal } from "../context/Modal";
+import { thunkDeletePost } from "../../store/post";
+import { Modal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 
 const DeletePostModal = ({postId, hideForm, closeSinglePost}) => {

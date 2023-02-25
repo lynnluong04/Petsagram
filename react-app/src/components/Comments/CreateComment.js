@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { thunkCreateComment } from '../store/comment';
+import { thunkCreateComment } from '../../store/comment';
 
 const CreateCommentForm = ({ postId }) => {
     const dispatch = useDispatch();

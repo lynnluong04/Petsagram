@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkAddLike, thunkRemoveLike } from "../store/post";
+import { thunkAddLike, thunkRemoveLike } from "../../store/post";
 const IMAGE = (imgName) => {
     return require(`./images/${imgName}`).default
   }

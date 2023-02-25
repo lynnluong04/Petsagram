@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { thunkEditPost } from "../store/post";
+import { thunkEditPost } from "../../store/post";
 
 const EditPostForm = ({ postId, hideForm, closeEdit }) => {
     const dispatch = useDispatch();
