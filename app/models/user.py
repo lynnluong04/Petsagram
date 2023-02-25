@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
-        
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     name = db.Column(db.String(100), nullable=False)
@@ -83,7 +83,7 @@ class User(db.Model, UserMixin):
                                   secondary=likes,
                                   back_populates='users_who_liked'
                                   )
-
+    messages_sent = db.relationship("DirectMessage", back_populates="sender")
     following = db.relationship(
         'User', secondary=follows,
         primaryjoin=(follows.c.follower == id),
