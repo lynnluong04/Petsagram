@@ -124,7 +124,7 @@ export default function reducer(state = initialState, action) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
-      return { user: null }
+      return { user: null , post: {}}
     case EDIT:
       let newState = {...state};
       newState["user"] = action.user;
