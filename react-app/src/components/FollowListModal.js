@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./css/likesModal.css"
 import { Modal } from "../context/Modal";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const FollowListModal = ({ usersList, isFollowers }) => {
     const [showModal, setShowModal] = useState(false);
+    const { userId } = useParams();
+
+
+    useEffect(() => {
+        setShowModal(false)
+    },[userId])
 
     return (
         <div>

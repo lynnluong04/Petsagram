@@ -9,8 +9,7 @@ const SearchBar = () => {
     const [searchInput, setSearchInput] = useState('')
     let searchValues = [];
 
-    // console.log("SEARCH RESULTS", searchResults)
-    // console.log("SEARCHDROP??", searchDrop)
+  
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('/api/users/');

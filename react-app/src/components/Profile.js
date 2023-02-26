@@ -34,16 +34,18 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
         (async() => {
             if (sessionUser.id === numberId) {
                 setLoadProfile(true)
+                await dispatch(thunkLoadUserPosts(sessionUser.id));
             } else {
                 setLoadProfile(false)
+                await dispatch(thunkLoadUserPosts(numberId));
             }
             setLoadHome(false)
             setLoadAbout(false)
-            await dispatch(thunkLoadPosts());
+
             await dispatch(thunkLoadUsers());
         })();
 
-    }, [dispatch, userId]);
+    }, [dispatch, numberId]);
 
 
 

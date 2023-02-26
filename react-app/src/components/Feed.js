@@ -20,9 +20,9 @@ const Feed = ({loadHome}) => {
         return b.id - a.id
     });
 
-    useEffect(() => {
+    useEffect(async() => {
         loadHome();
-        dispatch(thunkLoadPosts())
+        await dispatch(thunkLoadPosts())
         setExpandCaption(false)
     }, [dispatch, comments, loadHome]);
 
