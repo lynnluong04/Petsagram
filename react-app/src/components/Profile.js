@@ -19,7 +19,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
-    const postNum = postsArray.length
+    const postNum = userPosts.length
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
