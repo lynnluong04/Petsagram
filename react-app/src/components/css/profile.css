@@ -100,11 +100,14 @@ img.profile-post {
     width: fit-content;
     height: 18px;
     border: 1px solid #efefef;
-    background-color: #efefef;
     border-radius: 5px;
     padding: 5px 9px;
     margin-top: 5px;
     margin-left: 20px;
+}
+
+.edit-profile.button {
+    background-color: #efefef;
 }
 
 label.edit-profile {

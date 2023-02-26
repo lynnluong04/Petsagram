@@ -61,7 +61,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
                             {sessionUser.id === numberId &&
                                 <NavLink
                                     to={`/${sessionUser.id}/edit`}
-                                    className="edit-profile"
+                                    className="edit-profile button"
                                 >Edit Profile</NavLink>
                             }
                             {sessionUser.id !== numberId && (
