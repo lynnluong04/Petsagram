@@ -23,9 +23,6 @@ const SinglePostModal = () => {
 
     const sessionUser = useSelector(state => state.session.user);
 
-    // console.log("POST?? ", post)
-    // console.log("USER?? ", user)
-
 
     useEffect(() => {
         if (!userId) {

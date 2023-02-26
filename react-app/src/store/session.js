@@ -107,7 +107,6 @@ export const signUp = (username, name, email, password, confirm) => async (dispa
 }
 
 export const uploadProfilePhoto = formData => async dispatch => {
-  // console.log("FORMDATE FROM THUNK PROF PIC", formData)
   const res = await fetch('/api/users/profile-pic', {
       method: 'POST',
       body: formData
@@ -125,10 +124,9 @@ export default function reducer(state = initialState, action) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
-      return { user: null }
+      return { user: null , post: {}}
     case EDIT:
       let newState = {...state};
-      console.log("ACTION", action)
       newState["user"] = action.user;
       return newState;
     default:

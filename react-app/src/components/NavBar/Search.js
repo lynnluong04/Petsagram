@@ -9,6 +9,7 @@ const SearchBar = () => {
     const [searchInput, setSearchInput] = useState('')
     let searchValues = [];
 
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('/api/users/');

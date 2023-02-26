@@ -32,7 +32,6 @@ export const thunkLoadPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts/');
     if (res.ok) {
         const list = await res.json();
-        console.log(list)
         dispatch(load(list));
     }
 }
@@ -102,7 +101,6 @@ export const thunkDeletePost = postId => async dispatch => {
 }
 
 export const thunkAddLike = (postId) => async (dispatch) => {
-    // console.log("THUNK LIKE WITH PAYLOAD", postId)
     const res = await fetch(`/api/posts/${postId}/like`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -141,7 +139,6 @@ export default function postReducer(state = {}, action) {
                 // newState[allPosts.indexOf(post) + 1] = post
                 newState[post.id] = post
             });
-            // console.log("STATE", newState)
             return newState;
 
         case LOADUSERPOSTS:
@@ -155,7 +152,6 @@ export default function postReducer(state = {}, action) {
 
         case ADD:
             newState = { ...state };
-            // console.log(Object.keys(newState).length)
             // newState[Object.keys(newState).length + 1] = action.post;
             newState[action.post.id] = action.post;
             return newState;
