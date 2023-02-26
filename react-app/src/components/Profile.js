@@ -16,7 +16,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
-    // const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
+    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
     const postNum = postsArray.length
@@ -24,11 +24,11 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const followersList = user?.followers_list
 
 
-    postsArray?.sort((a, b) => {
+    userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
 
-    console.log("THIS IS THE POST ARRAY", postsArray)
+    // console.log("THIS IS THE POST ARRAY", postsArray)
 
     useEffect(() => {
         (async() => {
@@ -90,7 +90,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
                     <div className='outer-photos-container'>
                         <div className='photos-container'>
 
-                            {postsArray && postsArray.map(post => {
+                            {userPosts && userPosts.map(post => {
                                 return (
                                     <NavLink to={{
                                         pathname: `/${numberId}/${post.id}`,
