@@ -4,8 +4,8 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { thunkLoadUserPosts, thunkLoadPosts } from '../store/post';
 import { thunkLoadUsers } from '../store/user';
 import "./css/profile.css"
-import FollowListModal from './FollowListModal';
-import FollowUnfollow from './FollowUnfollow';
+import FollowListModal from './Following/FollowListModal';
+import FollowUnfollow from './Following/FollowUnfollow';
 
 const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     // const [user, setUser] = useState({});

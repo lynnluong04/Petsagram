@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import {Route, Switch, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-// import UsersList from './components/UsersList';
-// import User from './components/User';
 import { authenticate } from './store/session';
 import Profile from './components/Profile';
-import SinglePostModal from './components/SinglePostModal';
+import SinglePostModal from './components/Posts/SinglePostModal';
 import Home from './components/Splash';
-import EditUserForm from './components/EditUser';
+import EditUserForm from './components/User/EditUser';
 import { thunkLoadUsers } from './store/user';
 import AboutPage from './components/AboutPage';
-import Chat from './components/Socket';
+import Chat from './components/Dm/Socket';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadHome, setLoadHome] = useState(true);

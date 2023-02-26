@@ -9,20 +9,11 @@ const EditPostForm = ({ postId, hideForm, closeEdit }) => {
     const [errors, setErrors] = useState([]);
 
     const [editCaption, setEditCaption] = useState(post?.caption);
-    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const numberId = Number(postId)
 
-    // const deletePost = async (id) => {
-    //     await dispatch(thunkDeletePost(id));
-    //     hideForm();
-    //     closeSinglePost();
-    //     history.goBack();
-    // }
-
     const onSubmit = async (e) => {
         e.preventDefault();
-        // setHasSubmitted(true);
 
         const payload = {
             id: numberId,
@@ -34,7 +25,6 @@ const EditPostForm = ({ postId, hideForm, closeEdit }) => {
 
         if (editedPost) {
             setEditCaption('')
-            // setHasSubmitted(false)
             setErrors(editedPost)
         } else {
             hideForm();

@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // import LogoutButton from './auth/LogoutButton';
-import CreatePostModal from './CreatePostModal';
-import "./css/navbar.css"
-import NavDropdown from './NavDropdown';
-import SearchBar from './Search';
+import CreatePostModal from '../Posts/CreatePostModal';
+import "../css/navbar.css"
+
 
 const IMAGE = (imgName) => {
-  return require(`./images/${imgName}`).default
+  return require(`../images/${imgName}`).default
 }
 
 const NavBar = ({ loadHome, loadProfile, loadAbout, setLoadProfile, setLoadHome }) => {

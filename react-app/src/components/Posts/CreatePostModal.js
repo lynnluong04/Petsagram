@@ -1,22 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import { Modal } from "../../context/Modal";
 import CreatePostForm from "./CreatePost";
 
 const CreatePostModal = () => {
-    // const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    // const [errors, setErrors] = useState([]);
 
-    // const buttonClick = async (e) => {
-    //     e.preventDefault();
-    //     setShowModal(true)
-    //     const data = await dispatch(thunkCreatePost());
-    //     if (data) {
-    //       setErrors(data);
-    //     }
-    //   };
 
     return (
         <div>

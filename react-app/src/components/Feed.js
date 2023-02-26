@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import { thunkLoadPosts } from '../store/post';
-import CreateCommentForm from './CreateComment';
+import CreateCommentForm from './Comments/CreateComment';
 import "./css/feed.css"
-import PostActions from './PostActions';
+import PostActions from './Posts/PostActions';
 
 const Feed = ({loadHome}) => {
     const dispatch = useDispatch();

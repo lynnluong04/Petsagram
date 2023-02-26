@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import "./css/postModal.css"
+import "../css/postModal.css"
 import { Modal } from "../../context/Modal";
 import SinglePost from "./SinglePost";
 import EditPostModal from "./EditPostModal";
-import CreateCommentForm from "./CreateComment";
-import AllComments from "./AllComments";
+import CreateCommentForm from "../Comments/CreateComment";
+import AllComments from "../Comments/AllComments";
 import PostActions from "./PostActions";
 
 const SinglePostModal = () => {

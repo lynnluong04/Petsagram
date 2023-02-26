@@ -1,4 +1,3 @@
-// import postReducer from "../store/post";
 import LikesModal from "../Liking/LikesModal";
 import LikeUnlike from "../Liking/LikeUnlike"
 import { NavLink, useLocation } from "react-router-dom";
