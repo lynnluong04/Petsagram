@@ -8,7 +8,6 @@ import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
 const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
-    // const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const location = useLocation();
     const { userId } = useParams();
@@ -17,10 +16,10 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const user = useSelector(state => state.user[numberId]);
     const posts = useSelector(state => state.post);
     const postsArray = posts ? Object.values(posts) : null;
-    const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
+    // const userPosts = postsArray ? postsArray.filter(post => (post.owner_id === numberId)) : null;
     const sessionUser = useSelector(state => state.session.user);
 
-    const postNum = userPosts.length
+    const postNum = postsArray.length
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
@@ -29,6 +28,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
         return b.id - a.id;
     });
 
+    console.log("THIS IS THE POST ARRAY", postsArray)
 
     useEffect(() => {
         (async() => {
@@ -90,7 +90,7 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
                     <div className='outer-photos-container'>
                         <div className='photos-container'>
 
-                            {userPosts && userPosts.map(post => {
+                            {postsArray && postsArray.map(post => {
                                 return (
                                     <NavLink to={{
                                         pathname: `/${numberId}/${post.id}`,
