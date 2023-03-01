@@ -11,6 +11,7 @@ import EditUserForm from './components/User/EditUser';
 import { thunkLoadUsers } from './store/user';
 import AboutPage from './components/AboutPage';
 import Chat from './components/Dm/Socket';
+import DirectMessaging from './components/Dm/DirectMessage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadHome, setLoadHome] = useState(true);
@@ -53,6 +54,7 @@ function App() {
         <ProtectedRoute path='/direct' exact={true}>
           <div>
             <div>DM CHAT PAGE</div>
+            <DirectMessaging/>
             <Chat/>
           </div>
         </ProtectedRoute>
