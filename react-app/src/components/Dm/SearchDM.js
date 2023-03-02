@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+
 import '../css/dm.css'
 
 const SearchDm = ({setRecipient, setShowModal}) => {
@@ -8,12 +10,13 @@ const SearchDm = ({setRecipient, setShowModal}) => {
     const [searchInput, setSearchInput] = useState('')
     const [selectedUser, setSelectedUser] = useState(null)
     let searchValues = [];
+    const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
-            setUsers(responseData.users);
+            setUsers(responseData.users.filter((user) => user.id !== sessionUser.id));
         }
         fetchData();
 

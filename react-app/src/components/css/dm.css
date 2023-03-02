@@ -107,3 +107,40 @@ img.dm-search.icon {
 .selected-username {
     color: #0095F6;
 }
+
+.dm-container {
+    height: 747px;
+    width: 933px;
+    border: 1px solid #d1d1d1;
+    display: flex;
+    background-color: white;
+    margin-left: 250px;
+}
+
+.dm-container-left {
+    height: 100%;
+    width: 349px;
+    border-right: 1px solid #d1d1d1;
+}
+
+.dm-left-top {
+    width: 349px;
+    height: 59px;
+    box-sizing: border-box;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.dm-sender {
+    height: 36px;
+    width: 229px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}

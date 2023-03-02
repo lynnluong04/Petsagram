@@ -53,9 +53,8 @@ function App() {
 
         <ProtectedRoute path='/direct' exact={true}>
           <div>
-            <div>DM CHAT PAGE</div>
             <DirectMessaging/>
-            <Chat/>
+            {/* <Chat/> */}
           </div>
         </ProtectedRoute>
 
