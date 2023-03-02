@@ -11,9 +11,11 @@ const AllComments = ({ postId }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(thunkLoadComments())
-    }, [dispatch]);
-
+        const loadComments = async () => {
+          await dispatch(thunkLoadComments());
+        };
+        loadComments();
+      }, [dispatch]);
 
     return (
         <div className='comments container'>
