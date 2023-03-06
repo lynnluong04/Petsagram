@@ -10,10 +10,12 @@ const AllComments = ({ postId }) => {
     const filteredComments = commentsArr && commentsArr.filter(comment => (comment.post_id === postId))
     const sessionUser = useSelector(state => state.session.user);
 
-    useEffect(async() => {
-        dispatch(thunkLoadComments())
-    }, [dispatch]);
-
+    useEffect(() => {
+        const loadComments = async () => {
+          await dispatch(thunkLoadComments());
+        };
+        loadComments();
+      }, [dispatch]);
 
     return (
         <div className='comments container'>

@@ -28,7 +28,7 @@ def followed_posts():
 @post_routes.route('/<int:userId>')
 @login_required
 def user_posts(userId):
-    posts = Post.query.filter_by(owner_id=userId).all()
+    posts = Post.query.filter_by(owner_id=userId).order_by(Post.id.desc()).all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])
     # print("-----------------------------------------------------------")

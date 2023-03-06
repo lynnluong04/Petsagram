@@ -8,7 +8,6 @@ import FollowListModal from './Following/FollowListModal';
 import FollowUnfollow from './Following/FollowUnfollow';
 
 const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
-    // const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const location = useLocation();
     const { userId } = useParams();
@@ -25,10 +24,11 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const followersList = user?.followers_list
 
 
-    postsArray?.sort((a, b) => {
+    userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
 
+    // console.log("THIS IS THE POST ARRAY", postsArray)
 
     useEffect(() => {
         (async () => {

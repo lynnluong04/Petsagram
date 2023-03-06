@@ -20,11 +20,16 @@ const Feed = ({loadHome}) => {
         return b.id - a.id
     });
 
-    useEffect(async() => {
-        loadHome();
-        await dispatch(thunkLoadPosts())
-        setExpandCaption(false)
-    }, [dispatch, comments, loadHome]);
+    useEffect(() => {
+        const loadData = async () => {
+          if (typeof loadHome === 'function') {
+            loadHome();
+          }
+          await dispatch(thunkLoadPosts());
+          setExpandCaption(false);
+        };
+        loadData();
+      }, [dispatch, comments, loadHome]);
 
 
     return (
