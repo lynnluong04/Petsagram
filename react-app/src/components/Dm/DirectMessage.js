@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import SearchDmModal from './SearchModal';
+import { sendDmMessage } from '../../store/dm';
 
 let socket;
 
@@ -17,6 +18,9 @@ const DirectMessaging = () => {
     let joinedId;
     let roomId;
     const sessionUser = useSelector(state => state.session.user);
+
+    const dmHistoryObj = useSelector(state => state['chat']['dm-messages']);
+    const dmHistory = dmHistoryObj ? Object.values(dmHistoryObj) : null;
 
     useEffect(() => {
         if (recipient) recipients.push(recipient.username)
@@ -34,6 +38,7 @@ const DirectMessaging = () => {
             setCurrentRecipient(recipient)
             joinedId = [sessionUser.id, recipient.id].sort();
             roomId = `${joinedId[0]}-${joinedId[1]}`;
+
             socket = io();
 
             if (socket && recipient.id && sessionUser) socket.emit("dm_join", { username: sessionUser.username, dm_room_id: roomId })
@@ -55,6 +60,11 @@ const DirectMessaging = () => {
         }
     }, [recipient, messages])
 
+    const updateChatInput = e => {
+        e.preventDefault()
+        setChatInput(e.target.value);
+    }
+
     const sendChat = async (e) => {
         e.preventDefault();
 
@@ -68,14 +78,14 @@ const DirectMessaging = () => {
             const time = isoTime.slice(12, 19);
             const combined = date + ' ' + time
 
-            // const payload = {
-            //     sender_id: sessionUser.id,
-            //     recipient_id: recipient.id,
-            //     message_body: chatInput,
-            //     created_at: combined
-            // }
+            const payload = {
+                sender_id: sessionUser.id,
+                recipient_id: recipient.id,
+                message_body: chatInput,
+                created_at: combined
+            }
 
-            // await dispatch(sendDmMessage(payload));
+            await dispatch(sendDmMessage(payload));
             setChatInput('');
         }
 
@@ -97,7 +107,7 @@ const DirectMessaging = () => {
             </div>
 
             <div className='dm-container-right'>
-                {/* <div className='dm-history-container'>
+                <div className='dm-history-container'>
                     {sessionUser && (
                         dmHistory && dmHistory?.map((message, idx) => (
                             <div className='single-dm' key={idx}>
@@ -116,14 +126,14 @@ const DirectMessaging = () => {
                         ))
 
                     )}
-                </div> */}
+                </div>
 
                 <div className='chat-box-container'>
                     <form onSubmit={sendChat} id='chat-box-form'>
                         <input
                             placeholder={`Message ${recipient?.username}`}
                             value={chatInput}
-                        // onChange={updateChatInput}
+                        onChange={()=>updateChatInput()}
                         />
                         {/* <button>Send</button> */}
                     </form>
