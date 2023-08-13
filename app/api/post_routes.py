@@ -12,23 +12,23 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/')
 @login_required
 def followed_posts():
-    posts = Post.query.join(
-        follows, (follows.c.followee == Post.owner_id)).filter(or_(
-        follows.c.follower == current_user.id,
-        Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
-    # following_posts = Post.query.join(
-    # follows, (follows.c.followee == Post.owner_id)).filter(
-    #     follows.c.follower == current_user.id).all()
-    # my_posts = Post.query.filter_by(owner_id=current_user.id).all()
+    # posts = Post.query.join(
+    #     follows, (follows.c.followee == Post.owner_id)).filter(or_(
+    #     follows.c.follower == current_user.id,
+    #     Post.owner_id == current_user.id)).order_by(Post.id.desc()).all()
+    following_posts = Post.query.join(
+    follows, (follows.c.followee == Post.owner_id)).filter(
+        follows.c.follower == current_user.id).all()
+    my_posts = Post.query.filter_by(owner_id=current_user.id).all()
 
-    # posts = my_posts + following_posts
+    posts = my_posts + following_posts
 
     return {'posts': [post.to_dict() for post in posts]}
 
 @post_routes.route('/<int:userId>')
 @login_required
 def user_posts(userId):
-    posts = Post.query.filter_by(owner_id=userId).all()
+    posts = Post.query.filter_by(owner_id=userId).order_by(Post.id.desc()).all()
     # print("FROM THE BACKEND ROUTE----------------------------------------")
     # print([post.to_dict() for post in posts])
     # print("-----------------------------------------------------------")

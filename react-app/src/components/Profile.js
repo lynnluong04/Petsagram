@@ -8,7 +8,6 @@ import FollowListModal from './FollowListModal';
 import FollowUnfollow from './FollowUnfollow';
 
 const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
-    // const [user, setUser] = useState({});
     const dispatch = useDispatch();
     const location = useLocation();
     const { userId } = useParams();
@@ -24,36 +23,28 @@ const Profile = ({ setLoadProfile, setLoadHome, setLoadAbout }) => {
     const followingList = user?.following_list
     const followersList = user?.followers_list
 
-    postsArray?.sort((a, b) => {
+
+    userPosts?.sort((a, b) => {
         return b.id - a.id;
     });
 
-    // useEffect(() => {
-    //     if (!userId) {
-    //         return;
-    //     }
-    //     (async () => {
-    //         const response = await fetch(`/api/users/${userId}`);
-    //         const user = await response.json();
-    //         setUser(user);
-    //     })();
-    // }, [userId]);
 
     useEffect(() => {
         (async () => {
             if (sessionUser.id === numberId) {
                 setLoadProfile(true)
+                await dispatch(thunkLoadUserPosts(sessionUser.id));
             } else {
                 setLoadProfile(false)
+                await dispatch(thunkLoadUserPosts(numberId));
             }
             setLoadHome(false)
             setLoadAbout(false)
-            await dispatch(thunkLoadPosts());
+
             await dispatch(thunkLoadUsers());
-            // await dispatch(thunkLoadUserPosts(numberId));
         })();
 
-    }, [dispatch, userId]);
+    }, [dispatch, numberId]);
 
 
 

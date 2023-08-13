@@ -21,10 +21,15 @@ const Feed = ({loadHome}) => {
     });
 
     useEffect(() => {
-        loadHome();
-        dispatch(thunkLoadPosts())
-        setExpandCaption(false)
-    }, [dispatch, comments, loadHome]);
+        const loadData = async () => {
+          if (typeof loadHome === 'function') {
+            loadHome();
+          }
+          await dispatch(thunkLoadPosts());
+          setExpandCaption(false);
+        };
+        loadData();
+      }, [dispatch, comments, loadHome]);
 
 
     return (

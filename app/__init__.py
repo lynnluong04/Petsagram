@@ -11,7 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.comment_routes import comment_routes
 from .api.post_routes import post_routes
 
-from .seeds import seed_commands
+# from .seeds import seed_commands
 
 from .config import Config
 
@@ -29,7 +29,7 @@ def load_user(id):
 
 
 # Tell flask about our seed commands
-app.cli.add_command(seed_commands)
+# app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
