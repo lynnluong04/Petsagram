@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Modal } from "../context/Modal";
 import CreatePostForm from "./CreatePost";
 
-const CreatePostModal = () => {
+const CreatePostModal = ({miniNav}) => {
     // const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     // const [errors, setErrors] = useState([]);
