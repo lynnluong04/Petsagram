@@ -9,8 +9,19 @@ nav.full-navbar {
     height: 100%;
     background-color: rgb(255, 255, 255);
     border-right: 1px solid #DADDE1;
-    z-index: 1;
 }
+
+/* nav.full-navbar {
+    display: grid;
+    width: 232px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-right: 1px solid #DADDE1;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+} */
 
 nav.mini-navbar {
     display: flex;
@@ -154,9 +165,14 @@ a#profile-button {
     color: black;
 }
 
+.nav-ig-icon {
+    margin-left: 2px;
+}
+
 .nav-logo:hover {
     cursor: pointer;
 }
+
 
 div.search {
     display: flex;

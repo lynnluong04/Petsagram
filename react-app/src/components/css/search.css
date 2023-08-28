@@ -2,5 +2,6 @@
     height: 100%;
     width: 397px;
     background-color: rgb(133, 119, 222);
-    /* position: absolute; */
+    position: relative;
+    /* margin-left: 500px; */
 }
